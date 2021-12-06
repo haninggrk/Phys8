@@ -4,21 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Data User</title>
+    <title>Admin Data Question</title>
 </head>
 <body>
     @foreach()
     <table>
         <tr>
-        <th>Data User</th>
+        <th>Data Question</th>
         </tr>
         <tr>
-        <td><a>Nama :</a></td>
-        <td><a>Email :</a></td>
-        <td><a>Password :</a></td>
-        <td><a>School :</a></td> 
-        <td><a>City :</a></td>
-        <td><a>Birthyear :</a></td>
+        <td><a>Question :</a></td>
+        <td><a>Image of the Question</a></td>
+        <td><a>Answers :</a></td>
         </tr>
     </table>
     @endforeach
