@@ -19,6 +19,9 @@
         <td><a>School</a></td> 
         <td><a>City</a></td>
         <td><a>Birthyear</a></td>
+        <td><a>Tickets</a></td>
+        <td><a>Money</a></td>
+        <td><a>Score</a></td>
         </tr>
     </table>
     @endforeach
