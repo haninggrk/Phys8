@@ -13,12 +13,12 @@
         <th>Data User</th>
         </tr>
         <tr>
-        <td><a>Nama :</a></td>
-        <td><a>Email :</a></td>
-        <td><a>Password :</a></td>
-        <td><a>School :</a></td> 
-        <td><a>City :</a></td>
-        <td><a>Birthyear :</a></td>
+        <td><a>Nama</a></td>
+        <td><a>Email</a></td>
+        <td><a>Password</a></td>
+        <td><a>School</a></td> 
+        <td><a>City</a></td>
+        <td><a>Birthyear</a></td>
         </tr>
     </table>
     @endforeach

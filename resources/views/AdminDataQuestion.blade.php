@@ -13,9 +13,9 @@
         <th>Data Question</th>
         </tr>
         <tr>
-        <td><a>Question :</a></td>
+        <td><a>Question</a></td>
         <td><a>Image of the Question</a></td>
-        <td><a>Answers :</a></td>
+        <td><a>Answers</a></td>
         </tr>
     </table>
     @endforeach
