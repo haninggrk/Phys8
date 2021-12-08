@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -23,10 +22,20 @@ class User extends Authenticatable
      *
      * @var string[]
      */
+    protected $table = 'students';
     protected $guarded = [
         'id',
     ];
 
+    public function MyUser()
+    {
+        return $this->hasOne(Fis8MyUser::class, 'student_id');
+    }
+
+    public function TicketTransactions()
+    {
+        return $this->hasMany(Fis8TicketTransaction::class);
+    }
     /**
      * The attributes that should be hidden for serialization.
      *

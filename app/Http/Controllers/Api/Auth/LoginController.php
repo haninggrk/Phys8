@@ -24,11 +24,10 @@ class LoginController extends Controller
         $user = [
             'email' => $request->email,
             'password' => $request->password,
-            'is_login' => '0',
-            'is_active' => '1',
         ];
 
-        $check = User::where('email', $request->email)->first();
+        $GetUser = User::where('email', $request->email)->first();
+        $check = $GetUser->MyUser;
 
         if ('1' == $check->is_active) {
             if ('0' == $check->is_login) {
@@ -64,7 +63,7 @@ class LoginController extends Controller
 
     private function isLogin(int $id)
     {
-        $user = User::findOrFail($id);
+        $user = User::findOrFail($id)->MyUser;
 
         return $user->update([
             'is_login' => '1',
@@ -101,7 +100,7 @@ class LoginController extends Controller
             'revoked' => true,
         ]);
 
-        $user->update([
+        $user->MyUser->update([
             'is_login' => '0',
         ]);
 

@@ -5,11 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Fis8_Category extends Model
+class Fis8TicketTransaction extends Model
 {
     use HasFactory;
-
     protected $guarded = [
         'id',
     ];
+
+    public function User()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class Fis8_CategoryFactory extends Factory
+class Fis8QuestionFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -14,7 +14,7 @@ class Fis8_CategoryFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name(),
+            //
         ];
     }
 }
