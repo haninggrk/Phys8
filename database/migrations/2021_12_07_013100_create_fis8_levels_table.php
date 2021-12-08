@@ -15,7 +15,7 @@ class CreateFis8LevelsTable extends Migration
     {
         Schema::create('fis8_levels', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id')->references('id')->on('fis8_categories')
+            $table->foreignId('fis8_category_id')->references('id')->on('fis8_categories')
             ->onDelete('cascade')
             ->onUpdate('cascade');
 

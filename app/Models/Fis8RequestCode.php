@@ -12,4 +12,5 @@ class Fis8RequestCode extends Model
     protected $guarded = [
         'id',
     ];
+    const UPDATED_AT = null;
 }

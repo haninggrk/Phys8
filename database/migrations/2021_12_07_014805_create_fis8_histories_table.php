@@ -18,7 +18,7 @@ class CreateFis8HistoriesTable extends Migration
             $table->foreignId('student_id')->references('id')->on('students')
             ->onDelete('cascade')
             ->onUpdate('cascade');
-            $table->foreignId('level_id')->references('id')->on('fis8_levels')
+            $table->foreignId('fis8_level_id')->references('id')->on('fis8_levels')
             ->onDelete('cascade')
             ->onUpdate('cascade');
 

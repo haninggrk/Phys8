@@ -15,7 +15,7 @@ class CreateFis8RequestCodesTable extends Migration
     {
         Schema::create('fis8_request_codes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('code_id')->references('id')->on('fis8_codes')
+            $table->foreignId('fis8_code_id')->references('id')->on('fis8_codes')
             ->onDelete('cascade')
             ->onUpdate('cascade');
             $table->foreignId('student_id')->references('id')->on('students')

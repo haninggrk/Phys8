@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Fis8Log;
 use Illuminate\Database\Seeder;
 
-class CategorySeeder extends Seeder
+class Fis8LogSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,6 +14,6 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Fis8Category::factory(2)->create();
+        Fis8Log::factory(10)->create();
     }
 }

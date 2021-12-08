@@ -40,6 +40,6 @@ class RegisterController extends Controller
             'city' => $data['city'],
         ]);
 
-        return $CreateUser->MyUser()->create([]);
+        return $CreateUser->myUser()->create([]);
     }
 }

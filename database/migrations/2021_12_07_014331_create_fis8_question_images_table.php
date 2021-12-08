@@ -14,10 +14,10 @@ class CreateFis8QuestionImagesTable extends Migration
     public function up()
     {
         Schema::create('fis8_question_images', function (Blueprint $table) {
-            $table->foreignId('question_id')->references('id')->on('fis8_questions')
+            $table->foreignId('fis8_question_id')->references('id')->on('fis8_questions')
             ->onDelete('cascade')
             ->onUpdate('cascade');
-            $table->foreignId('image_id')->references('id')->on('fis8_images')
+            $table->foreignId('fis8_image_id')->references('id')->on('fis8_images')
             ->onDelete('cascade')
             ->onUpdate('cascade');
 

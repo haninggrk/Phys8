@@ -11,8 +11,10 @@ class Fis8TicketTransaction extends Model
     protected $guarded = [
         'id',
     ];
+    
+    const UPDATED_AT = null;
 
-    public function User()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }

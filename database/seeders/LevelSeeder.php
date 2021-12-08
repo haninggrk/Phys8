@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class CategorySeeder extends Seeder
+class LevelSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,6 +13,6 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Fis8Category::factory(2)->create();
+        \App\Models\Fis8Level::factory(10)->create();
     }
 }

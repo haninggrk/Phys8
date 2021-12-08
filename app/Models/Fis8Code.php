@@ -11,4 +11,10 @@ class Fis8Code extends Model
     protected $guarded = [
         'id',
     ];
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'fis8_request_codes', 'fis8_code_id', 'student_id')
+        ->withPivot(['id', 'created_at']);
+    }
 }

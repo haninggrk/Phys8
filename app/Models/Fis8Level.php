@@ -11,4 +11,8 @@ class Fis8Level extends Model
     protected $guarded = [
         'id',
     ];
+    public function category()
+    {
+        return $this->belongsTo(Fis8Category::class);
+    }
 }

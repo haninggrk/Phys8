@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Fis8Code;
 use App\Models\User as ModelsUser;
 use Illuminate\Database\Seeder;
 
@@ -15,8 +16,14 @@ class UserSeeder extends Seeder
     public function run()
     {
         for ($i = 0; $i < 10; ++$i) {
-            $CreateUser = ModelsUser::factory()->create();
-            $CreateUser->MyUser()->create();
+            $createUser = ModelsUser::factory()->create();
+            
+            $createUser->MyUser()->create();
+
+            $createUser->requestCodes()->attach([
+                rand(1, count(Fis8Code::all())) => ['created_at' => now()],
+                rand(1, count(Fis8Code::all())) => ['created_at' => now()],
+            ]);
         }
     }
 }

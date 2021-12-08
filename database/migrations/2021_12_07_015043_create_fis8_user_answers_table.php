@@ -18,10 +18,10 @@ class CreateFis8UserAnswersTable extends Migration
             $table->foreignId('student_id')->references('id')->on('students')
             ->onDelete('cascade')
             ->onUpdate('cascade');
-            $table->foreignId('question_id')->references('id')->on('fis8_questions')
+            $table->foreignId('fis8_question_id')->references('id')->on('fis8_questions')
             ->onDelete('cascade')
             ->onUpdate('cascade');
-            $table->foreignId('history_id')->references('id')->on('fis8_histories')
+            $table->foreignId('fis8_history_id')->references('id')->on('fis8_histories')
             ->onDelete('cascade')
             ->onUpdate('cascade');
 

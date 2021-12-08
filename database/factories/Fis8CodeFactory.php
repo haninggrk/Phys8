@@ -14,7 +14,7 @@ class Fis8CodeFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'code' => 'testcode',
         ];
     }
 }

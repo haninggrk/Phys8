@@ -12,4 +12,9 @@ class Fis8Category extends Model
     protected $guarded = [
         'id',
     ];
+
+    public function levels()
+    {
+        return $this->hasMany(Fis8Level::class);
+    }
 }

@@ -27,15 +27,27 @@ class User extends Authenticatable
         'id',
     ];
 
-    public function MyUser()
+    public function myUser()
     {
         return $this->hasOne(Fis8MyUser::class, 'student_id');
     }
 
-    public function TicketTransactions()
+    public function ticketTransactions()
     {
-        return $this->hasMany(Fis8TicketTransaction::class);
+        return $this->hasMany(Fis8TicketTransaction::class, 'student_id');
     }
+
+    public function logs()
+    {
+        return $this->hasMany(Fis8Log::class, 'student_id');
+    }
+
+    public function requestCodes()
+    {
+        return $this->belongsToMany(Fis8Code::class, 'fis8_request_codes', 'student_id', 'fis8_code_id')
+        ->withPivot(['id', 'created_at']);
+    }
+    
     /**
      * The attributes that should be hidden for serialization.
      *
