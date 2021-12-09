@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFis8HistoriesTable extends Migration
+class CreateFis8AnswerOptionTextsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateFis8HistoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('fis8_histories', function (Blueprint $table) {
+        Schema::create('fis8_answer_option_texts', function (Blueprint $table) {
             $table->id();
-
-            $table->integer('time_taken');
-            $table->integer('sum_correct_answer');
-
-            $table->dateTime('created_at');
+            $table->text('answer_option_text');
+            $table->timestamps();
         });
     }
 
@@ -30,6 +27,6 @@ class CreateFis8HistoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fis8_histories');
+        Schema::dropIfExists('fis8_answer_option_texts');
     }
 }

@@ -11,4 +11,15 @@ class Fis8Image extends Model
     protected $guarded = [
         'id',
     ];
+
+    public function questions()
+    {
+        return $this->belongsToMany(Fis8Question::class, 'fis8_question_images', 'fis8_image_id', 'fis8_question_id')
+        ->withPivot(['id', 'created_at', 'updated_at']);
+    }
+
+    public function answerOptionImages()
+    {
+        return $this->hasMany(Fis8AnswerOptionImage::class);
+    }
 }

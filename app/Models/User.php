@@ -42,7 +42,7 @@ class User extends Authenticatable
         return $this->hasMany(Fis8Log::class, 'student_id');
     }
 
-    public function requestCodes()
+    public function codes()
     {
         return $this->belongsToMany(Fis8Code::class, 'fis8_request_codes', 'student_id', 'fis8_code_id')
         ->withPivot(['id', 'created_at']);

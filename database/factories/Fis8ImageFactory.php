@@ -14,7 +14,7 @@ class Fis8ImageFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'image' => 'image', 
         ];
     }
 }

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Fis8UserAnswerImage;
+use App\Models\Fis8AnswerOptionImage;
 use Illuminate\Http\Request;
 
-class Fis8UserAnswerImageController extends Controller
+class Fis8AnswerOptionImageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class Fis8UserAnswerImageController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Fis8UserAnswerImage  $fis8UserAnswerImage
+     * @param  \App\Models\Fis8AnswerOptionImage  $fis8AnswerOptionImage
      * @return \Illuminate\Http\Response
      */
-    public function show(Fis8UserAnswerImage $fis8UserAnswerImage)
+    public function show(Fis8AnswerOptionImage $fis8AnswerOptionImage)
     {
         //
     }
@@ -52,10 +52,10 @@ class Fis8UserAnswerImageController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Fis8UserAnswerImage  $fis8UserAnswerImage
+     * @param  \App\Models\Fis8AnswerOptionImage  $fis8AnswerOptionImage
      * @return \Illuminate\Http\Response
      */
-    public function edit(Fis8UserAnswerImage $fis8UserAnswerImage)
+    public function edit(Fis8AnswerOptionImage $fis8AnswerOptionImage)
     {
         //
     }
@@ -64,10 +64,10 @@ class Fis8UserAnswerImageController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Fis8UserAnswerImage  $fis8UserAnswerImage
+     * @param  \App\Models\Fis8AnswerOptionImage  $fis8AnswerOptionImage
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Fis8UserAnswerImage $fis8UserAnswerImage)
+    public function update(Request $request, Fis8AnswerOptionImage $fis8AnswerOptionImage)
     {
         //
     }
@@ -75,10 +75,10 @@ class Fis8UserAnswerImageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Fis8UserAnswerImage  $fis8UserAnswerImage
+     * @param  \App\Models\Fis8AnswerOptionImage  $fis8AnswerOptionImage
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Fis8UserAnswerImage $fis8UserAnswerImage)
+    public function destroy(Fis8AnswerOptionImage $fis8AnswerOptionImage)
     {
         //
     }

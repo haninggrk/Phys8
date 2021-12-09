@@ -25,6 +25,8 @@ class CreateFis8UserAnswersTable extends Migration
             ->onDelete('cascade')
             ->onUpdate('cascade');
 
+            $table->text('user_answer');
+
             $table->dateTime('created_at');
         });
     }

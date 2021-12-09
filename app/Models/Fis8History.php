@@ -11,4 +11,6 @@ class Fis8History extends Model
     protected $guarded = [
         'id',
     ];
+
+    public const UPDATED_AT = null;
 }

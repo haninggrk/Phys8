@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
             
             $createUser->MyUser()->create();
 
-            $createUser->requestCodes()->attach([
+            $createUser->codes()->attach([
                 rand(1, count(Fis8Code::all())) => ['created_at' => now()],
                 rand(1, count(Fis8Code::all())) => ['created_at' => now()],
             ]);
