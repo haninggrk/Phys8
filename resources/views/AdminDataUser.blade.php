@@ -7,11 +7,9 @@
     <title>Admin Data User</title>
 </head>
 <body>
-    @foreach()
+    <h1> Data User </h1>
     <table>
-        <tr>
-        <th>Data User</th>
-        </tr>
+        @foreach()
         <tr>
         <td><a>Nama</a></td>
         <td><a>Email</a></td>
