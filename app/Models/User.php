@@ -42,12 +42,17 @@ class User extends Authenticatable
         return $this->hasMany(Fis8Log::class, 'student_id');
     }
 
+    public function histories()
+    {
+        return $this->hasMany(Fis8History::class, 'student_id');
+    }
+
     public function codes()
     {
         return $this->belongsToMany(Fis8Code::class, 'fis8_request_codes', 'student_id', 'fis8_code_id')
         ->withPivot(['id', 'created_at']);
     }
-    
+
     /**
      * The attributes that should be hidden for serialization.
      *

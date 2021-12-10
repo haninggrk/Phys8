@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Fis8TicketTransaction;
 
 class Fis8TicketTransactionSeeder extends Seeder
 {
@@ -13,6 +14,6 @@ class Fis8TicketTransactionSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Fis8TicketTransaction::factory(20)->create();
+        Fis8TicketTransaction::factory(20)->create();
     }
 }

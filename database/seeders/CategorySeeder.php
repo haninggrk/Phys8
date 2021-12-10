@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Fis8Category;
 use Illuminate\Database\Seeder;
 
 class CategorySeeder extends Seeder
@@ -13,6 +14,6 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Fis8Category::factory(2)->create();
+        Fis8Category::factory(2)->create();
     }
 }

@@ -34,4 +34,10 @@ class Fis8Question extends Model
         return $this->belongsToMany(Fis8Image::class, 'fis8_question_images', 'fis8_question_id', 'fis8_image_id')
         ->withPivot(['id', 'created_at', 'updated_at']);
     }
+
+    public function histories()
+    {
+        return $this->belongsToMany(Fis8History::class, 'fis8_user_answers', 'fis8_question_id', 'fis8_history_id')
+        ->withPivot(['id', 'user_answer', 'created_at']);
+    }
 }

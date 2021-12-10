@@ -16,8 +16,8 @@ class Fis8QuestionSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 0; $i < 15; ++$i) {
-            $createQuestion =  \App\Models\Fis8Question::factory()->create();
+        for ($i = 0; $i < 15; $i++) {
+            $createQuestion = Fis8Question::factory()->create();
 
             $createQuestion->images()->attach([
                 rand(1, count(Fis8Image::all())) => [

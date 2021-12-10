@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Fis8Level;
 use Illuminate\Database\Seeder;
 
 class LevelSeeder extends Seeder
@@ -13,6 +14,6 @@ class LevelSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Fis8Level::factory(10)->create();
+        Fis8Level::factory(10)->create();
     }
 }

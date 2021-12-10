@@ -2,8 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Fis8AnswerOptionText;
-use App\Models\Fis8QuestionAnswerText;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -28,6 +26,7 @@ class DatabaseSeeder extends Seeder
             Fis8QuestionSeeder::class,
             Fis8QuestionAnswerTextSeeder::class,
             Fis8QuestionAnswerImageSeeder::class,
+            Fis8HistorySeeder::class,
         ]);
     }
 }

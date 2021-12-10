@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Fis8Code;
 use Illuminate\Database\Seeder;
 
 class Fis8CodeSeeder extends Seeder
@@ -13,6 +14,6 @@ class Fis8CodeSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Fis8Code::factory(10)->create();
+        Fis8Code::factory(10)->create();
     }
 }

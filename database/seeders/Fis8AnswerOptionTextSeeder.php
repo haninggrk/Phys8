@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Fis8AnswerOptionText;
 
 class Fis8AnswerOptionTextSeeder extends Seeder
 {
@@ -13,6 +14,6 @@ class Fis8AnswerOptionTextSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Fis8AnswerOptionText::factory(10)->create();
+        Fis8AnswerOptionText::factory(10)->create();
     }
 }

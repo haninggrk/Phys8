@@ -13,4 +13,15 @@ class Fis8History extends Model
     ];
 
     public const UPDATED_AT = null;
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function questions()
+    {
+        return $this->belongsToMany(Fis8Question::class, 'fis8_user_answers', 'fis8_history_id', 'fis8_question_id')
+        ->withPivot(['id', 'user_answer', 'created_at']);
+    }
 }

@@ -15,6 +15,9 @@ class CreateFis8HistoriesTable extends Migration
     {
         Schema::create('fis8_histories', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('student_id')->references('id')->on('students')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
 
             $table->integer('time_taken');
             $table->integer('sum_correct_answer');

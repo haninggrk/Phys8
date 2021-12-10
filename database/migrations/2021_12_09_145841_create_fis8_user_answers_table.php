@@ -15,9 +15,6 @@ class CreateFis8UserAnswersTable extends Migration
     {
         Schema::create('fis8_user_answers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('student_id')->references('id')->on('students')
-            ->onDelete('cascade')
-            ->onUpdate('cascade');
             $table->foreignId('fis8_question_id')->references('id')->on('fis8_questions')
             ->onDelete('cascade')
             ->onUpdate('cascade');
