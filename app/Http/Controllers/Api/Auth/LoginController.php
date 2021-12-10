@@ -63,7 +63,7 @@ class LoginController extends Controller
 
     private function isLogin(int $id)
     {
-        $user = User::findOrFail($id)->myUser;
+        $user = User::findOrFail($id)->myUser();
 
         return $user->update([
             'is_login' => '1',

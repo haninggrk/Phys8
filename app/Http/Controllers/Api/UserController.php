@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Fis8UserResource;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -35,6 +36,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
+        return ['user' => Fis8UserResource::collection(User::where('id', $id)->get())];
     }
 
     /**
@@ -53,6 +55,10 @@ class UserController extends Controller
             'school' => $request->school,
             'city' => $request->city,
             'birthyear' => $request->birthyear,
+        ]);
+
+        $user->myUser()->update([
+            'photo' => $request->photo,
         ]);
 
         return [
