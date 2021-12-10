@@ -13,7 +13,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(10)->create();
-        \App\Models\fis8_category::factory(10)->create();
+        $this->call([
+            Fis8CodeSeeder::class,
+            UserSeeder::class,
+            CategorySeeder::class,
+            LevelSeeder::class,
+            Fis8LogSeeder::class,
+            Fis8TicketTransactionSeeder::class,
+            Fis8AnswerOptionTextSeeder::class,
+            Fis8ImageSeeder::class,
+            Fis8AnswerOptionImageSeeder::class,
+            Fis8QuestionSeeder::class,
+            Fis8QuestionAnswerTextSeeder::class,
+            Fis8QuestionAnswerImageSeeder::class,
+            Fis8HistorySeeder::class,
+        ]);
     }
 }

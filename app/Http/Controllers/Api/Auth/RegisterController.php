@@ -13,7 +13,7 @@ class RegisterController extends Controller
     {
         $this->validate($request, [
                     'name' => 'required',
-                    'email' => 'required|unique:users',
+                    'email' => 'required|unique:students',
                     'password' => 'required|confirmed',
             ]);
 
@@ -32,10 +32,14 @@ class RegisterController extends Controller
 
     private function newUser(array $data)
     {
-        return User::create([
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'password' => Hash::make($data['password']),
+        $CreateUser = User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'birthyear' => $data['birthyear'],
+            'city' => $data['city'],
         ]);
+
+        return $CreateUser->myUser()->create();
     }
 }

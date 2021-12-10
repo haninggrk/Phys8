@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Fis8_categoriesResource;
-use App\Models\Fis8Category;
 use Illuminate\Http\Request;
+use App\Models\User;
 
-class Fis8CategoryController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +15,6 @@ class Fis8CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Fis8Category::all();
-
-        return ['category' => Fis8_categoriesResource::collection($categories)];
     }
 
     /**
@@ -28,13 +24,6 @@ class Fis8CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        Fis8Category::create([
-            'name' => $request->name,
-        ]);
-
-        return [
-            'message' => 'Category has been saved!',
-        ];
     }
 
     /**
@@ -46,7 +35,6 @@ class Fis8CategoryController extends Controller
      */
     public function show($id)
     {
-        return ['category' => Fis8_categoriesResource::collection(Fis8Category::all()->where('id', $id))];
     }
 
     /**
@@ -58,14 +46,17 @@ class Fis8CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $category = Fis8Category::findOrFail($id);
+        $user = User::findOrFail($id);
 
-        $category->update([
+        $user->update([
             'name' => $request->name,
+            'school' => $request->school,
+            'city' => $request->city,
+            'birthyear' => $request->birthyear,
         ]);
 
         return [
-            'message' => 'Category has been updated!',
+            'message' => 'User has been updated!',
         ];
     }
 
@@ -78,11 +69,11 @@ class Fis8CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = Fis8Category::findOrFail($id);
-        $category->delete();
+        $user = User::findOrFail($id);
+        $user->delete();
 
         return [
-            'message' => 'Category has been deleted!',
+            'message' => 'User has been deleted!',
         ];
     }
 }
