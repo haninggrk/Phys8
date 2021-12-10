@@ -9,7 +9,6 @@
 <body>
     <h1> Data User </h1>
     <table>
-        @foreach()
         <tr>
         <td><a>Nama</a></td>
         <td><a>Email</a></td>
@@ -21,6 +20,7 @@
         <td><a>Money</a></td>
         <td><a>Score</a></td>
         </tr>
+        @foreach()
     </table>
     @endforeach
 </body>
