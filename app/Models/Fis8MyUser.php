@@ -10,10 +10,12 @@ class Fis8MyUser extends Model
     use HasFactory;
 
     protected $table = 'fis8_myusers';
+    protected $guarded = [
+        'student_id',
+    ];
 
-    public function Student()
+    public function student()
     {
         return $this->belongsTo(User::class);
     }
-
 }
