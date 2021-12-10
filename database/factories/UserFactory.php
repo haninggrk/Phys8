@@ -6,7 +6,6 @@ use App\Models\Team;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 use Laravel\Jetstream\Features;
 
 class UserFactory extends Factory
@@ -27,16 +26,14 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-
             'name' => $this->faker->name(),
             'username' => $this->faker->name(),
-            'school' => "School",
+            'school' => 'School',
             'email' => $this->faker->unique()->safeEmail(),
             'password' => Hash::make('password'),
             'city' => $this->faker->city(),
             'birthyear' => $this->faker->year(now()),
         ];
-     
     }
 
     /**
@@ -60,7 +57,7 @@ class UserFactory extends Factory
      */
     public function withPersonalTeam()
     {
-        if (! Features::hasTeamFeatures()) {
+        if (!Features::hasTeamFeatures()) {
             return $this->state([]);
         }
 
