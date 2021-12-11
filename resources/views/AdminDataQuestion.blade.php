@@ -14,7 +14,7 @@
         <tr>
         <td><a>Level ID</a></td>
         <td><a>Question Text</a></td>
-        <td><a>Images</a></td>
+        <td><a>Image answer</a></td>
         <td><a>Discussion</a></td> 
         </tr>
         @foreach()
