@@ -13,6 +13,7 @@
     <table class="table">
         <thead>
             <tr>
+            <td><a>Code</a></td>
                 <th class="text-center">Actions</th>
             </tr>
         </thead>
@@ -20,7 +21,9 @@
             @php $index = 1 @endphp
             @foreach ($codes as $code)
                 <tr>
-
+                <td class="text-center">
+                         {{$code['code']}}
+                    </td>
                     <td class="text-center">
                         <form action="{{ route('codes.destroy',$code->id) }}" method="POST">
                             @csrf

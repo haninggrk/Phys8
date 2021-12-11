@@ -23,10 +23,10 @@
             @foreach ($cats as $cat)
                 <tr>
                 <td class="text-center">
-                       {{$cat->name}}
+                       {{$cat['name']}}
                     </td>
                     <td class="text-center">
-                        {{$cat->description}}
+                        {{$cat['description']}}
                     </td>
                     <td class="text-center">
                         <form action="{{ route('cats.destroy',$cat->id) }}" method="POST">
