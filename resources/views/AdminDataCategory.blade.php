@@ -7,7 +7,6 @@
     <title>Admin Data Category</title>
 </head>
 <body>
-    @foreach()
     <table>
     <h1> Data Category </h1>
     <table>
@@ -17,7 +16,8 @@
         <td><a>Action</a></td>
         </tr>
         @foreach()
+        @endforeach
     </table>
-    @endforeach
+
 </body>
 </html>
