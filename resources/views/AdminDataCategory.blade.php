@@ -7,17 +7,10 @@
     <title>Admin Data Category</title>
 </head>
 <body>
-    @foreach()
     <table>
     <h1> Data Category </h1>
     <table>
-        <tr>
-        <td><a>Category name</a></td>
-        <td><a>Category Description</a></td>
-        <td><a>Action</a></td>
-        </tr>
-        @foreach()
     </table>
-    @endforeach
+
 </body>
 </html>

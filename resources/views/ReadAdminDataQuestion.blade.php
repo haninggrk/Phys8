@@ -13,14 +13,31 @@
     <table class="table">
         <thead>
             <tr>
+                <td><a>NO</a></td>
+                <td><a>Level ID</a></td>
+                <td><a>Question Text</a></td>
+                <td><a>Is Image answer?</a></td>
+                <td><a>Discussion</a></td> 
                 <th class="text-center">Actions</th>
             </tr>
         </thead>
         <tbody>
-            @php $index = 1 @endphp
+            @php $index = 0 @endphp
             @foreach ($questions as $quest)
                 <tr>
-
+                <td><a>$index++</a></td>
+                <td class="text-center">
+                       {{$quest['fis8_category_id']}}
+                    </td>
+                    <td class="text-center">
+                        {{$quest['question_text']}
+                    </td>
+                    <td class="text-center">
+                       {{$quest['is_image_answer'}}
+                    </td>
+                    <td class="text-center">
+                        {{$quest['discussion'}}
+                    </td>
                     <td class="text-center">
                         <form action="{{ route('questions.destroy',$quest->id) }}" method="POST">
                             @csrf
