@@ -14,7 +14,10 @@ class Fis8CodeController extends Controller
      */
     public function index()
     {
-        //
+        $codes = Fis8Code::all();
+        return view('ReadAdminDataCodes', [
+            'codes' => $codes
+        ]);
     }
 
     /**
@@ -24,7 +27,8 @@ class Fis8CodeController extends Controller
      */
     public function create()
     {
-        //
+        return view('CreateCodes');
+
     }
 
     /**
@@ -35,7 +39,15 @@ class Fis8CodeController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'code' => 'required|max:100',
+         ]);
+
         //
+        Fis8Code::create([
+            'code' => $request->code,
+        ]);
+        return redirect(route('codes.index'));
     }
 
     /**
@@ -78,8 +90,10 @@ class Fis8CodeController extends Controller
      * @param  \App\Models\Fis8Code  $fis8Code
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Fis8Code $fis8Code)
+    public function destroy($id)
     {
-        //
+        $code = Fis8Code::findOrFail($id);
+        $code->delete();
+        return redirect(route('codes.index'));
     }
 }

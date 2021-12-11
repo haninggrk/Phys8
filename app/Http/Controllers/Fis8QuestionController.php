@@ -14,7 +14,10 @@ class Fis8QuestionController extends Controller
      */
     public function index()
     {
-        //
+        $questions = Fis8Question::all();
+        return view('ReadAdminDataQuestion', [
+            'questions' => $questions
+        ]);
     }
 
     /**
@@ -24,7 +27,8 @@ class Fis8QuestionController extends Controller
      */
     public function create()
     {
-        //
+        return view('CreateQuestion');
+
     }
 
     /**
@@ -35,7 +39,17 @@ class Fis8QuestionController extends Controller
      */
     public function store(Request $request)
     {
+        // $this->validate($request,[
+        //     'question_text' => 'required|min:5|max:50',
+        //  ]);
+
         //
+        Fis8Question::create([
+            'question_text' => $request->question_text,
+            'is_image_answer' => $request->is_image_answer,
+            'discussion' => $request->discussion,
+        ]);
+        return redirect(route('questions.index'));
     }
 
     /**
@@ -78,8 +92,10 @@ class Fis8QuestionController extends Controller
      * @param  \App\Models\Fis8Question  $fis8Question
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Fis8Question $fis8Question)
+    public function destroy($id)
     {
-        //
+        $quest = Fis8Question::findOrFail($id);
+        $quest->delete();
+        return redirect(route('questions.index'));
     }
 }

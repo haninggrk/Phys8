@@ -27,7 +27,7 @@ class Fis8CategoryController extends Controller
      */
     public function create()
     {
-        return view('CreateAdminDataCategories');
+        return view('CreateCategories');
     }
 
     /**
