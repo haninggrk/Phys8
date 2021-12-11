@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Fis8AnswerOptionText;
+use App\Models\Fis8Question;
 use App\Models\Fis8QuestionAnswerText;
 use Illuminate\Http\Request;
 
@@ -14,7 +16,10 @@ class Fis8QuestionAnswerTextController extends Controller
      */
     public function index()
     {
-        //
+        $qatxts = Fis8QuestionAnswerText::all();
+        return view('ReadQuestionAnswerText', [
+            'qatxts' => $qatxts
+        ]);
     }
 
     /**
@@ -24,7 +29,9 @@ class Fis8QuestionAnswerTextController extends Controller
      */
     public function create()
     {
-        //
+        $question = Fis8Question::all();
+        $answer = Fis8AnswerOptionText::all();
+        return view('CreateQuestionAnswerText', compact("question", "answer"));
     }
 
     /**
@@ -35,7 +42,24 @@ class Fis8QuestionAnswerTextController extends Controller
      */
     public function store(Request $request)
     {
+
+
         //
+        // $question = Fis8Question::find($request -> fis8_question_id);
+        // $answer = Fis8AnswerOptionText::find($request -> fis8_answer_option_text_id);
+        // $question -> levels() -> create([
+
+        //     'is_correct_answer' => $request->name
+
+        // ]);
+
+        $question = Fis8Question::find($request -> fis8_question_id);
+
+            $question->answerOptionTexts()->attach([
+                $request -> fis8_answer_option_text_id => ['is_correct_answer' => $request->is_correct_answer],
+            ]);
+
+        return redirect(route('qatxts.index'));
     }
 
     /**
@@ -78,8 +102,10 @@ class Fis8QuestionAnswerTextController extends Controller
      * @param  \App\Models\Fis8QuestionAnswerText  $fis8QuestionAnswerText
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Fis8QuestionAnswerText $fis8QuestionAnswerText)
+    public function destroy($id)
     {
-        //
+        $qatxts = Fis8QuestionAnswerText::findOrFail($id);
+        $qatxts->delete();
+        return redirect(route('qatxts.index'));
     }
 }

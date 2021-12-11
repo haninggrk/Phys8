@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Fis8AnswerOptionText;
 use Illuminate\Http\Request;
 
 class Fis8AnswerOptionTextController extends Controller
@@ -13,7 +14,10 @@ class Fis8AnswerOptionTextController extends Controller
      */
     public function index()
     {
-        //
+        $opttxts = Fis8AnswerOptionText::all();
+        return view('ReadAdminDataAnsOptText', [
+            'opttxts' => $opttxts
+        ]);
     }
 
     /**
@@ -23,7 +27,7 @@ class Fis8AnswerOptionTextController extends Controller
      */
     public function create()
     {
-        //
+        return view('CreateAnswerOptionText');
     }
 
     /**
@@ -34,7 +38,11 @@ class Fis8AnswerOptionTextController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Fis8AnswerOptionText::create([
+            'answer_option_text' => $request->answer_option_text,
+
+        ]);
+        return redirect(route('opttxts.index'));
     }
 
     /**
@@ -79,6 +87,8 @@ class Fis8AnswerOptionTextController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $quest = Fis8AnswerOptionText::findOrFail($id);
+        $quest->delete();
+        return redirect(route('opttxts.index'));
     }
 }

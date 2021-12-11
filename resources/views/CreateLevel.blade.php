@@ -14,6 +14,18 @@
                     </div>
 
                     <div class="form-group">
+                        <label>Category :</label>
+
+                        <select name="fis8_category_id" class="custom-select">
+
+                            @foreach ($category as $cat)
+                            <option value="{{$cat -> id}}">{{$cat -> name}}</option>
+                            @endforeach
+
+                        </select>
+                    </div>
+
+                    <div class="form-group">
                         <label>Thumbnail : </label>
                         <input type="text" class="form-control" name="thumbnail" required>
                     </div>
@@ -45,9 +57,7 @@
 
 
 
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-success">Buat level</button>
-                    </div>
+                    <button type="submit" class="btn btn-success">Buat level</button>
                 </form>
             </div>
 

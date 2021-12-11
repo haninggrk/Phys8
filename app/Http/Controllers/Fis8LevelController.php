@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Fis8Category;
 use App\Models\Fis8Level;
 use Illuminate\Http\Request;
 
@@ -26,8 +27,10 @@ class Fis8LevelController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
+
     {
-        return view('CreateLevel');
+        $category = Fis8Category::all();
+        return view('CreateLevel', compact("category"));
     }
 
     /**
@@ -43,14 +46,16 @@ class Fis8LevelController extends Controller
          ]);
 
         //
-        Fis8Level::create([
+        $category = Fis8Category::find($request -> fis8_category_id);
+        $category -> levels() -> create([
+
             'name' => $request->name,
             'thumbnail' => $request->thumbnail,
             'description' => $request->description,
             'score_reward' => $request->score_reward,
             'ticket_reward' => $request->ticket_reward,
             'money_reward' => $request->money_reward,
-            'mamximum_time' => $request->maximum_time,
+            'maximum_time' => $request->maximum_time,
 
         ]);
         return redirect(route('levels.index'));
