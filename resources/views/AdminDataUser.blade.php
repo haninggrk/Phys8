@@ -10,9 +10,10 @@
     <h1> Data User </h1>
     <table>
         <tr>
-        <td><a>Nama</a></td>
+        <td><a>Name</a></td>
         <td><a>Email</a></td>
         <td><a>Password</a></td>
+        <td><a>Username</a></td>
         <td><a>Code</a></td>
         <td><a>School</a></td> 
         <td><a>City</a></td>
