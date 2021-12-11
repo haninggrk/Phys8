@@ -5,7 +5,7 @@ use App\Http\Controllers\Fis8CategoryController;
 use App\Http\Controllers\Fis8CodeController;
 use App\Http\Controllers\Fis8LevelController;
 use App\Http\Controllers\Fis8QuestionController;
-
+use App\Http\Controllers\Fis8ImageController;
 
 
 
@@ -39,3 +39,6 @@ Route::get('/level', [Fis8LevelController::class, 'index']);
 
 Route::resource('questions', Fis8QuestionController::class);
 Route::get('/question', [Fis8QuestionController::class, 'index']);
+
+Route::resource('images', Fis8ImageController::class);
+Route::get('/image', [Fis8ImageController::class, 'index']);
