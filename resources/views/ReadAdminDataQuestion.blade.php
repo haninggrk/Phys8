@@ -13,11 +13,11 @@
     <table class="table">
         <thead>
             <tr>
-                <td><a>NO</a></td>
-                <td><a>Level ID</a></td>
-                <td><a>Question Text</a></td>
-                <td><a>Is Image answer?</a></td>
-                <td><a>Discussion</a></td> 
+                <td>NO</td>
+                <td>Level ID</td>
+                <td>Question Text</td>
+                <td>Is Image answer?</td>
+                <td>Discussion</td> 
                 <th class="text-center">Actions</th>
             </tr>
         </thead>

@@ -13,9 +13,9 @@
     <table class="table">
         <thead>
             <tr>
-            <td><a>NO</a></td>
-        <td><a>Category name</a></td>
-        <td><a>Category Description</a></td>
+            <td>NO</td>
+        <td>Category name</td>
+        <td>Category Description</td>
                 <th class="text-center">Actions</th>
             </tr>
         </thead>
@@ -23,7 +23,7 @@
             @php $index = 1 @endphp
             @foreach ($cats as $cat)
                 <tr>
-                <td><a>$index++</a></td>
+                <td>$index++</td>
                 <td class="text-center">
                        {{$cat['name']}}
                     </td>

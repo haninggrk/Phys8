@@ -13,15 +13,15 @@
     <table class="table">
         <thead>
             <tr>
-            <td><a>NO</a></td>
-            <td><a>Level name</a></td>
-            <td><a>Category</a></td>
-            <td><a>Thumbnail</a></td>
-            <td><a>Description</a></td>
-            <td><a>Score Reward</a></td>
-            <td><a>Ticket Reward</a></td> 
-            <td><a>Money Reward</a></td> 
-            <td><a>Maximum Time</a></td>
+            <td>NO</td>
+            <td>Level name</td>
+            <td>Category</td>
+            <td>Thumbnail</td>
+            <td>Description</td>
+            <td>Score Reward</td>
+            <td>Ticket Reward</td> 
+            <td>Money Reward</td> 
+            <td>Maximum Time</td>
                 <th class="text-center">Actions</th>
             </tr>
         </thead>

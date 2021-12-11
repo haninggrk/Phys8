@@ -13,8 +13,8 @@
     <table class="table">
         <thead>
             <tr>
-            <td><a>NO</a></td>
-            <td><a>Code</a></td>
+            <td>NO</td>
+            <td>Code</td>
                 <th class="text-center">Actions</th>
             </tr>
         </thead>

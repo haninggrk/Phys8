@@ -13,6 +13,7 @@
     <table class="table">
         <thead>
             <tr>
+                <th>Correct answer?</th>
                 <th class="text-center">Actions</th>
             </tr>
         </thead>
@@ -20,7 +21,7 @@
             @php $index = 1 @endphp
             @foreach ($qatxts as $qatxt)
                 <tr>
-
+                <td>{{$qattxt['answer_option_text']}}</td>
                     <td class="text-center">
                         <form action="{{ route('qatxts.destroy',$qatxt->id) }}" method="POST">
                             @csrf
