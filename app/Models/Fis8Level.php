@@ -14,11 +14,11 @@ class Fis8Level extends Model
 
     public function category()
     {
-        return $this->belongsTo(Fis8Category::class);
+        return $this->belongsTo(Fis8Category::class, 'fis8_category_id', 'id');
     }
 
     public function questions()
     {
-        return $this->hasMany(Fis8Question::class);
+        return $this->hasMany(Fis8Question::class, 'fis8_level_id');
     }
 }

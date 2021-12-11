@@ -18,7 +18,7 @@ class CreateFis8QuestionAnswerImagesTable extends Migration
             $table->foreignId('fis8_question_id')->references('id')->on('fis8_questions')
             ->onDelete('cascade')
             ->onUpdate('cascade');
-            $table->foreignId('fis8_answer_option_image_id')->references('id')->on('fis8_answer_option_images')
+            $table->foreignId('fis8_image_id')->references('id')->on('fis8_images')
             ->onDelete('cascade')
             ->onUpdate('cascade');
 
