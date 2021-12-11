@@ -13,6 +13,7 @@
     <table class="table">
         <thead>
             <tr>
+            <td><a>NO</a></td>
         <td><a>Category name</a></td>
         <td><a>Category Description</a></td>
                 <th class="text-center">Actions</th>
@@ -22,6 +23,7 @@
             @php $index = 1 @endphp
             @foreach ($cats as $cat)
                 <tr>
+                <td><a>$index++</a></td>
                 <td class="text-center">
                        {{$cat['name']}}
                     </td>

@@ -13,6 +13,7 @@
     <table class="table">
         <thead>
             <tr>
+            <td><a>NO</a></td>
             <td><a>Code</a></td>
                 <th class="text-center">Actions</th>
             </tr>
@@ -21,6 +22,7 @@
             @php $index = 1 @endphp
             @foreach ($codes as $code)
                 <tr>
+                <td><a>$index++</a></td>
                 <td class="text-center">
                          {{$code['code']}}
                     </td>

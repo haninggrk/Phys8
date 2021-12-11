@@ -13,6 +13,7 @@
     <table class="table">
         <thead>
             <tr>
+                <td><a>NO</a></td>
                 <td><a>Level ID</a></td>
                 <td><a>Question Text</a></td>
                 <td><a>Is Image answer?</a></td>
@@ -21,9 +22,10 @@
             </tr>
         </thead>
         <tbody>
-            @php $index = 1 @endphp
+            @php $index = 0 @endphp
             @foreach ($questions as $quest)
                 <tr>
+                <td><a>$index++</a></td>
                 <td class="text-center">
                        {{$quest['fis8_category_id']}}
                     </td>
