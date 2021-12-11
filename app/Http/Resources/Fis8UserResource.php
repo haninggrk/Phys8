@@ -22,6 +22,7 @@ class Fis8UserResource extends JsonResource
             'school' => $this->school,
             'city' => $this->city,
             'birthyear' => $this->birthyear,
+            'myuser' => $this->myUser,
           ];
     }
 }

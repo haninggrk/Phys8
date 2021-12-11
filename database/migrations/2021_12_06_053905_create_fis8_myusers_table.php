@@ -25,7 +25,7 @@ class CreateFis8MyusersTable extends Migration
             $table->enum('is_admin', ['0', '1'])->default('0');
             $table->bigInteger('ticket')->default(5);
             $table->bigInteger('score')->default(0);
-            $table->bigInteger('money')->default(500);
+            $table->bigInteger('money')->default(200);
             $table->text('photo')->nullable();
 
             $table->rememberToken();

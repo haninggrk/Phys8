@@ -36,7 +36,22 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return ['user' => Fis8UserResource::collection(User::where('id', $id)->get())];
+        if (count(User::where('id', $id)->get()) > 0) {
+            return [
+                'status' => 'resultOn',
+                'result' => Fis8UserResource::collection(User::where('id', $id)->get()),
+            ];
+        } elseif (0 == count(User::where('id', $id)->get())) {
+            return [
+                'status' => 'Pengguna tidak ditemukan',
+                'result' => null,
+            ];
+        } else {
+            return response([
+                'status' => 'Mohon maaf, sistem sedang erorr',
+                'result' => null,
+            ]);
+        }
     }
 
     /**
@@ -57,13 +72,19 @@ class UserController extends Controller
             'birthyear' => $request->birthyear,
         ]);
 
-        $user->myUser()->update([
+        $response = $user->myUser()->update([
             'photo' => $request->photo,
         ]);
 
-        return [
-            'message' => 'User has been updated!',
-        ];
+        if (!empty($response)) {
+            return response([
+                'status' => 'Akun berhasil diperbaharui',
+            ]);
+        } else {
+            return response([
+                'status' => 'Mohon maaf, sistem sedang erorr',
+            ]);
+        }
     }
 
     /**
@@ -76,10 +97,16 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::findOrFail($id);
-        $user->delete();
+        $response = $user->delete();
 
-        return [
-            'message' => 'User has been deleted!',
-        ];
+        if (!empty($response)) {
+            return response([
+                'status' => 'Akun berhasil dihapus',
+            ]);
+        } else {
+            return response([
+                'status' => 'Mohon maaf, sistem sedang erorr',
+            ]);
+        }
     }
 }
