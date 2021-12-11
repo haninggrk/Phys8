@@ -14,7 +14,10 @@ class Fis8ImageController extends Controller
      */
     public function index()
     {
-        //
+        $images = Fis8Image::all();
+        return view('ReadAdminDataImage', [
+            'images' => $images
+        ]);
     }
 
     /**
@@ -24,7 +27,7 @@ class Fis8ImageController extends Controller
      */
     public function create()
     {
-        //
+        return view('CreateImage');
     }
 
     /**
@@ -35,7 +38,10 @@ class Fis8ImageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Fis8Image::create([
+            'image' => $request->image,
+        ]);
+        return redirect(route('images.index'));
     }
 
     /**
@@ -78,8 +84,10 @@ class Fis8ImageController extends Controller
      * @param  \App\Models\Fis8Image  $fis8Image
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Fis8Image $fis8Image)
+    public function destroy($id)
     {
-        //
+        $quest = Fis8Image::findOrFail($id);
+        $quest->delete();
+        return redirect(route('images.index'));
     }
 }
