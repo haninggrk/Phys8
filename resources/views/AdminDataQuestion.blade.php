@@ -16,6 +16,7 @@
         <td><a>Question Text</a></td>
         <td><a>Image answer</a></td>
         <td><a>Discussion</a></td> 
+        <td><a>Action</a></td>
         </tr>
         @foreach()
     </table>

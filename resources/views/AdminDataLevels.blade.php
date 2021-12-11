@@ -19,7 +19,8 @@
         <td><a>Score Reward</a></td>
         <td><a>Ticket Reward</a></td> 
         <td><a>Money Reward</a></td> 
-        <td><a>Maximum Time</a></td> 
+        <td><a>Maximum Time</a></td>
+        <td><a>Action</a></td> 
         </tr>
         @foreach()
     </table>

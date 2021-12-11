@@ -23,6 +23,7 @@
         <td><a>Money</a></td>
         <td><a>Score</a></td>
         <td><a>History</a></td>
+        <td><a>Action</a></td>
         </tr>
         @foreach()
     </table>
