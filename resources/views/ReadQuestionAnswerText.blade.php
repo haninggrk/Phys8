@@ -13,6 +13,7 @@
     <table class="table">
         <thead>
             <tr>
+            <td>NO</td>
                 <th>Correct answer?</th>
                 <th class="text-center">Actions</th>
             </tr>
@@ -21,6 +22,7 @@
             @php $index = 1 @endphp
             @foreach ($qatxts as $qatxt)
                 <tr>
+                <td>$index++</td>
                 <td>{{$qattxt['answer_option_text']}}</td>
                     <td class="text-center">
                         <form action="{{ route('qatxts.destroy',$qatxt->id) }}" method="POST">

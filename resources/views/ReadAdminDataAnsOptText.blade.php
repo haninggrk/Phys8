@@ -13,6 +13,7 @@
     <table class="table">
         <thead>
             <tr>
+            <td>NO</td>
             <td>Option Text Answers</td>
                 <th class="text-center">Actions</th>
             </tr>
@@ -21,6 +22,7 @@
             @php $index = 1 @endphp
             @foreach ($opttxts as $opttxt)
                 <tr>
+                <td>$index++</td>
                 <td>{{$opttxt['answer_option_text']}}</td>
                     <td class="text-center">
                         <form action="{{ route('opttxts.destroy',$opttxt->id) }}" method="POST">
