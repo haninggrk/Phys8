@@ -14,7 +14,10 @@ class Fis8CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $cats = Fis8Category::all();
+        return view('ReadAdminDataCategories', [
+            'cats' => $cats
+        ]);
     }
 
     /**
@@ -24,7 +27,7 @@ class Fis8CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('CreateAdminDataCategories');
     }
 
     /**
@@ -35,7 +38,17 @@ class Fis8CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'name' => 'required|min:5|max:50',
+         ]);
+
         //
+        Fis8Category::create([
+            'name' => $request->name,
+            'description' => $request->description,
+
+        ]);
+        return redirect(route('cats.index'));
     }
 
     /**
@@ -78,8 +91,10 @@ class Fis8CategoryController extends Controller
      * @param  \App\Models\Fis8_Category  $fis8_Category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Fis8Category $fis8_Category)
+    public function destroy($id)
     {
-        //
+        $cat = Fis8Category::findOrFail($id);
+        $cat->delete();
+        return redirect(route('cats.index'));
     }
 }
