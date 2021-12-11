@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Fis8_Category;
+use App\Models\Fis8Category;
 use Illuminate\Http\Request;
 
 class Fis8CategoryController extends Controller
@@ -14,7 +14,10 @@ class Fis8CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $cats = Fis8Category::all();
+        return view('ReadAdminDataCategories', [
+            'cats' => $cats
+        ]);
     }
 
     /**
@@ -24,7 +27,7 @@ class Fis8CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('CreateCategories');
     }
 
     /**
@@ -35,7 +38,17 @@ class Fis8CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'name' => 'required|min:5|max:50',
+         ]);
+
         //
+        Fis8Category::create([
+            'name' => $request->name,
+            'description' => $request->description,
+
+        ]);
+        return redirect(route('cats.index'));
     }
 
     /**
@@ -44,7 +57,7 @@ class Fis8CategoryController extends Controller
      * @param  \App\Models\Fis8_Category  $fis8_Category
      * @return \Illuminate\Http\Response
      */
-    public function show(Fis8_Category $fis8_Category)
+    public function show(Fis8Category $fis8_Category)
     {
         //
     }
@@ -55,7 +68,7 @@ class Fis8CategoryController extends Controller
      * @param  \App\Models\Fis8_Category  $fis8_Category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Fis8_Category $fis8_Category)
+    public function edit(Fis8Category $fis8_Category)
     {
         //
     }
@@ -67,7 +80,7 @@ class Fis8CategoryController extends Controller
      * @param  \App\Models\Fis8_Category  $fis8_Category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Fis8_Category $fis8_Category)
+    public function update(Request $request, Fis8Category $fis8_Category)
     {
         //
     }
@@ -78,8 +91,10 @@ class Fis8CategoryController extends Controller
      * @param  \App\Models\Fis8_Category  $fis8_Category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Fis8_Category $fis8_Category)
+    public function destroy($id)
     {
-        //
+        $cat = Fis8Category::findOrFail($id);
+        $cat->delete();
+        return redirect(route('cats.index'));
     }
 }

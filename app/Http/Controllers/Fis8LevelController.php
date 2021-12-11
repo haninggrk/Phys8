@@ -14,7 +14,10 @@ class Fis8LevelController extends Controller
      */
     public function index()
     {
-        //
+        $levels = Fis8Level::all();
+        return view('ReadAdminDataLevel', [
+            'levels' => $levels
+        ]);
     }
 
     /**
@@ -24,7 +27,7 @@ class Fis8LevelController extends Controller
      */
     public function create()
     {
-        //
+        return view('CreateLevel');
     }
 
     /**
@@ -35,7 +38,22 @@ class Fis8LevelController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'name' => 'required|max:10',
+         ]);
+
         //
+        Fis8Level::create([
+            'name' => $request->name,
+            'thumbnail' => $request->thumbnail,
+            'description' => $request->description,
+            'score_reward' => $request->score_reward,
+            'ticket_reward' => $request->ticket_reward,
+            'money_reward' => $request->money_reward,
+            'mamximum_time' => $request->maximum_time,
+
+        ]);
+        return redirect(route('levels.index'));
     }
 
     /**
@@ -78,8 +96,10 @@ class Fis8LevelController extends Controller
      * @param  \App\Models\Fis8Level  $fis8Level
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Fis8Level $fis8Level)
+    public function destroy($id)
     {
-        //
+        $level = Fis8Level::findOrFail($id);
+        $level->delete();
+        return redirect(route('levels.index'));
     }
 }

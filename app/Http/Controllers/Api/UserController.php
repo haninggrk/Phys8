@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Fis8UserResource;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -35,6 +36,22 @@ class UserController extends Controller
      */
     public function show($id)
     {
+        if (count(User::where('id', $id)->get()) > 0) {
+            return [
+                'status' => 'resultOn',
+                'result' => Fis8UserResource::collection(User::where('id', $id)->get()),
+            ];
+        } elseif (0 == count(User::where('id', $id)->get())) {
+            return [
+                'status' => 'Pengguna tidak ditemukan',
+                'result' => null,
+            ];
+        } else {
+            return response([
+                'status' => 'Mohon maaf, sistem sedang erorr',
+                'result' => null,
+            ]);
+        }
     }
 
     /**
@@ -55,9 +72,19 @@ class UserController extends Controller
             'birthyear' => $request->birthyear,
         ]);
 
-        return [
-            'message' => 'User has been updated!',
-        ];
+        $response = $user->myUser()->update([
+            'photo' => $request->photo,
+        ]);
+
+        if (!empty($response)) {
+            return response([
+                'status' => 'Akun berhasil diperbaharui',
+            ]);
+        } else {
+            return response([
+                'status' => 'Mohon maaf, sistem sedang erorr',
+            ]);
+        }
     }
 
     /**
@@ -70,10 +97,16 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::findOrFail($id);
-        $user->delete();
+        $response = $user->delete();
 
-        return [
-            'message' => 'User has been deleted!',
-        ];
+        if (!empty($response)) {
+            return response([
+                'status' => 'Akun berhasil dihapus',
+            ]);
+        } else {
+            return response([
+                'status' => 'Mohon maaf, sistem sedang erorr',
+            ]);
+        }
     }
 }

@@ -26,15 +26,14 @@ class LoginController extends Controller
             'password' => $request->password,
         ];
 
-        $GetUser = User::where('email', $request->email)->first();
-        $check = $GetUser->myUser;
+        if (User::where('email', $request->email)->first()) {
+            if (Auth::attempt($user)) {
+                $GetUser = User::where('email', $request->email)->first();
+                $check = $GetUser->myUser;
 
-        if ('1' == $check->is_active) {
-            if ('0' == $check->is_login) {
-                if (Auth::attempt($user)) {
-                    $this->isLogin(auth()->user()->id);
-
-                    $response = Http::asForm()->post('http://localhost:8012/semester3/Phys8/public/oauth/token', [
+                if ('1' == $check->is_active) {
+                    if ('0' == $check->is_login) {
+                        $response = Http::asForm()->post('http://localhost:8012/semester3/Phys8/public/oauth/token', [
                         'grant_type' => 'password',
                         'client_id' => $this->client->id,
                         'client_secret' => $this->client->secret,
@@ -42,28 +41,48 @@ class LoginController extends Controller
                         'password' => $request->password,
                         'scope' => '*',
                     ]);
+                        if (!empty($response)) {
+                            $this->isLogin(auth()->user()->id);
 
-                    return $response->json();
+                            return [
+                        'status' => 'Login berhasil',
+                        'result' => $response->json(),
+                    ];
+                        } else {
+                            return response([
+                                'status' => 'Mohon maaf, sistem sedang erorr',
+                                'result' => null,
+                            ]);
+                        }
+                    } else {
+                        return [
+                    'status' => 'Akun sudah login',
+                    'result' => null,
+                ];
+                    }
                 } else {
-                    return response([
-                        'message' => 'Login failed',
-                    ]);
+                    return [
+                'status' => 'Akun anda diblokir',
+                'result' => null,
+            ];
                 }
             } else {
-                return response([
-                    'message' => 'Account has login',
-                ]);
+                return [
+                'status' => 'Password tidak sesuai',
+                'result' => null,
+            ];
             }
         } else {
-            return response([
-                'message' => 'Account is suspended',
-            ]);
+            return [
+            'status' => 'Akun tidak ditemukan',
+            'result' => null,
+        ];
         }
     }
 
     private function isLogin(int $id)
     {
-        $user = User::findOrFail($id)->myUser;
+        $user = User::findOrFail($id)->myUser();
 
         return $user->update([
             'is_login' => '1',

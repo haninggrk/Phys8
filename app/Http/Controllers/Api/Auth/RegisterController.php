@@ -11,22 +11,28 @@ class RegisterController extends Controller
 {
     public function register(Request $request)
     {
-        $this->validate($request, [
-                    'name' => 'required',
-                    'email' => 'required|unique:students',
-                    'password' => 'required|confirmed',
-            ]);
-
-        $user = $this->newUser($request->all());
-
-        if (empty($user)) {
+        if (count(User::where('email', '=', $request->email)->get()) > 0) {
             return response([
-                'message' => 'Failed',
+                'status' => 'Email telah digunakan',
             ]);
         } else {
-            return response([
-                'message' => 'Success',
-            ]);
+            if ($request->password == $request->password_confirmation) {
+                $user = $this->newUser($request->all());
+
+                if (!empty($user)) {
+                    return response([
+                        'status' => 'Registrasi berhasil',
+                    ]);
+                } else {
+                    return response([
+                        'status' => 'Mohon maaf, sistem sedang erorr',
+                    ]);
+                }
+            } else {
+                return response([
+                    'status' => 'Konfirmasi password tidak sesuai',
+                ]);
+            }
         }
     }
 
@@ -36,8 +42,6 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'birthyear' => $data['birthyear'],
-            'city' => $data['city'],
         ]);
 
         return $CreateUser->myUser()->create();
