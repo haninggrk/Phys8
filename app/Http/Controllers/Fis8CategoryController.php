@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Fis8_Category;
+use App\Models\Fis8Category;
 use Illuminate\Http\Request;
 
 class Fis8CategoryController extends Controller
@@ -44,7 +44,7 @@ class Fis8CategoryController extends Controller
      * @param  \App\Models\Fis8_Category  $fis8_Category
      * @return \Illuminate\Http\Response
      */
-    public function show(Fis8_Category $fis8_Category)
+    public function show(Fis8Category $fis8_Category)
     {
         //
     }
@@ -55,7 +55,7 @@ class Fis8CategoryController extends Controller
      * @param  \App\Models\Fis8_Category  $fis8_Category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Fis8_Category $fis8_Category)
+    public function edit(Fis8Category $fis8_Category)
     {
         //
     }
@@ -67,7 +67,7 @@ class Fis8CategoryController extends Controller
      * @param  \App\Models\Fis8_Category  $fis8_Category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Fis8_Category $fis8_Category)
+    public function update(Request $request, Fis8Category $fis8_Category)
     {
         //
     }
@@ -78,7 +78,7 @@ class Fis8CategoryController extends Controller
      * @param  \App\Models\Fis8_Category  $fis8_Category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Fis8_Category $fis8_Category)
+    public function destroy(Fis8Category $fis8_Category)
     {
         //
     }
