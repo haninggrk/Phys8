@@ -9,14 +9,15 @@
 <body>
     @foreach()
     <table>
+    <h1> Data Question </h1>
+    <table>
         <tr>
-        <th>Data Question</th>
+        <td><a>Level ID</a></td>
+        <td><a>Question Text</a></td>
+        <td><a>Images</a></td>
+        <td><a>Discussion</a></td> 
         </tr>
-        <tr>
-        <td><a>Question</a></td>
-        <td><a>Image of the Question</a></td>
-        <td><a>Answers</a></td>
-        </tr>
+        @foreach()
     </table>
     @endforeach
 </body>

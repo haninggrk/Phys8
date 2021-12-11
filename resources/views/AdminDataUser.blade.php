@@ -13,12 +13,14 @@
         <td><a>Nama</a></td>
         <td><a>Email</a></td>
         <td><a>Password</a></td>
+        <td><a>Code</a></td>
         <td><a>School</a></td> 
         <td><a>City</a></td>
         <td><a>Birthyear</a></td>
         <td><a>Tickets</a></td>
         <td><a>Money</a></td>
         <td><a>Score</a></td>
+        <td><a>History</a></td>
         </tr>
         @foreach()
     </table>
