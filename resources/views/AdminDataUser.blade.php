@@ -15,6 +15,7 @@
         <td><a>Password</a></td>
         <td><a>Username</a></td>
         <td><a>Code</a></td>
+        <td><a>Photo</a></td>
         <td><a>School</a></td> 
         <td><a>City</a></td>
         <td><a>Birthyear</a></td>
