@@ -23,7 +23,7 @@
             @foreach ($qatxts as $qatxt)
                 <tr>
                 <td>$index++</td>
-                <td>{{$qattxt['answer_option_text']}}</td>
+                <td>{{$qattxt->answer_option_text}}</td>
                     <td class="text-center">
                         <form action="{{ route('qatxts.destroy',$qatxt->id) }}" method="POST">
                             @csrf

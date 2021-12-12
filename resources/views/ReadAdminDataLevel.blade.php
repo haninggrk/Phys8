@@ -30,14 +30,14 @@
             @foreach ($levels as $level)
                 <tr>
                 <td><a>$index++</a></td>
-            <td><a>{{$level['name']}}</a></td>
-            <td><a>{{$level['fis8_category_id']}}</a></td>
-            <td><a>{{$level['thumbnail']}}</a></td>
-            <td><a>{{$level['description']}}</a></td>
-            <td><a>{{$level['score_reward']}}</a></td>
-            <td><a>{{$level['ticket_reward']}}</a></td> 
-            <td><a>{{$level['money_reward']}}</a></td> 
-            <td><a>{{$level['maximum_time']}}</a></td>
+            <td><a>{{$level->name}}</a></td>
+            <td><a>{{$level->fis8_category_id}}</a></td>
+            <td><a>{{$level->thumbnail}}</a></td>
+            <td><a>{{$level->description}}</a></td>
+            <td><a>{{$level->score_reward}}</a></td>
+            <td><a>{{$level->ticket_reward}}</a></td> 
+            <td><a>{{$level->money_reward}}</a></td> 
+            <td><a>{{$level->maximum_time}}</a></td>
                     <td class="text-center">
                         <form action="{{ route('levels.destroy',$level->id) }}" method="POST">
                             @csrf

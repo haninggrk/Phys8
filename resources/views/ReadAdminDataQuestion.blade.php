@@ -27,16 +27,16 @@
                 <tr>
                 <td><a>$index++</a></td>
                 <td class="text-center">
-                       {{$quest['fis8_category_id']}}
+                       {{$quest->fis8_category_id}}
                     </td>
                     <td class="text-center">
-                        {{$quest['question_text']}
+                        {{$quest->question_text}
                     </td>
                     <td class="text-center">
-                       {{$quest['is_image_answer'}}
+                       {{$quest->is_image_answer}}
                     </td>
                     <td class="text-center">
-                        {{$quest['discussion'}}
+                        {{$quest->discussion}}
                     </td>
                     <td class="text-center">
                         <form action="{{ route('questions.destroy',$quest->id) }}" method="POST">

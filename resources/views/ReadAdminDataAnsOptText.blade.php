@@ -23,7 +23,7 @@
             @foreach ($opttxts as $opttxt)
                 <tr>
                 <td>$index++</td>
-                <td>{{$opttxt['answer_option_text']}}</td>
+                <td>{{$opttxt->answer_option_text}}</td>
                     <td class="text-center">
                         <form action="{{ route('opttxts.destroy',$opttxt->id) }}" method="POST">
                             @csrf

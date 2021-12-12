@@ -24,7 +24,7 @@
                 <tr>
                 <td><a>$index++</a></td>
                 <td class="text-center">
-                         {{$code['code']}}
+                         {{$code->code}}
                     </td>
                     <td class="text-center">
                         <form action="{{ route('codes.destroy',$code->id) }}" method="POST">

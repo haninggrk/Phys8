@@ -24,7 +24,7 @@
                 <tr>
                 <td class="text-center">
                 <td>$index++</td>
-                <td>{{$image['image']}}</td> 
+                <td>{{$image->image}}</td> 
                     </td>
                     <td class="text-center">
                         <form action="{{ route('images.destroy',$image->id) }}" method="POST">
