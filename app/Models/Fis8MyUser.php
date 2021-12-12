@@ -20,6 +20,6 @@ class Fis8MyUser extends Model
 
     public function student()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'student_id');
     }
 }

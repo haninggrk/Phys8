@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\RegisterController;
-use App\Http\Controllers\Api\Fis8_CategoryController;
+use App\Http\Controllers\Api\Fis8CategoryController;
+use App\Http\Controllers\Api\Fis8LevelController;
+use App\Http\Controllers\Api\Fis8QuestionController;
+use App\Http\Controllers\Api\LevelController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,9 +24,11 @@ Route::post('register', [RegisterController::class, 'register']);
 Route::post('login', [LoginController::class, 'login']);
 Route::post('refresh', [LoginController::class, 'refresh']);
 
-Route::apiResource('user', UserController::class);
+Route::apiResource('myuser', UserController::class);
+Route::apiResource('level', Fis8LevelController::class);
+Route::apiResource('question', Fis8QuestionController::class);
 
-Route::apiResource('category', Fis8_CategoryController::class);
+Route::apiResource('category', Fis8CategoryController::class);
 Route::group(['middleware' => 'auth:api'], function () {
     Route::post('logout', [LoginController::class, 'logout']);
 });

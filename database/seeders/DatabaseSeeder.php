@@ -22,10 +22,8 @@ class DatabaseSeeder extends Seeder
             Fis8TicketTransactionSeeder::class,
             Fis8AnswerOptionTextSeeder::class,
             Fis8ImageSeeder::class,
-            Fis8AnswerOptionImageSeeder::class,
             Fis8QuestionSeeder::class,
             Fis8QuestionAnswerTextSeeder::class,
-            Fis8QuestionAnswerImageSeeder::class,
             Fis8HistorySeeder::class,
         ]);
     }

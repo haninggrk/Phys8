@@ -15,6 +15,6 @@ class Fis8Category extends Model
 
     public function levels()
     {
-        return $this->hasMany(Fis8Level::class);
+        return $this->hasMany(Fis8Level::class, 'fis8_category_id');
     }
 }

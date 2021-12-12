@@ -25,6 +25,20 @@ class Fis8QuestionSeeder extends Seeder
                 rand(1, count(Fis8Image::all())) => [
                 ],
             ]);
+            $createQuestion->imageQuestionAnswerImages()->attach([
+                rand(1, count(Fis8Image::all())) => [
+                    'is_correct_answer' => '0',
+                ],
+                rand(1, count(Fis8Image::all())) => [
+                    'is_correct_answer' => '0',
+                ],
+                rand(1, count(Fis8Image::all())) => [
+                    'is_correct_answer' => '0',
+                ],
+                rand(1, count(Fis8Image::all())) => [
+                    'is_correct_answer' => '1',
+                ],
+            ]);
         }
     }
 }

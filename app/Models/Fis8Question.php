@@ -14,7 +14,7 @@ class Fis8Question extends Model
 
     public function level()
     {
-        return $this->belongsTo(Fis8Level::class);
+        return $this->belongsTo(Fis8Level::class, 'fis8_level_id');
     }
 
     public function answerOptionTexts()
@@ -23,9 +23,9 @@ class Fis8Question extends Model
         ->withPivot(['id', 'is_correct_answer', 'created_at', 'updated_at']);
     }
 
-    public function answerOptionImages()
+    public function imageQuestionAnswerImages()
     {
-        return $this->belongsToMany(Fis8AnswerOptionImage::class, 'fis8_question_answer_images', 'fis8_question_id', 'fis8_answer_option_image_id')
+        return $this->belongsToMany(Fis8Image::class, 'fis8_question_answer_images', 'fis8_question_id', 'fis8_image_id')
         ->withPivot(['id', 'is_correct_answer', 'created_at', 'updated_at']);
     }
 
