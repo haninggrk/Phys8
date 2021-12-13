@@ -26,11 +26,23 @@
         </thead>
         <tbody>
             @php $index = 1 @endphp
-            @foreach ($codes as $code)
+            @foreach ($log as $code)
                 <tr>
                 <td>$index++</td>
                 <td class="text-center">
-                         {{$code->code}}
+                         {{$code->table_name}}
+                    </td>
+                    <td class="text-center">
+                         {{$code->log_note}}
+                    </td>
+                    <td class="text-center">
+                         {{$code->log_description}}
+                    </td>
+                    <td class="text-center">
+                         {{$code->log_path}}
+                    </td>
+                    <td class="text-center">
+                         {{$code->log_ip}}
                     </td>
                     <td class="text-center">
                         <form action="{{ route('codes.destroy',$code->id) }}" method="POST">
