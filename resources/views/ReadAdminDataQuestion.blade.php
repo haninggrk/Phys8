@@ -25,7 +25,7 @@
             @php $index = 0 @endphp
             @foreach ($questions as $quest)
                 <tr>
-                <td><a>$index++</a></td>
+                <td>$index++</td>
                 <td class="text-center">
                        {{$quest->level->name}}
                     </td>

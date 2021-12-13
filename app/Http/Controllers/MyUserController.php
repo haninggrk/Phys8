@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Student;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class MyUserController extends Controller
@@ -14,7 +14,10 @@ class MyUserController extends Controller
      */
     public function index()
     {
-        //
+        $stu = User::all();
+        return view('ReadAdminDataMyUser', [
+            'student' => $stu
+        ]);
     }
 
     /**
