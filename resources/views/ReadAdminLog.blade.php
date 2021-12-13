@@ -20,8 +20,6 @@
             <td>log Description</td>
             <td>log path</td> 
             <td>log Ip</td>
-            <td>Code</td>
-                <th class="text-center">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -31,6 +29,9 @@
                 <td>$index++</td>
                 <td class="text-center">
                          {{$code->table_name}}
+                    </td>
+                    <td class="text-center">
+                         {{$code->user->student_id}}
                     </td>
                     <td class="text-center">
                          {{$code->log_note}}
@@ -43,13 +44,6 @@
                     </td>
                     <td class="text-center">
                          {{$code->log_ip}}
-                    </td>
-                    <td class="text-center">
-                        <form action="{{ route('codes.destroy',$code->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
                     </td>
                 </tr>
             @endforeach
