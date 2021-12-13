@@ -14,7 +14,7 @@
         <thead>
             <tr>
                 <td>NO</td>
-                <td>Level ID</td>
+                <td>Level Name</td>
                 <td>Question Text</td>
                 <td>Is Image answer?</td>
                 <td>Discussion</td> 
@@ -27,7 +27,7 @@
                 <tr>
                 <td><a>$index++</a></td>
                 <td class="text-center">
-                       {{$quest->fis8_category_id}}
+                       {{$quest->level->name}}
                     </td>
                     <td class="text-center">
                         {{$quest->question_text}
