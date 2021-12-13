@@ -14,6 +14,12 @@
         <thead>
             <tr>
             <td>NO</td>
+            <td>Table Name</td>
+            <td>Student ID</td>
+            <td>log Note</td>
+            <td>log Description</td>
+            <td>log path</td> 
+            <td>log Ip</td>
             <td>Code</td>
                 <th class="text-center">Actions</th>
             </tr>

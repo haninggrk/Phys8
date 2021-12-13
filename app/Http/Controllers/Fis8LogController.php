@@ -14,7 +14,10 @@ class Fis8LogController extends Controller
      */
     public function index()
     {
-        //
+        $logs = Fis8Log::all();
+        return view('ReadAdminDataLevel', [
+            'log' => $logs
+        ]);
     }
 
     /**
