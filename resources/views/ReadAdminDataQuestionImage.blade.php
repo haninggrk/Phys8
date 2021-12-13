@@ -14,20 +14,18 @@
         <thead>
             <tr>
             <td>NO</td>
-                <td>question text</td>
-                <th>Correct answer?</th>
-                <td>Answer Option Text</td>
+                <td>Question text</td>
+                <td>Question Image</td>
                 <th class="text-center">Actions</th>
             </tr>
         </thead>
         <tbody>
             @php $index = 1 @endphp
-            @foreach ($question as $qatxt)
+            @foreach ($question as $qimg)
                 <tr>
                 <td>$index++</td>
-                <td>{{$qatxt->question_text}}</td>
-                <td>{{$qatxt->answerOptionTexts->pivot->is_correct_answer}}</td>
-                <td>{{$qattxt->answerOptionTexts->answer_option_text}}</td>
+                <td>{{$qimg->question_text}}</td>
+                <td>{{$qimg->images->image}}</td>
                     <td class="text-center">
                         <form action="{{ route('qatxts.destroy',$qatxt->answerOptionTexts->pivot->id) }}" method="POST">
                             @csrf

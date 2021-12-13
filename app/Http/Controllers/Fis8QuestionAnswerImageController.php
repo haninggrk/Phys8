@@ -18,7 +18,9 @@ class Fis8QuestionAnswerImageController extends Controller
     public function index()
     {
         $qansimgs = Fis8QuestionAnswerImage::all();
+        $question = Fis8Question::all();
         return view('ReadAdminDataQuestionAnsImage', [
+            'question' => $question,
             'qansimgs' => $qansimgs
         ]);
     }

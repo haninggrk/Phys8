@@ -16,7 +16,10 @@ class Fis8QuestionImageController extends Controller
      */
     public function index()
     {
-
+        $questions = Fis8Question::all();
+        return view('ReadAdminDataQuestionImage', [
+            'question' => $questions
+        ]);
     }
 
     /**

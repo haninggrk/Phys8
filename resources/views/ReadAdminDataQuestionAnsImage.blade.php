@@ -13,16 +13,28 @@
     <table class="table">
         <thead>
             <tr>
+                <td>Level Name</td>
+                <td>Question Text</td>
+                <td>Image</td>
+                <td>is Correct Answer?<td>
                 <th class="text-center">Actions</th>
             </tr>
         </thead>
         <tbody>
             @php $index = 1 @endphp
-            @foreach ($qansimgs as $qansimg)
+            @foreach ($question as $qansimg)
                 <tr>
-
+                <td class="text-center">
+                        {{$qansimg->question_text}
+                    </td>
                     <td class="text-center">
-                        <form action="{{ route('qansimgs.destroy',$qansimg->id) }}" method="POST">
+                       {{$qansimg->imageQuestionAnswerImages->image}}
+                    </td>
+                    <td class="text-center">
+                       {{$qansimg->imageQuestionAnswerImages->pivot->is_correct_answer}}
+                    </td>
+                    <td class="text-center">
+                        <form action="{{ route('qansimgs.destroy',$qansimg->imageQuestionAnswerImages->pivot->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>

@@ -15,7 +15,9 @@ class Fis8AnswerOptionTextController extends Controller
     public function index()
     {
         $opttxts = Fis8AnswerOptionText::all();
+        $q = Fis8Question::all();
         return view('ReadAdminDataAnsOptText', [
+            'question' => $q,
             'opttxts' => $opttxts
         ]);
     }
