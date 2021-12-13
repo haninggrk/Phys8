@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Fis8AnswerOptionImage;
+use App\Models\Fis8Image;
 use App\Models\Fis8Question;
 use App\Models\Fis8QuestionImage;
 use Illuminate\Http\Request;
@@ -16,7 +17,10 @@ class Fis8QuestionImageController extends Controller
      */
     public function index()
     {
-
+        $qimgs = Fis8QuestionImage::all();
+        return view('ReadAdminDataQuestionImage', [
+            'qimgs' => $qimgs
+        ]);
     }
 
     /**
@@ -26,7 +30,9 @@ class Fis8QuestionImageController extends Controller
      */
     public function create()
     {
-
+        $question = Fis8Question::all();
+        $answer = Fis8Image::all();
+        return view('CreateQuestionImage', compact("question", "answer"));
     }
 
     /**
@@ -37,7 +43,13 @@ class Fis8QuestionImageController extends Controller
      */
     public function store(Request $request)
     {
+        $question = Fis8Question::find($request -> fis8_image_id);
 
+                $question->images()->attach([
+                    $request -> fis8_image_id => ['fis8_question_id' => $request->fis8_question_id],
+            ]);
+
+        return redirect(route('qimgs.index'));
     }
 
     /**
@@ -82,6 +94,8 @@ class Fis8QuestionImageController extends Controller
      */
     public function destroy($id)
     {
-
+        $qimgs = Fis8QuestionImage::findOrFail($id);
+        $qimgs->delete();
+        return redirect(route('qimgs.index'));
     }
 }
