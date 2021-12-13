@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Fis8Image;
+use App\Models\Fis8Question;
 use App\Models\Fis8QuestionAnswerImage;
+use App\Models\Fis8QuestionImage;
 use Illuminate\Http\Request;
 
 class Fis8QuestionAnswerImageController extends Controller
@@ -14,7 +17,10 @@ class Fis8QuestionAnswerImageController extends Controller
      */
     public function index()
     {
-        //
+        $qansimgs = Fis8QuestionAnswerImage::all();
+        return view('ReadAdminDataQuestionAnsImage', [
+            'qansimgs' => $qansimgs
+        ]);
     }
 
     /**
@@ -24,7 +30,9 @@ class Fis8QuestionAnswerImageController extends Controller
      */
     public function create()
     {
-        //
+        $question = Fis8Question::all();
+        $image = Fis8Image::all();
+        return view('CreateAnswerImage', compact("question", "image"));
     }
 
     /**
@@ -35,7 +43,13 @@ class Fis8QuestionAnswerImageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $question = Fis8Question::find($request -> fis8_question_id);
+
+            $question->imageQuestionAnswerImages()->attach([
+                $request -> fis8_image_id => ['is_correct_answer' => $request->is_correct_answer],
+            ]);
+
+        return redirect(route('qansimgs.index'));
     }
 
     /**
@@ -78,8 +92,10 @@ class Fis8QuestionAnswerImageController extends Controller
      * @param  \App\Models\Fis8QuestionAnswerImage  $fis8QuestionAnswerImage
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Fis8QuestionAnswerImage $fis8QuestionAnswerImage)
+    public function destroy($id)
     {
-        //
+        $qansimgs = Fis8QuestionAnswerImage::findOrFail($id);
+        $qansimgs->delete();
+        return redirect(route('qansimgs.index'));
     }
 }
