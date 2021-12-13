@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Fis8AnswerOptionImage;
+use App\Models\Fis8Question;
 use App\Models\Fis8QuestionImage;
 use Illuminate\Http\Request;
 
@@ -14,7 +16,7 @@ class Fis8QuestionImageController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -24,7 +26,7 @@ class Fis8QuestionImageController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -35,7 +37,7 @@ class Fis8QuestionImageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -78,8 +80,8 @@ class Fis8QuestionImageController extends Controller
      * @param  \App\Models\Fis8QuestionImage  $fis8QuestionImage
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Fis8QuestionImage $fis8QuestionImage)
+    public function destroy($id)
     {
-        //
+
     }
 }

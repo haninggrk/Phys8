@@ -8,6 +8,7 @@ use App\Http\Controllers\Fis8QuestionController;
 use App\Http\Controllers\Fis8ImageController;
 use App\Http\Controllers\Fis8AnswerOptionTextController;
 use App\Http\Controllers\Fis8QuestionAnswerTextController;
+use App\Http\Controllers\Fis8QuestionAnswerImageController;
 
 
 
@@ -51,3 +52,6 @@ Route::get('/answer-option-text', [Fis8AnswerOptionTextController::class, 'index
 
 Route::resource('qatxts', Fis8QuestionAnswerTextController::class);
 Route::get('/question-answer-text', [Fis8QuestionAnswerTextController::class, 'index']);
+
+Route::resource('qansimgs', Fis8QuestionAnswerImageController::class);
+Route::get('/question-answer-image', [Fis8QuestionAnswerImageController::class, 'index']);
