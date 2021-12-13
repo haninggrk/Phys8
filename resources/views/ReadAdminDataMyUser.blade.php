@@ -31,15 +31,6 @@
                 <th class="text-center">Actions</th>
             </tr>
         </thead>
-        $table->timestamp('email_verified_at')->nullable();
-            //1=yes 0=no
-            $table->enum('is_login', ['0', '1'])->default('0');
-            $table->enum('is_active', ['0', '1'])->default('1');
-            $table->enum('is_admin', ['0', '1'])->default('0');
-            $table->bigInteger('ticket')->default(5);
-            $table->bigInteger('score')->default(0);
-            $table->bigInteger('money')->default(200);
-            $table->text('photo')->nullable();
             @php $index = 0 @endphp
             @foreach ($student as $stupid)
         <tbody>
@@ -84,7 +75,7 @@
                        {{$tupid->photo}}
                     </td>
                     <td class="text-center">
-                        <form action="{{ route('qansimgs.destroy',$stupid->id) }}" method="POST">
+                        <form action="{{ route('myuser.destroy',$stupid->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Suspended</button>
