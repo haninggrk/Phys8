@@ -14,7 +14,10 @@ class Fis8HistoryController extends Controller
      */
     public function index()
     {
-        //
+        $hi = Fis8History::all();
+        return view('ReadAdminDataHistory', [
+            'history' => $hi
+        ]);
     }
 
     /**
