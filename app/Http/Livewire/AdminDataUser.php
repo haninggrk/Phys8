@@ -13,7 +13,7 @@ class AdminDataUser extends Component
     public function render()
     {
         $this->AdminDataUser = User::with('myUser')->get()->toArray();
-        //dd($this->AdminDataUser);
+
         return view('livewire.admin-data-user',[
             'AdminDataUser' => $this->AdminDataUser,
         ]);
@@ -21,22 +21,20 @@ class AdminDataUser extends Component
 
     public function editAdminDataUser($AdminDataUserIndex){
         $this->editAdminDataUserIndex = $AdminDataUserIndex;
-      
     }
 
     public function saveAdminDataUser($AdminDataUserIndex){
         $cekUser = $this->AdminDataUser[$AdminDataUserIndex]??null;
        
-        
         if(!is_null($cekUser)){
             $getUser = User::find( $cekUser['id']);
-         $getUser->update([
-            'email' =>$cekUser['email'],
-            'username' =>$cekUser['username'],
-            'name' => $cekUser['name'],
-            'school' => $cekUser['school'],
-            'city' => $cekUser['city'],
-            'birthyear' => $cekUser['birthyear'],
+            $getUser->update([
+                'email' =>$cekUser['email'],
+                'username' =>$cekUser['username'],
+                'name' => $cekUser['name'],
+                'school' => $cekUser['school'],
+                'city' => $cekUser['city'],
+                'birthyear' => $cekUser['birthyear'],
             ]);
 
             $getUser->myUser()->update([
@@ -44,8 +42,8 @@ class AdminDataUser extends Component
                 'is_admin'  => $cekUser['my_user']['is_admin'],
                 'ticket'  => $cekUser['my_user']['ticket'],
                 'score'  => $cekUser['my_user']['score'],
-               'money' => $cekUser['my_user']['money'],
-               'photo' => $cekUser['my_user']['photo'],
+                'money' => $cekUser['my_user']['money'],
+                'photo' => $cekUser['my_user']['photo'],
             ]);
         }
         $this->editAdminDataUserIndex = null;
