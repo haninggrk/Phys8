@@ -9,9 +9,7 @@ use App\Http\Controllers\Fis8ImageController;
 use App\Http\Controllers\Fis8AnswerOptionTextController;
 use App\Http\Controllers\Fis8QuestionAnswerTextController;
 use App\Http\Controllers\Fis8QuestionAnswerImageController;
-
-
-
+use App\Http\Livewire\AdminDataUser;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,3 +53,5 @@ Route::get('/question-answer-text', [Fis8QuestionAnswerTextController::class, 'i
 
 Route::resource('qansimgs', Fis8QuestionAnswerImageController::class);
 Route::get('/question-answer-image', [Fis8QuestionAnswerImageController::class, 'index']);
+
+Route::get('/cobaadminuser', AdminDataUser::class);
