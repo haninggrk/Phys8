@@ -3,12 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Fis8LevelResource;
-use App\Models\Fis8Category;
-use App\Models\Fis8Level;
+use App\Http\Resources\Fis8AnswerOptionTextResource;
+use App\Models\Fis8AnswerOptionText;
 use Illuminate\Http\Request;
 
-class Fis8LevelController extends Controller
+class Fis8AnswerOptionTextController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +16,9 @@ class Fis8LevelController extends Controller
      */
     public function index()
     {
-        $getLevel = Fis8Level::all();
-        return ['result' => Fis8LevelResource::collection($getLevel)];
+        $getAnswerOptionText = Fis8AnswerOptionText::all();
+
+        return ['result' => Fis8AnswerOptionTextResource::collection($getAnswerOptionText)];
     }
 
     /**
@@ -29,6 +29,7 @@ class Fis8LevelController extends Controller
      */
     public function store(Request $request)
     {
+        //
     }
 
     /**
@@ -39,7 +40,7 @@ class Fis8LevelController extends Controller
      */
     public function show($id)
     {
-        return ['result' => Fis8LevelResource::collection(Fis8Level::where('id', $id)->get())];
+        return ['result' => Fis8AnswerOptionTextResource::collection(Fis8AnswerOptionText::where('id', $id)->get())];
     }
 
     /**

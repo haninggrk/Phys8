@@ -3,12 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Fis8LevelResource;
-use App\Models\Fis8Category;
-use App\Models\Fis8Level;
+use App\Models\Fis8Image;
 use Illuminate\Http\Request;
+use App\Http\Resources\Fis8ImageResource;
 
-class Fis8LevelController extends Controller
+class Fis8ImageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,14 +16,14 @@ class Fis8LevelController extends Controller
      */
     public function index()
     {
-        $getLevel = Fis8Level::all();
-        return ['result' => Fis8LevelResource::collection($getLevel)];
+        $getImage = Fis8Image::all();
+
+        return ['result' => Fis8ImageResource::collection($getImage)];
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -34,34 +33,34 @@ class Fis8LevelController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        return ['result' => Fis8LevelResource::collection(Fis8Level::where('id', $id)->get())];
+        return ['result' => Fis8ImageResource::collection(Fis8Image::where('id', $id)->get())];
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
     }
 }

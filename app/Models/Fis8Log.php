@@ -12,7 +12,7 @@ class Fis8Log extends Model
         'id',
     ];
 
-     public function user()
+    public function student()
     {
         return $this->belongsTo(User::class, 'student_id');
     }

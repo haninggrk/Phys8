@@ -3,12 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Fis8LevelResource;
-use App\Models\Fis8Category;
-use App\Models\Fis8Level;
 use Illuminate\Http\Request;
+use App\Http\Resources\Fis8CodeResource;
+use App\Models\Fis8Code;
 
-class Fis8LevelController extends Controller
+class Fis8CodeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +16,9 @@ class Fis8LevelController extends Controller
      */
     public function index()
     {
-        $getLevel = Fis8Level::all();
-        return ['result' => Fis8LevelResource::collection($getLevel)];
+        $getCode = Fis8Code::all();
+
+        return ['result' => Fis8CodeResource::collection($getCode)];
     }
 
     /**
@@ -29,6 +29,7 @@ class Fis8LevelController extends Controller
      */
     public function store(Request $request)
     {
+        //
     }
 
     /**
@@ -39,7 +40,7 @@ class Fis8LevelController extends Controller
      */
     public function show($id)
     {
-        return ['result' => Fis8LevelResource::collection(Fis8Level::where('id', $id)->get())];
+        return ['result' => Fis8CodeResource::collection(Fis8Code::where('id', $id)->get())];
     }
 
     /**

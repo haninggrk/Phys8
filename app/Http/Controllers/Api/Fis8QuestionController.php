@@ -39,7 +39,7 @@ class Fis8QuestionController extends Controller
      */
     public function show($id)
     {
-        //
+        return ['result' => Fis8QuestionResource::collection(Fis8Question::where('id', $id)->get())];
     }
 
     /**

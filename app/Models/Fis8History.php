@@ -14,9 +14,9 @@ class Fis8History extends Model
 
     public const UPDATED_AT = null;
 
-    public function user()
+    public function student()
     {
-        return $this->belongsTo(User::class, 'student_id');
+        return $this->belongsTo(User::class, 'student_id', 'id');
     }
 
     public function questions()

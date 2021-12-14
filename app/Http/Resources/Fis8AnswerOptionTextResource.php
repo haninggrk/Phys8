@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class Fis8CategoryResource extends JsonResource
+class Fis8AnswerOptionTextResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,9 +16,8 @@ class Fis8CategoryResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
-            'description' => $this->description,
-            'level' => $this->levels,
+            'answer_option_text' => $this->answer_option_text,
+            'question_answer_text' => $this-> questions,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
           ];

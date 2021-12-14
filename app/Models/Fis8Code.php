@@ -12,7 +12,7 @@ class Fis8Code extends Model
         'id',
     ];
 
-    public function users()
+    public function students()
     {
         return $this->belongsToMany(User::class, 'fis8_request_codes', 'fis8_code_id', 'student_id')
         ->withPivot(['id', 'created_at']);

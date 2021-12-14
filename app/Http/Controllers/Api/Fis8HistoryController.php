@@ -3,12 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Fis8LevelResource;
-use App\Models\Fis8Category;
-use App\Models\Fis8Level;
+use App\Http\Resources\Fis8HistoryResource;
 use Illuminate\Http\Request;
+use App\Models\Fis8History;
 
-class Fis8LevelController extends Controller
+class Fis8HistoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,14 +16,14 @@ class Fis8LevelController extends Controller
      */
     public function index()
     {
-        $getLevel = Fis8Level::all();
-        return ['result' => Fis8LevelResource::collection($getLevel)];
+        $getHistory = Fis8History::all();
+
+        return ['result' => Fis8HistoryResource::collection($getHistory)];
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -34,34 +33,34 @@ class Fis8LevelController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        return ['result' => Fis8LevelResource::collection(Fis8Level::where('id', $id)->get())];
+        return ['result' => Fis8HistoryResource::collection(Fis8History::where('id', $id)->get())];
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
     }
 }

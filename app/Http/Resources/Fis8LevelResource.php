@@ -24,6 +24,9 @@ class Fis8LevelResource extends JsonResource
             'money_reward' => $this->money_reward,
             'maximum_time' => $this->maximum_time,
             'category' => $this->category,
+            'question' => $this->questions,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
           ];
     }
 }

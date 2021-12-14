@@ -42,11 +42,6 @@ class UserController extends Controller
                 'status' => 'resultOn',
                 'result' => Fis8UserResource::collection(User::where('id', $id)->get()),
             ];
-        } elseif (0 == count(User::where('id', $id)->get())) {
-            return [
-                'status' => 'Pengguna tidak ditemukan',
-                'result' => null,
-            ];
         } else {
             return response([
                 'status' => 'Mohon maaf, sistem sedang erorr',
@@ -68,6 +63,7 @@ class UserController extends Controller
 
         $user->update([
             'name' => $request->name,
+            'username' => $request->username,
             'school' => $request->school,
             'city' => $request->city,
             'birthyear' => $request->birthyear,

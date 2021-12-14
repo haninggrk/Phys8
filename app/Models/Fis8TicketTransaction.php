@@ -11,10 +11,10 @@ class Fis8TicketTransaction extends Model
     protected $guarded = [
         'id',
     ];
-    
-    const UPDATED_AT = null;
 
-    public function user()
+    public const UPDATED_AT = null;
+
+    public function student()
     {
         return $this->belongsTo(User::class, 'student_id');
     }

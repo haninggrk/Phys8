@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class Fis8CategoryResource extends JsonResource
+class Fis8CodeResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,9 +16,8 @@ class Fis8CategoryResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
-            'description' => $this->description,
-            'level' => $this->levels,
+            'code' => $this->code,
+            'student' => $this->students,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
           ];
