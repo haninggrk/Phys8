@@ -1,8 +1,9 @@
 <div>
+    <input type="text" placeholder="Search..." wire:model.debounce.1ms="search">
     <table class="table">
         <thead>
             <tr>
-                <th>NO</th>
+                <th>ID</th>
                 <th>Email</th>
                 <th>Username</th>
                 <th>School</th>
@@ -23,7 +24,7 @@
             <tbody>
                 @foreach($AdminDataUser as $index => $product)
                     <tr>
-                        <td>{{ $loop->iteration }}</td>
+                        <td> {{$product['id']}}</td>
                         
                         <td class="text-center">
                             @if($editAdminDataUserIndex !== $index)

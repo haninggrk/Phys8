@@ -27,6 +27,27 @@ class User extends Authenticatable
         'id',
     ];
 
+    public function scopeSearch($query, $term)
+    {
+        $term = "%$term%";
+        $query->where(function ($query) use ($term) {
+            $query->where('id', 'like', $term)
+            ->orWhere('name', 'like', $term)
+            ->orWhere('username', 'like', $term)
+            ->orWhere('school', 'like', $term)
+            ->orWhere('email', 'like', $term)
+            ->orWhere('city', 'like', $term)
+            ->orWhereHas('myUser', function ($query) use ($term) {
+                $query->where('is_login', 'like', $term)
+                ->orWhere('is_active', 'like', $term)
+                ->orWhere('is_admin', 'like', $term)
+                ->orWhere('ticket', 'like', $term)
+                ->orWhere('score', 'like', $term)
+                ->orWhere('money', 'like', $term);
+            });
+        });
+    }
+
     public function myUser()
     {
         return $this->hasOne(Fis8MyUser::class, 'student_id');
