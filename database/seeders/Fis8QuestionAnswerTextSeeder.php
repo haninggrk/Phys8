@@ -17,8 +17,8 @@ class Fis8QuestionAnswerTextSeeder extends Seeder
     {
         $question = Fis8Question::where('is_image_answer', '=', '0')->get();
 
-        foreach($question as $data){
-        $data->answerOptionTexts()->attach([
+        foreach ($question as $data) {
+            $data->answerOptionTexts()->attach([
             rand(1, count(Fis8AnswerOptionText::all())) => [
                 'is_correct_answer' => '0',
             ],
