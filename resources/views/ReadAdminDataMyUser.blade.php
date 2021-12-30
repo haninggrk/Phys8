@@ -39,7 +39,7 @@
                         {{$stupid->email}
                     </td>
                     <td class="text-center">
-                       {{$tupid->username}}
+                       {{$stupid->username}}
                     </td>
                     <td class="text-center">
                        {{$stupid->school}}
