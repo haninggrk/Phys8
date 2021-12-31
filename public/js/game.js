@@ -1,4 +1,3 @@
-
 const canvas = document.querySelector('canvas')
 const c = canvas.getContext('2d')
 
@@ -70,6 +69,12 @@ class Enemy {
         this.x = this.x + this.velocity.x
         this.y = this.y + this.velocity.y
     }
+
+    updateVelocity(speed){
+        this.draw()
+        this.velocity.x *= speed
+        this.velocity.y *= speed
+    }
 }
 
 const friction = 0.99
@@ -107,21 +112,6 @@ class Particle {
 const x = canvas.width / 2
 const y = canvas.height / 2
 
-//const projectile = new Projectile(
-  //  canvas.width/2, canvas.height/2, 5, 'red', 
-    //{
-      //  x: 1,
-        //y:1
-    //}
-//)
-
-//const projectile2 = new Projectile(
-  //  canvas.width/2, canvas.height/2, 5, 'green', 
-   // {
-     //   x: -1,
-       // y: -1
-    //}
-//)
 let player = new Player(x, y, 10, 'white')
 let projectiles = []
 let enemies = []
@@ -133,48 +123,47 @@ function init(){
     enemies = []
     particles = []
     score = 0
+    speedActive = 0.5;
     playerScore.innerHTML = score
     modalplayerScore.innerHTML = score
 }
 
 function spawnEnemies() {
     setInterval (() => {
-        const radius = Math.random() * (30-4) + 4
-        //0-radius biar dia nyentuh titik player
-
+        const min = Math.ceil(8)
+        const max = Math.floor(25)
+        const radius = Math.floor(Math.random() * (max - min + 1)) + min
 
         let x
         let y
 
         if (Math.random() < 0.5) {
-             x = Math.random() < 0.5 ? 0 - radius : canvas.width + radius//0 - radius//Math.random() * canvas.width
-             y =  Math.random() * canvas.height
+            x = Math.random() < 0.5 ? 0 - radius : canvas.width + radius//0 - radius//Math.random() * canvas.width
+            y =  Math.random() * canvas.height
         } else {
             x = Math.random() * canvas.width//0 - radius//Math.random() * canvas.width
             y =  Math.random() < 0.5 ? 0 - radius : canvas.height + radius
         }
     
         const color = `hsl(${Math.random() * 360}, 50%, 50%)`
-       
-
-        const angle = Math.atan2(canvas.height/2 - y,
-            canvas.width/2-x)
-        
+        const angle = Math.atan2(canvas.height/2 - y, canvas.width/2-x)
         const velocity = {
             x: Math.cos(angle),
             y: Math.sin(angle)
         }
 
-      enemies.push(new Enemy(x, y, radius, color, velocity))
-    }, 1000)
+        enemies.push(new Enemy(x, y, radius, color, velocity))
+    }, 5000)
 }
 
 let animationId
 let score = 0;
-function animate() {
-   animationId = requestAnimationFrame(animate)
+let speedActive = 0.5;
 
-   c.fillStyle = 'rgba(0,0,0,0.1)'
+function animate() {
+    animationId = requestAnimationFrame(animate)
+
+    c.fillStyle = 'rgba(0,0,0,0.1)'
     c.fillRect(0, 0, canvas.width, canvas.height)
     player.draw()
 
@@ -190,12 +179,11 @@ function animate() {
         projectile.update()
 
         //remove from edges of screen
-        if(projectile.x + projectile.radius <0 ||
+        if (projectile.x + projectile.radius <0 ||
             projectile.x - projectile.radius > canvas.width ||
             projectile.y + projectile.radius <0 ||
             projectile.y - projectile.radius > canvas.height){
-            setTimeout(() => {
-             
+            setTimeout(() => {  
                 projectiles.splice(index, 1)
             }, 0)
         }
@@ -206,23 +194,18 @@ function animate() {
 
         const dist = Math.hypot(player.x - Enemy.x, player.y - Enemy.y)
 
-        
         if (dist - Enemy.radius - player.radius< 1) {
-        //end game, jika player disentuh projectile
-        cancelAnimationFrame(animationId)
-        modalGame.style.display = 'flex'
-        modalplayerScore.innerHTML = score
+            //end game, jika player disentuh projectile
+            cancelAnimationFrame(animationId)
+            modalGame.style.display = 'flex'
+            modalplayerScore.innerHTML = score
         }
 
         projectiles.forEach((projectile, projectileIndex) => {
             const dist = Math.hypot(projectile.x - Enemy.x, projectile.y - Enemy.y)
 
             //enemy brsntuhn dngn senjata player
-            if (dist - Enemy.radius - projectile.radius< 1) {
-                
-                
-              
-                
+            if (dist - Enemy.radius - projectile.radius< 1) {    
                 for(let i =0; i<Enemy.radius*2;i++){
                     particles.push(new Particle(projectile.x, projectile.y, Math.random() *2, Enemy.color, {
                         x: (Math.random() - 0.5) * (Math.random() * 4),
@@ -231,23 +214,25 @@ function animate() {
                 }
 
                 if(Enemy.radius - 10>5) {
-
-                      //increase score
-                score += 100
-                playerScore.innerHTML = score
+                    //increase score
+                    score += 65
+                    playerScore.innerHTML = score
 
                     gsap.to(Enemy, {
                         radius: Enemy.radius - 10
                     })
-                    setTimeout(() => {
-                      
+
+                    speedActive += 0.3;
+
+                    Enemy.updateVelocity(speedActive)
+                    
+                    setTimeout(() => {  
                         projectiles.splice(projectileIndex, 1)
                     }, 0)
                 } else {
-
                     //remove from screen altogether
-                score += 250
-                playerScore.innerHTML = score
+                    score += 170
+                    playerScore.innerHTML = score
 
                     setTimeout(() => {
                         enemies.splice(index, 1)
@@ -260,17 +245,13 @@ function animate() {
 }
 
 addEventListener('click', (event) => {
-    const angle = Math.atan2(event.clientY - canvas.height/2,
-        event.clientX - canvas.width/2)
-    
+    const angle = Math.atan2(event.clientY - canvas.height/2, event.clientX - canvas.width/2)
     const velocity = {
         x: Math.cos(angle) * 6,
         y: Math.sin(angle) * 6
     }
 
     projectiles.push(new Projectile(canvas.width/2, canvas.height/2, 5, 'white', velocity))
-
-    projectile.draw()
 })
 
 startGameButton.addEventListener('click', () =>{
