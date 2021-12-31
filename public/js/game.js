@@ -205,6 +205,10 @@ function animate() {
             cancelAnimationFrame(animationId)
             bgGameAudio.pause();
             bgGameAudio.currentTime = 0;
+            bigBoomAudio.pause();
+            bigBoomAudio.currentTime = 0;
+            shootingAudio.pause();
+            shootingAudio.currentTime = 0;
             modalGame.style.display = 'flex'
             modalplayerScore.innerHTML = score
         }
@@ -215,8 +219,12 @@ function animate() {
             bigBoomAudio.pause(); //benar?
 bigBoomAudio.currentTime = 0;
             //enemy brsntuhn dngn senjata player
-            if (dist - Enemy.radius - projectile.radius< 1) {    
-                bigBoomAudio.play();
+            if (dist - Enemy.radius - projectile.radius< 1) {   
+                 
+                if(modalGame.style.display == 'none'){
+                    bigBoomAudio.play();
+                }
+             
                 for(let i =0; i<Enemy.radius*2;i++){
                     particles.push(new Particle(projectile.x, projectile.y, Math.random() *2, Enemy.color, {
                         x: (Math.random() - 0.5) * (Math.random() * 4),
@@ -261,7 +269,9 @@ addEventListener('click', (event) => {
         y: Math.sin(angle) * 9
     }
 
-    shootingAudio.play()
+    if(modalGame.style.display == 'none'){
+        shootingAudio.play()
+    }
 
     projectiles.push(new Projectile(canvas.width/2, canvas.height/2, 5, 'white', velocity))
 })
