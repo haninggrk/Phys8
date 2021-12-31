@@ -49,12 +49,13 @@ class Projectile {
 }
 
 class Enemy {
-    constructor(x, y, radius, color, velocity) {
+    constructor(x, y, radius, color, velocity, speed) {
         this.x = x
         this.y = y
         this.radius = radius
         this.color = color
         this.velocity = velocity
+        this.speed = speed
     }
 
     draw() {
@@ -72,8 +73,9 @@ class Enemy {
 
     updateVelocity(speed){
         this.draw()
-        this.velocity.x *= speed
-        this.velocity.y *= speed
+        this.velocity.x *= this.speed + speed
+        this.velocity.y *= this.speed + speed
+        this.speed += speed
     }
 }
 
@@ -123,7 +125,7 @@ function init(){
     enemies = []
     particles = []
     score = 0
-    speedActive = 0.5;
+    speedActive = 0.6;
     playerScore.innerHTML = score
     modalplayerScore.innerHTML = score
 }
@@ -131,7 +133,7 @@ function init(){
 function spawnEnemies() {
     setInterval (() => {
         const min = Math.ceil(8)
-        const max = Math.floor(25)
+        const max = Math.floor(35)
         const radius = Math.floor(Math.random() * (max - min + 1)) + min
 
         let x
@@ -152,13 +154,13 @@ function spawnEnemies() {
             y: Math.sin(angle)
         }
 
-        enemies.push(new Enemy(x, y, radius, color, velocity))
+        enemies.push(new Enemy(x, y, radius, color, velocity, speedActive))
     }, 5000)
 }
 
 let animationId
 let score = 0;
-let speedActive = 0.5;
+let speedActive = 0.6;
 
 function animate() {
     animationId = requestAnimationFrame(animate)
@@ -222,8 +224,6 @@ function animate() {
                         radius: Enemy.radius - 10
                     })
 
-                    speedActive += 0.3;
-
                     Enemy.updateVelocity(speedActive)
                     
                     setTimeout(() => {  
@@ -247,8 +247,8 @@ function animate() {
 addEventListener('click', (event) => {
     const angle = Math.atan2(event.clientY - canvas.height/2, event.clientX - canvas.width/2)
     const velocity = {
-        x: Math.cos(angle) * 6,
-        y: Math.sin(angle) * 6
+        x: Math.cos(angle) * 9,
+        y: Math.sin(angle) * 9
     }
 
     projectiles.push(new Projectile(canvas.width/2, canvas.height/2, 5, 'white', velocity))
