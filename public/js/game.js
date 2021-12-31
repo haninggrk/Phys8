@@ -8,6 +8,9 @@ const playerScore = document.querySelector('#playerScore')
 const startGameButton = document.querySelector('#startGameButton')
 const modalGame = document.querySelector('#modalGame')
 const modalplayerScore = document.querySelector('#modalplayerScore')
+const bigBoomAudio = document.querySelector('#bigBoomAudio')
+const shootingAudio = document.querySelector('#shootingAudio')
+const bgGameAudio = document.querySelector('#bgGameAudio')
 
 class Player {
     constructor(x, y, radius, color) {
@@ -120,6 +123,7 @@ let enemies = []
 let particles = []
 
 function init(){
+    bgGameAudio.play()
     player = new Player(x, y, 10, 'white')
     projectiles = []
     enemies = []
@@ -199,6 +203,8 @@ function animate() {
         if (dist - Enemy.radius - player.radius< 1) {
             //end game, jika player disentuh projectile
             cancelAnimationFrame(animationId)
+            bgGameAudio.pause();
+            bgGameAudio.currentTime = 0;
             modalGame.style.display = 'flex'
             modalplayerScore.innerHTML = score
         }
@@ -206,8 +212,11 @@ function animate() {
         projectiles.forEach((projectile, projectileIndex) => {
             const dist = Math.hypot(projectile.x - Enemy.x, projectile.y - Enemy.y)
 
+            bigBoomAudio.pause(); //benar?
+bigBoomAudio.currentTime = 0;
             //enemy brsntuhn dngn senjata player
             if (dist - Enemy.radius - projectile.radius< 1) {    
+                bigBoomAudio.play();
                 for(let i =0; i<Enemy.radius*2;i++){
                     particles.push(new Particle(projectile.x, projectile.y, Math.random() *2, Enemy.color, {
                         x: (Math.random() - 0.5) * (Math.random() * 4),
@@ -231,6 +240,7 @@ function animate() {
                     }, 0)
                 } else {
                     //remove from screen altogether
+                    bigBoomAudio.play();
                     score += 170
                     playerScore.innerHTML = score
 
@@ -250,6 +260,8 @@ addEventListener('click', (event) => {
         x: Math.cos(angle) * 9,
         y: Math.sin(angle) * 9
     }
+
+    shootingAudio.play()
 
     projectiles.push(new Projectile(canvas.width/2, canvas.height/2, 5, 'white', velocity))
 })
