@@ -55,3 +55,7 @@ Route::resource('qansimgs', Fis8QuestionAnswerImageController::class);
 Route::get('/question-answer-image', [Fis8QuestionAnswerImageController::class, 'index']);
 
 Route::get('/cobaadminuser', AdminDataUser::class);
+
+Route::get('/game', function () {
+    return view('game');
+});
