@@ -58,4 +58,6 @@ Route::get('/cobaadminuser', AdminDataUser::class);
 
 Route::get('/game', function () {
     return view('game');
+
+Route::get();
 });
