@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFis8QuestionsTable extends Migration
+class CreateFis8QuizHistoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,16 @@ class CreateFis8QuestionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('fis8_questions', function (Blueprint $table) {
+        Schema::create('fis8_quiz_histories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('fis8_level_id')->references('id')->on('fis8_levels')
+            $table->foreignId('student_id')->references('id')->on('students')
             ->onDelete('cascade')
             ->onUpdate('cascade');
 
-            $table->text('question_text');
-            $table->text('correct_answer_option');
-            $table->text('discussion');
+            $table->integer('time_taken');
+            $table->integer('sum_correct_answer');
 
-            $table->timestamps();
+            $table->dateTime('created_at');
         });
     }
 
@@ -34,6 +33,6 @@ class CreateFis8QuestionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fis8_questions');
+        Schema::dropIfExists('fis8_quiz_histories');
     }
 }

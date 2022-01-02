@@ -42,22 +42,8 @@ Route::get('/level', [Fis8LevelController::class, 'index']);
 Route::resource('questions', Fis8QuestionController::class);
 Route::get('/question', [Fis8QuestionController::class, 'index']);
 
-Route::resource('images', Fis8ImageController::class);
-Route::get('/image', [Fis8ImageController::class, 'index']);
-
-Route::resource('opttxts', Fis8AnswerOptionTextController::class);
-Route::get('/answer-option-text', [Fis8AnswerOptionTextController::class, 'index']);
-
-Route::resource('qatxts', Fis8QuestionAnswerTextController::class);
-Route::get('/question-answer-text', [Fis8QuestionAnswerTextController::class, 'index']);
-
-Route::resource('qansimgs', Fis8QuestionAnswerImageController::class);
-Route::get('/question-answer-image', [Fis8QuestionAnswerImageController::class, 'index']);
-
 Route::get('/cobaadminuser', AdminDataUser::class);
 
 Route::get('/game', function () {
     return view('game');
-
-Route::get();
 });

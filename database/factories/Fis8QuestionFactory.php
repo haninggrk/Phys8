@@ -19,7 +19,7 @@ class Fis8QuestionFactory extends Factory
         return [
             'fis8_level_id' => rand(1, count($getLevel)),
             'question_text' => 'question',
-            'is_image_answer' => rand(0, 1),
+            'correct_answer_option' => 'a',
             'discussion' => 'discussion',
         ];
     }
