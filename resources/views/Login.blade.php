@@ -22,14 +22,11 @@
           <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
           <label for="floatingPassword">Password</label>
         </div>
-    
-        <div class="checkbox mb-3">
-          <label>
-            <input type="checkbox" value="remember-me"> Remember me
-          </label>
-        </div>
         <button class="w-100 btn btn-lg btn-primary" type="submit">Log in</button>
-        <p class="mt-5 mb-3 text-muted">&copy; 2022</p>
+        <small>
+          Have you registed yet?<a href="/Register">Register Now!</a>
+        </small>
+        <p class="mt-5 mb-3 text-muted">&copy; 2021-2022 Phys8</p>
       </form>
     </main>
     
