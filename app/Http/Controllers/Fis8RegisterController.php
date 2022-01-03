@@ -14,7 +14,7 @@ class Fis8LogController extends Controller
      */
     public function index()
     {
-        return view('Login');
+        return view('Register');
     }
 
     /**
