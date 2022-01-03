@@ -5,6 +5,8 @@ use App\Http\Controllers\Fis8CategoryController;
 use App\Http\Controllers\Fis8CodeController;
 use App\Http\Controllers\Fis8LevelController;
 use App\Http\Controllers\Fis8QuestionController;
+use App\Http\Controllers\Fis8LoginController;
+use App\Http\Controllers\Fis8RegisterController;
 use App\Http\Livewire\AdminDataUser;
 
 /*
@@ -37,6 +39,9 @@ Route::get('/level', [Fis8LevelController::class, 'index']);
 
 Route::resource('questions', Fis8QuestionController::class);
 Route::get('/question', [Fis8QuestionController::class, 'index']);
+
+Route::get('/login', [Fis8LoginController::class, 'index']);
+Route::get('/register', [Fis8RegisterController::class, 'index']);
 
 Route::get('/cobaadminuser', AdminDataUser::class);
 

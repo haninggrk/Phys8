@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="row justifed-content-center">
-  <div class="col-md-4">
+  <div class="col-lg-4">
     <main class="form-signin">
       <h1 class="h3 mb-3 fw-normal text-center">Please Log in</h1>
       <form>
@@ -24,7 +24,7 @@
         </div>
         <button class="w-100 btn btn-lg btn-primary" type="submit">Log in</button>
         <small class="d-block text-center mt-3">
-          Have you registed yet?<a href="/Register">Register Now!</a>
+          Have you registed yet?<a href="/register">Register Now!</a>
         </small>
         <p class="mt-5 mb-3 text-muted">&copy; 2021-2022 Phys8</p>
       </form>
