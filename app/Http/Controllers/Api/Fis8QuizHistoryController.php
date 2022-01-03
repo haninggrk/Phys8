@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Fis8QuizHistoryResource;
 use App\Models\Fis8QuizHistory;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class Fis8QuizHistoryController extends Controller
 {
@@ -28,6 +29,10 @@ class Fis8QuizHistoryController extends Controller
      */
     public function store(Request $request)
     {
+        $getUser = User::find($request->student_id);
+        $createHistory = $getUser->quizHistories()->create();
+
+        return ['result' => Fis8QuizHistoryResource::collection(Fis8QuizHistory::where('id', $createHistory->id)->get())];
     }
 
     /**

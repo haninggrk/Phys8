@@ -3,15 +3,12 @@
 use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\RegisterController;
 use App\Http\Controllers\Api\Fis8CategoryController;
-use App\Http\Controllers\Api\Fis8HistoryController;
-use App\Http\Controllers\Api\Fis8ImageController;
 use App\Http\Controllers\Api\Fis8LevelController;
 use App\Http\Controllers\Api\Fis8QuestionController;
+use App\Http\Controllers\Api\Fis8QuizHistoryController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\Fis8AnswerOptionTextController;
-use App\Http\Controllers\Api\Fis8CodeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,13 +26,8 @@ Route::post('refresh', [LoginController::class, 'refresh']);
 
 Route::apiResource('myuser', UserController::class);
 Route::apiResource('level', Fis8LevelController::class);
-Route::apiResource('history', Fis8HistoryController::class);
+Route::apiResource('quiz_history', Fis8QuizHistoryController::class);
 Route::apiResource('question', Fis8QuestionController::class);
-Route::apiResource('image', Fis8ImageController::class);
-
-Route::apiResource('code', Fis8CodeController::class);
-
-Route::apiResource('answer_option_text', Fis8AnswerOptionTextController::class);
 
 Route::apiResource('category', Fis8CategoryController::class);
 Route::group(['middleware' => 'auth:api'], function () {

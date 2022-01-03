@@ -17,7 +17,6 @@ class Fis8QuizHistoryResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'time_taken' => $this->time_taken,
             'sum_correct_answer' => $this->sum_correct_answer,
             'student' => $this->student,
             'question' => $this->questions,

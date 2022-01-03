@@ -18,9 +18,7 @@ class CreateFis8QuizHistoriesTable extends Migration
             $table->foreignId('student_id')->references('id')->on('students')
             ->onDelete('cascade')
             ->onUpdate('cascade');
-
-            $table->integer('time_taken');
-            $table->integer('sum_correct_answer');
+            $table->integer('sum_correct_answer')->nullable();
 
             $table->dateTime('created_at');
         });

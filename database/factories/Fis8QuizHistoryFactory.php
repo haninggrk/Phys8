@@ -18,7 +18,6 @@ class Fis8QuizHistoryFactory extends Factory
 
         return [
             'student_id' => rand(1, count($getStudent)),
-            'time_taken' => '1600',
             'sum_correct_answer' => '8',
         ];
     }
