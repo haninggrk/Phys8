@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Fis8Question;
+use App\Models\Fis8QuizHistory;
 use Illuminate\Http\Request;
 
-class Fis8QuestionController extends Controller
+class Fis8QuizHistoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +14,10 @@ class Fis8QuestionController extends Controller
      */
     public function index()
     {
-        $questions = Fis8Question::all();
+        $hi = Fis8QuizHistory::all();
 
-        return view('ReadAdminDataQuestion', [
-            'questions' => $questions,
+        return view('ReadAdminDataHistory', [
+            'history' => $hi,
         ]);
     }
 
@@ -28,7 +28,6 @@ class Fis8QuestionController extends Controller
      */
     public function create()
     {
-        return view('CreateQuestion');
     }
 
     /**
@@ -38,17 +37,6 @@ class Fis8QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        // $this->validate($request,[
-        //     'question_text' => 'required|min:5|max:50',
-        //  ]);
-
-        Fis8Question::create([
-            'question_text' => $request->question_text,
-
-            'discussion' => $request->discussion,
-        ]);
-
-        return redirect(route('questions.index'));
     }
 
     /**
@@ -56,7 +44,7 @@ class Fis8QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show(Fis8Question $fis8Question)
+    public function show(Fis8QuizHistory $fis8QuizHistory)
     {
     }
 
@@ -65,7 +53,7 @@ class Fis8QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit(Fis8Question $fis8Question)
+    public function edit(Fis8QuizHistory $fis8QuizHistory)
     {
     }
 
@@ -74,22 +62,16 @@ class Fis8QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Fis8Question $fis8Question)
+    public function update(Request $request, Fis8QuizHistory $fis8QuizHistory)
     {
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\Fis8Question $fis8Question
-     *
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Fis8QuizHistory $fis8QuizHistory)
     {
-        $quest = Fis8Question::findOrFail($id);
-        $quest->delete();
-
-        return redirect(route('questions.index'));
     }
 }

@@ -14,12 +14,12 @@ class Fis8UserAnswerController extends Controller
      */
     public function index()
     {
-        $opttxts = Fis8AnswerOptionText::all();
-        $h = Fis8History::all();
-        return view('ReadAdminDataAnsOptText', [
-            'history' => $h,
-            'opttxts' => $opttxts
-        ]);
+      //  $opttxts = Fis8AnswerOptionText::all();
+        //$h = Fis8History::all();
+        //return view('ReadAdminDataAnsOptText', [
+          //  'history' => $h,
+            //'opttxts' => $opttxts
+        //]);
     }
 
     /**

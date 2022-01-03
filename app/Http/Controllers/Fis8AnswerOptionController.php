@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Fis8AnswerOption;
 use App\Models\Fis8Question;
 use Illuminate\Http\Request;
 
-class Fis8QuestionController extends Controller
+class Fis8AnswerOptionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +15,12 @@ class Fis8QuestionController extends Controller
      */
     public function index()
     {
-        $questions = Fis8Question::all();
+        $opttxts = Fis8AnswerOption::all();
+        $q = Fis8Question::all();
 
-        return view('ReadAdminDataQuestion', [
-            'questions' => $questions,
+        return view('ReadAdminDataAnsOptText', [
+            'question' => $q,
+            'opttxts' => $opttxts,
         ]);
     }
 
@@ -28,7 +31,7 @@ class Fis8QuestionController extends Controller
      */
     public function create()
     {
-        return view('CreateQuestion');
+        return view('CreateAnswerOptionText');
     }
 
     /**
@@ -38,17 +41,11 @@ class Fis8QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        // $this->validate($request,[
-        //     'question_text' => 'required|min:5|max:50',
-        //  ]);
+        Fis8AnswerOption::create([
+            'answer_option_text' => $request->answer_option_text,
 
-        Fis8Question::create([
-            'question_text' => $request->question_text,
-
-            'discussion' => $request->discussion,
         ]);
-
-        return redirect(route('questions.index'));
+        return redirect(route('opttxts.index'));
     }
 
     /**
@@ -56,7 +53,7 @@ class Fis8QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show(Fis8Question $fis8Question)
+    public function show(Fis8AnswerOption $fis8AnswerOption)
     {
     }
 
@@ -65,7 +62,7 @@ class Fis8QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit(Fis8Question $fis8Question)
+    public function edit(Fis8AnswerOption $fis8AnswerOption)
     {
     }
 
@@ -74,22 +71,19 @@ class Fis8QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Fis8Question $fis8Question)
+    public function update(Request $request, Fis8AnswerOption $fis8AnswerOption)
     {
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\Fis8Question $fis8Question
-     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $quest = Fis8Question::findOrFail($id);
+        $quest = Fis8AnswerOption::findOrFail($id);
         $quest->delete();
-
-        return redirect(route('questions.index'));
+        return redirect(route('opttxts.index'));
     }
 }

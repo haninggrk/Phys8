@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Fis8Question;
+use App\Models\Fis8QuestionAnswer;
 use Illuminate\Http\Request;
 
-class Fis8QuestionController extends Controller
+class Fis8QuestionAnswerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,11 +14,7 @@ class Fis8QuestionController extends Controller
      */
     public function index()
     {
-        $questions = Fis8Question::all();
-
-        return view('ReadAdminDataQuestion', [
-            'questions' => $questions,
-        ]);
+        //
     }
 
     /**
@@ -28,68 +24,62 @@ class Fis8QuestionController extends Controller
      */
     public function create()
     {
-        return view('CreateQuestion');
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        // $this->validate($request,[
-        //     'question_text' => 'required|min:5|max:50',
-        //  ]);
-
-        Fis8Question::create([
-            'question_text' => $request->question_text,
-
-            'discussion' => $request->discussion,
-        ]);
-
-        return redirect(route('questions.index'));
+        //
     }
 
     /**
      * Display the specified resource.
      *
+     * @param  \App\Models\Fis8QuestionAnswer  $fis8QuestionAnswer
      * @return \Illuminate\Http\Response
      */
-    public function show(Fis8Question $fis8Question)
+    public function show(Fis8QuestionAnswer $fis8QuestionAnswer)
     {
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
+     * @param  \App\Models\Fis8QuestionAnswer  $fis8QuestionAnswer
      * @return \Illuminate\Http\Response
      */
-    public function edit(Fis8Question $fis8Question)
+    public function edit(Fis8QuestionAnswer $fis8QuestionAnswer)
     {
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Fis8QuestionAnswer  $fis8QuestionAnswer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Fis8Question $fis8Question)
+    public function update(Request $request, Fis8QuestionAnswer $fis8QuestionAnswer)
     {
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\Fis8Question $fis8Question
-     *
+     * @param  \App\Models\Fis8QuestionAnswer  $fis8QuestionAnswer
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Fis8QuestionAnswer $fis8QuestionAnswer)
     {
-        $quest = Fis8Question::findOrFail($id);
-        $quest->delete();
-
-        return redirect(route('questions.index'));
+        //
     }
 }

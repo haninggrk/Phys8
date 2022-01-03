@@ -46,6 +46,7 @@ class LoginController extends Controller
 
                             return [
                         'status' => 'Login berhasil',
+                        'userId' => ''.auth()->user()->id,
                         'result' => $response->json(),
                     ];
                         } else {

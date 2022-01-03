@@ -36,7 +36,7 @@
         <tbody>
                 <td>$index++</td>
                 <td class="text-center">
-                        {{$stupid->email}
+                        {{$stupid->email}}
                     </td>
                     <td class="text-center">
                        {{$stupid->username}}
