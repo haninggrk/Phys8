@@ -5,13 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/signin.css">
-    <title>Login</title>
+    <title>Register</title>
 </head>
 <body>
 <div class="row justifed-content-center">
   <div class="col-md-4">
     <main class="form-signin">
-      <h1 class="h3 mb-3 fw-normal text-center">Please Log in</h1>
+      <h1 class="h3 mb-3 fw-normal text-center">Registeration</h1>
       <form>
     
         <div class="form-floating">
