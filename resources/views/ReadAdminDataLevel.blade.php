@@ -31,7 +31,7 @@
                 <tr>
                 <td><a>$index++</a></td>
             <td><a>{{$level->name}}</a></td>
-            <td><a>{{$level->fis8_category_id}}</a></td>
+            <td><a>{{$level->category->name}}</a></td>
             <td><a>{{$level->thumbnail}}</a></td>
             <td><a>{{$level->description}}</a></td>
             <td><a>{{$level->score_reward}}</a></td>

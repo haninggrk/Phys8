@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Fis8LevelResource;
+use App\Models\Fis8Category;
 use App\Models\Fis8Level;
 use Illuminate\Http\Request;
 
@@ -28,7 +29,6 @@ class Fis8LevelController extends Controller
      */
     public function store(Request $request)
     {
-        //
     }
 
     /**

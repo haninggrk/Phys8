@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Student;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class MyUserController extends Controller
@@ -14,7 +14,10 @@ class MyUserController extends Controller
      */
     public function index()
     {
-        //
+        $stu = User::all();
+        return view('ReadAdminDataMyUser', [
+            'student' => $stu
+        ]);
     }
 
     /**
@@ -44,7 +47,7 @@ class MyUserController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function show(Student $student)
+    public function show($id)
     {
         //
     }
@@ -55,7 +58,7 @@ class MyUserController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function edit(Student $student)
+    public function edit($id)
     {
         //
     }
@@ -67,7 +70,7 @@ class MyUserController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Student $student)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -78,7 +81,7 @@ class MyUserController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Student $student)
+    public function destroy($id)
     {
         //
     }

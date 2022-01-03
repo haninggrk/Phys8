@@ -5,14 +5,7 @@ use App\Http\Controllers\Fis8CategoryController;
 use App\Http\Controllers\Fis8CodeController;
 use App\Http\Controllers\Fis8LevelController;
 use App\Http\Controllers\Fis8QuestionController;
-use App\Http\Controllers\Fis8ImageController;
-use App\Http\Controllers\Fis8AnswerOptionTextController;
-use App\Http\Controllers\Fis8QuestionAnswerTextController;
-use App\Http\Controllers\Fis8QuestionAnswerImageController;
-use App\Http\Controllers\Fis8QuestionImageController;
-
-
-
+use App\Http\Livewire\AdminDataUser;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,17 +38,8 @@ Route::get('/level', [Fis8LevelController::class, 'index']);
 Route::resource('questions', Fis8QuestionController::class);
 Route::get('/question', [Fis8QuestionController::class, 'index']);
 
-Route::resource('images', Fis8ImageController::class);
-Route::get('/image', [Fis8ImageController::class, 'index']);
+Route::get('/cobaadminuser', AdminDataUser::class);
 
-Route::resource('opttxts', Fis8AnswerOptionTextController::class);
-Route::get('/answer-option-text', [Fis8AnswerOptionTextController::class, 'index']);
-
-Route::resource('qatxts', Fis8QuestionAnswerTextController::class);
-Route::get('/question-answer-text', [Fis8QuestionAnswerTextController::class, 'index']);
-
-Route::resource('qansimgs', Fis8QuestionAnswerImageController::class);
-Route::get('/question-answer-image', [Fis8QuestionAnswerImageController::class, 'index']);
-
-Route::resource('qimgs', Fis8QuestionImageController::class);
-Route::get('/question-image', [Fis8QuestionImageController::class, 'index']);
+Route::get('/game', function () {
+    return view('game');
+});
