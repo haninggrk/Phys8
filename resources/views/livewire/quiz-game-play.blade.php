@@ -2,9 +2,6 @@
 
 
 <div>
-
-
-
 @foreach($DataQuestionFromLevelId as $Data)
         <button wire:click="getQuestionWithId({{$Data->id}})">
        
@@ -19,11 +16,10 @@
         {{ $myQuestions->question_text }}
 
         <p>Pilihan Jawaban</p>
-       @foreach($myQuestions->answerOptions as $AnswerOptions)
-       <a wire:click="saveUserAnswer( {{ $myQuestions->question_text }})"> {{$AnswerOptions->pivot->option}}.  {{$AnswerOptions->option_text}}<a>
+       @foreach($myQuestions->answerOptions as $AnswerOptions)//tinggalhistoryidnya
+       <a wire:click="saveUserAnswer({{ $myQuestions->id }}, {{ $AnswerOptions->pivot->option}})"> {{$AnswerOptions->pivot->option}}.  {{$AnswerOptions->option_text}}<a>
        @endforeach
     </div>
   @endif
-
 </div>
 
