@@ -34,6 +34,7 @@ class Fis8QuizHistoryController extends Controller
 
         return ['result' => Fis8QuizHistoryResource::collection(Fis8QuizHistory::where('id', $createHistory->id)->get())];
     }
+  
 
     /**
      * Display the specified resource.

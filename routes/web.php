@@ -8,6 +8,7 @@ use App\Http\Controllers\Fis8QuestionController;
 use App\Http\Controllers\Fis8LoginController;
 use App\Http\Controllers\Fis8RegisterController;
 use App\Http\Livewire\AdminDataUser;
+use App\Http\Livewire\QuizGamePlay;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,3 +49,4 @@ Route::get('/cobaadminuser', AdminDataUser::class);
 Route::get('/game', function () {
     return view('game');
 });
+Route::get('/quiz_game_play', QuizGamePlay::class);

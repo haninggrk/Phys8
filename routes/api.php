@@ -25,6 +25,7 @@ Route::post('register', [RegisterController::class, 'register']);
 Route::post('login', [LoginController::class, 'login']);
 Route::post('refresh', [LoginController::class, 'refresh']);
 
+
 Route::apiResource('myuser', UserController::class);
 Route::apiResource('level', Fis8LevelController::class);
 Route::apiResource('quiz_history', Fis8QuizHistoryController::class);
