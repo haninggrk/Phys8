@@ -19,6 +19,7 @@ class CreateFis8QuizHistoriesTable extends Migration
             ->onDelete('cascade')
             ->onUpdate('cascade');
             $table->integer('score')->default(0);
+            $table->integer('money_reward')->default(0);
             $table->integer('sum_correct_answer')->default(0);
 
             $table->dateTime('created_at');
