@@ -15,7 +15,13 @@ class CreateFis8ShootGameHistoriesTable extends Migration
     {
         Schema::create('fis8_shoot_game_histories', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->foreignId('student_id')->references('id')->on('students')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+            $table->integer('score')->default(0);
+            $table->integer('money_reward')->default(0);
+
+            $table->dateTime('created_at');
         });
     }
 

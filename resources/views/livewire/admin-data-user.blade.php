@@ -15,7 +15,7 @@
                 <th>Active</th>
                 <th>Admin</th>
                 <th>Ticket</th>
-                <th>Score</th>
+                <th>Quiz Score</th>
                 <th>Money</th>
                 <th>Photo</th>
                 <th class="text-center">Actions</th>
@@ -116,9 +116,9 @@
 
                         <td class="text-center">
                             @if($editAdminDataUserIndex !== $index)
-                                {{$product['my_user']['score']}}
+                                {{$product['my_user']['quiz_score']}}
                             @else
-                                <input type="text" wire:model.defer="AdminDataUser.{{$index}}.my_user.score">
+                                <input type="text" wire:model.defer="AdminDataUser.{{$index}}.my_user.quiz_score">
                             @endif
                         </td>
 

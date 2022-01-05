@@ -42,7 +42,7 @@ class User extends Authenticatable
                 ->orWhere('is_active', 'like', $term)
                 ->orWhere('is_admin', 'like', $term)
                 ->orWhere('ticket', 'like', $term)
-                ->orWhere('score', 'like', $term)
+                ->orWhere('quiz_score', 'like', $term)
                 ->orWhere('money', 'like', $term);
             });
         });
@@ -66,6 +66,10 @@ class User extends Authenticatable
     public function quizHistories()
     {
         return $this->hasMany(Fis8QuizHistory::class, 'student_id');
+    }
+    public function shootHistories()
+    {
+        return $this->hasMany(Fis8ShootGameHistory::class, 'student_id');
     }
 
     /**

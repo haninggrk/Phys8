@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             Fis8AnswerOptionSeeder::class,
             Fis8QuestionSeeder::class,
             Fis8QuizHistorySeeder::class,
+            Fis8ShootHistorySeeder::class
         ]);
     }
 }
