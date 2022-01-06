@@ -5,7 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\User;
 
-class AdminDataUser extends Component
+class AdminDataLog extends Component
 {
     public $editAdminDataLogsIndex = null;
     public $AdminDataLog;

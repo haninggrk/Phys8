@@ -5,29 +5,29 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\User;
 
-class AdminDataTicketTransaction extends Component
+class AdminDataAnswersOptions extends Component
 {
     public $editAdminDataLevekIndex = null;
-    public $AdminDataTicketTransaction;
+    public $AdminDataOptionAnswer;
     public $search;
 
     public function render()
     {
-        $this->AdminDataTicketTransaction = User::with('myUser')->search(trim($this->search))->get()->toArray();
+        $this->AdminDataOptionAnswer = User::with('myUser')->search(trim($this->search))->get()->toArray();
 
-        return view('livewire.admin-data-transction-ticket', [
-            'AdminDataTicketTransaction' => $this->AdminDataTicketTransaction,
+        return view('livewire.admin-data-option-answers', [
+            'AdminDataOptionAnswer' => $this->AdminDataOptionAnswer,
         ]);
     }
 
-    public function editAdminDataTicketTransaction($AdminDataTicketTransactionIndex)
+    public function editAdminDataOptionAnswer($AdminDataOptionAnswerIndex)
     {
-        $this->editAdminDataTicketTransactionIndex = $AdminDataTicketTransactionIndex;
+        $this->editAdminDataOptionAnswerIndex = $AdminDataOptionAnswerIndex;
     }
 
-    public function saveAdminDataTicketTransaction($AdminDataTicketTransactionIndex)
+    public function saveAdminDataOptionAnswer($AdminDataOptionAnswerIndex)
     {
-        $cekUser = $this->AdminDataTicketTransaction[$AdminDataTicketTransactionIndex] ?? null;
+        $cekUser = $this->AdminDataOptionAnswer[$AdminDataOptionAnswerIndex] ?? null;
 
         if (!is_null($cekUser)) {
             $getUser = User::find($cekUser['id']);
@@ -49,6 +49,6 @@ class AdminDataTicketTransaction extends Component
                 'photo' => $cekUser['my_user']['photo'],
             ]);
         }
-        $this->editAdminDataTicketTransactionIndex = null;
+        $this->editAdminDataOptionAnswerIndex = null;
     }
 }

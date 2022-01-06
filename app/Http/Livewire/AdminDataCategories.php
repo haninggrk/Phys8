@@ -5,7 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\User;
 
-class AdminDataUser extends Component
+class AdminDataCategories extends Component
 {
     public $editAdminDataLevekIndex = null;
     public $AdminDataCategory;
