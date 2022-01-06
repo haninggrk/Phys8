@@ -15,7 +15,7 @@ class AdminDataAnswersOptions extends Component
     {
         $this->AdminDataQuestion = Fis8Question::with('level')->search(trim($this->search))->get()->toArray();
 
-        return view('livewire.admin-data-option-answers', [
+        return view('livewire.admin-data-question', [
             'AdminDataQuestion' => $this->AdminDataQuestion,
         ]);
     }
