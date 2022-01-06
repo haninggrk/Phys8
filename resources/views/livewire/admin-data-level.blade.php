@@ -24,7 +24,7 @@
                             @if($editAdminDataLevelIndex !== $index)
                                 {{$product['name']}}
                             @else
-                                <input type="text" wire:model.defer="AdminDataLevel.{{$index}}.email">
+                                <input type="text" wire:model.defer="AdminDataLevel.{{$index}}.name">
                             @endif
                         </td>
 
@@ -32,7 +32,7 @@
                             @if($editAdminDataLevelIndex !== $index)
                                 {{$product['thumbnail']}}
                             @else
-                                <input type="text" wire:model.defer="AdminDataLevel.{{$index}}.username">
+                                <input type="text" wire:model.defer="AdminDataLevel.{{$index}}.thumbnail">
                             @endif
                         </td>
 
@@ -40,7 +40,7 @@
                             @if($editAdminDataLevelIndex !== $index)
                                 {{$product['description']}}
                             @else
-                                <input type="text" wire:model.defer="AdminDataLevel.{{$index}}.school">
+                                <input type="text" wire:model.defer="AdminDataLevel.{{$index}}.description">
                             @endif
                         </td>
 
@@ -48,7 +48,7 @@
                             @if($editAdminDataLevelIndex !== $index)
                                 {{$product['score_reward']}}
                             @else
-                                <input type="text" wire:model.defer="AdminDataLevel.{{$index}}.name">
+                                <input type="text" wire:model.defer="AdminDataLevel.{{$index}}.score_reward">
                             @endif
                         </td>
 
@@ -56,7 +56,7 @@
                             @if($editAdminDataLevelIndex !== $index)
                                 {{ $product['ticket_reward'] }}
                             @else
-                                <input type="text" wire:model.defer="AdminDataLevel.{{$index}}.city">
+                                <input type="text" wire:model.defer="AdminDataLevel.{{$index}}.ticket_reward">
                             @endif
                         </td>
 
@@ -64,7 +64,7 @@
                             @if($editAdminDataLevelIndex !== $index)
                                 {{$product['money_reward']}}
                             @else
-                                <input type="text" wire:model.defer="AdminDataLevel.{{$index}}.birthyear">
+                                <input type="text" wire:model.defer="AdminDataLevel.{{$index}}.money_reward">
                             @endif  
                         </td>
 
@@ -72,7 +72,7 @@
                             @if($editAdminDataLevelIndex !== $index)
                                 {{$product['category']['id']}}
                             @else
-                                <input type="text" wire:model.defer="AdminDataLevel.{{$index}}.my_user.email_verified_at">
+                                <input type="text" wire:model.defer="AdminDataLevel.{{$index}}.category.id">
                             @endif
                         </td>
 
@@ -80,7 +80,7 @@
                             @if($editAdminDataLevelIndex !== $index)
                                 {{$product['maximum_time']}}
                             @else
-                                <input type="text" wire:model.defer="AdminDataLevel.{{$index}}.my_user.is_login">
+                                <input type="text" wire:model.defer="AdminDataLevel.{{$index}}.maximum_time">
                             @endif
                         </td>
 

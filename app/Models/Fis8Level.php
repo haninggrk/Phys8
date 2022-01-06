@@ -24,7 +24,7 @@ class Fis8Level extends Model
             ->orWhere('ticket_reward', 'like', $term)
             ->orWhere('money_reward', 'like', $term)
             ->orWhere('maximum_time', 'like', $term)
-            ->orWhereHas('myUser', function ($query) use ($term) {
+            ->orWhereHas('category', function ($query) use ($term) {
                 $query->where('id', 'like', $term);
             });
         });

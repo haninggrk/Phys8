@@ -19,9 +19,9 @@
                         
                         <td class="text-center">
                             @if($editAdminDataLogIndex !== $index)
-                                {{$product['tablename']}}
+                                {{$product['table_name']}}
                             @else
-                                <input type="text" wire:model.defer="AdminDataLog.{{$index}}.email">
+                                <input type="text" wire:model.defer="AdminDataLog.{{$index}}.table_name">
                             @endif
                         </td>
 
@@ -29,7 +29,7 @@
                             @if($editAdminDataLogIndex !== $index)
                                 {{$product['student']['id']}}
                             @else
-                                <input type="text" wire:model.defer="AdminDataLog.{{$index}}.username">
+                                <input type="text" wire:model.defer="AdminDataLog.{{$index}}.student.id">
                             @endif
                         </td>
 
@@ -37,7 +37,7 @@
                             @if($editAdminDataLogIndex !== $index)
                                 {{$product['Log_note']}}
                             @else
-                                <input type="text" wire:model.defer="AdminDataLog.{{$index}}.school">
+                                <input type="text" wire:model.defer="AdminDataLog.{{$index}}.Log_note">
                             @endif
                         </td>
 
@@ -45,7 +45,7 @@
                             @if($editAdminDataLogIndex !== $index)
                                 {{$product['log_description']}}
                             @else
-                                <input type="text" wire:model.defer="AdminDataLog.{{$index}}.name">
+                                <input type="text" wire:model.defer="AdminDataLog.{{$index}}.log_description">
                             @endif
                         </td>
 
@@ -53,7 +53,7 @@
                             @if($editAdminDataLogIndex !== $index)
                                 {{ $product['log_path'] }}
                             @else
-                                <input type="text" wire:model.defer="AdminDataLog.{{$index}}.city">
+                                <input type="text" wire:model.defer="AdminDataLog.{{$index}}.log_path">
                             @endif
                         </td>
 
@@ -61,7 +61,7 @@
                             @if($editAdminDataLogIndex !== $index)
                                 {{$product['log_ip']}}
                             @else
-                                <input type="text" wire:model.defer="AdminDataLog.{{$index}}.birthyear">
+                                <input type="text" wire:model.defer="AdminDataLog.{{$index}}.log_ip">
                             @endif  
                         </td>
                     </tr>
