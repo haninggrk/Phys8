@@ -20,12 +20,12 @@ class AdminDataUser extends Component
         ]);
     }
 
-    public function editAdminDataUser($AdminDataLogIndex)
+    public function editAdminDataLog($AdminDataLogIndex)
     {
         $this->editAdminDataLogsIndex = $AdminDataLogIndex;
     }
 
-    public function saveAdminDataUser($AdminDataLogIndex)
+    public function saveAdminDataLog($AdminDataLogIndex)
     {
         $cekUser = $this->AdminDataLog[$AdminDataLogIndex] ?? null;
 

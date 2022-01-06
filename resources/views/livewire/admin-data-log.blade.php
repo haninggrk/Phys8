@@ -4,12 +4,12 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Email</th>
-                <th>Username</th>
-                <th>School</th>
-                <th>Real name</th>
-                <th>City</th>
-                <th>Birthyear</th>
+                <th>Table Name</th>
+                <th>Student id</th>
+                <th>Log note</th>
+                <th>Log description</th>
+                <th>Log path</th>
+                <th>Log ip</th>
             </tr>
         </thead>
             <tbody>
@@ -18,50 +18,50 @@
                         <td> {{$product['id']}}</td>
                         
                         <td class="text-center">
-                            @if($editAdminDataUserIndex !== $index)
+                            @if($editAdminDataLogIndex !== $index)
                                 {{$product['email']}}
                             @else
-                                <input type="text" wire:model.defer="AdminDataUser.{{$index}}.email">
+                                <input type="text" wire:model.defer="AdminDataLog.{{$index}}.email">
                             @endif
                         </td>
 
                         <td class="text-center">
-                            @if($editAdminDataUserIndex !== $index)
-                                {{$product['username']}}
+                            @if($editAdminDataLogIndex !== $index)
+                                {{$product['Logname']}}
                             @else
-                                <input type="text" wire:model.defer="AdminDataUser.{{$index}}.username">
+                                <input type="text" wire:model.defer="AdminDataLog.{{$index}}.username">
                             @endif
                         </td>
 
                         <td class="text-center">
-                            @if($editAdminDataUserIndex !== $index)
+                            @if($editAdminDataLogIndex !== $index)
                                 {{$product['school']}}
                             @else
-                                <input type="text" wire:model.defer="AdminDataUser.{{$index}}.school">
+                                <input type="text" wire:model.defer="AdminDataLog.{{$index}}.school">
                             @endif
                         </td>
 
                         <td class="text-center">
-                            @if($editAdminDataUserIndex !== $index)
+                            @if($editAdminDataLogIndex !== $index)
                                 {{$product['name']}}
                             @else
-                                <input type="text" wire:model.defer="AdminDataUser.{{$index}}.name">
+                                <input type="text" wire:model.defer="AdminDataLog.{{$index}}.name">
                             @endif
                         </td>
 
                         <td class="text-center">
-                            @if($editAdminDataUserIndex !== $index)
+                            @if($editAdminDataLogIndex !== $index)
                                 {{ $product['city'] }}
                             @else
-                                <input type="text" wire:model.defer="AdminDataUser.{{$index}}.city">
+                                <input type="text" wire:model.defer="AdminDataLog.{{$index}}.city">
                             @endif
                         </td>
 
                         <td class="text-center">
-                            @if($editAdminDataUserIndex !== $index)
+                            @if($editAdminDataLogIndex !== $index)
                                 {{$product['birthyear']}}
                             @else
-                                <input type="text" wire:model.defer="AdminDataUser.{{$index}}.birthyear">
+                                <input type="text" wire:model.defer="AdminDataLog.{{$index}}.birthyear">
                             @endif  
                         </td>
                     </tr>
