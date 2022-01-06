@@ -19,11 +19,9 @@ class Fis8AnswerOption extends Model
         $query->where(function ($query) use ($term) {
             $query->where('id', 'like', $term)
             ->orWhere('opinion_text', 'like', $term)
-            ->orWhere('is_image', 'like', $term)
-            ->orWhereHas('myUser', function ($query) use ($term) {
-                $query->where('id', 'like', $term);
+            ->orWhere('is_image', 'like', $term);
             });
-        });
+
     }
 
     public function questions()

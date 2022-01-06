@@ -17,10 +17,7 @@ class Fis8TicketTransaction extends Model
         $term = "%$term%";
         $query->where(function ($query) use ($term) {
             $query->where('id', 'like', $term)
-            ->orWhere('add_ticket', 'like', $term)
-            ->orWhereHas('myUser', function ($query) use ($term) {
-                $query->where('id', 'like', $term);
-            });
+            ->orWhere('add_ticket', 'like', $term);
         });
     }
 

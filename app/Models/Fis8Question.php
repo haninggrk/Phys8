@@ -20,7 +20,7 @@ class Fis8Question extends Model
             ->orWhere('question_text', 'like', $term)
             ->orWhere('correct_answer_option', 'like', $term)
             ->orWhere('discussion', 'like', $term)
-            ->orWhereHas('myUser', function ($query) use ($term) {
+            ->orWhereHas('level', function ($query) use ($term) {
                 $query->where('id', 'like', $term);
             });
         });

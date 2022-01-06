@@ -27,10 +27,7 @@ class Fis8QuizHistory extends Model
             $query->where('id', 'like', $term)
             ->orWhere('score', 'like', $term)
             ->orWhere('money_reward', 'like', $term)
-            ->orWhere('sum_correct_answer', 'like', $term)
-            ->orWhereHas('myUser', function ($query) use ($term) {
-                $query->where('id', 'like', $term);
-            });
+            ->orWhere('sum_correct_answer', 'like', $term);
         });
     }
 
