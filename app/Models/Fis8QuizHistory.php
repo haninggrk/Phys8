@@ -20,6 +20,20 @@ class Fis8QuizHistory extends Model
         return $this->belongsTo(User::class, 'student_id', 'id');
     }
 
+    public function scopeSearch($query, $term)
+    {
+        $term = "%$term%";
+        $query->where(function ($query) use ($term) {
+            $query->where('id', 'like', $term)
+            ->orWhere('score', 'like', $term)
+            ->orWhere('money_reward', 'like', $term)
+            ->orWhere('sum_correct_answer', 'like', $term)
+            ->orWhereHas('student', function ($query) use ($term) {
+                $query->where('id', 'like', $term);
+            });
+        });
+    }
+
     public function questions()
     {
         return $this->belongsToMany(Fis8Question::class, 'fis8_user_answers', 'fis8_quiz_history_id', 'fis8_question_id')

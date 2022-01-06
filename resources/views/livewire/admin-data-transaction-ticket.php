@@ -29,14 +29,6 @@
                                 <input type="text" wire:model.defer="AdminDataTicketTransaction.{{$index}}.username">
                             @endif
                         </td>
-
-                        <td class="text-center">
-                            @if($editAdminDataTicketTransactionIndex !== $index)
-                                <button wire:click.prevent="editAdminDataTicketTransaction({{$index}})">Ubah</button>
-                            @else
-                                <button wire:click.prevent="saveAdminDataTicketTransaction({{$index}})">Simpan</button>
-                            @endif
-                        </td>
                     </tr>
                 @endforeach
             </tbody>
