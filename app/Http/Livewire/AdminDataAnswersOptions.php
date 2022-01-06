@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\User;
+use App\Models\Fis8AnswerOption;
 
 class AdminDataAnswersOptions extends Component
 {
@@ -29,7 +29,7 @@ class AdminDataAnswersOptions extends Component
         $cekUser = $this->AdminDataOptionAnswer[$AdminDataOptionAnswerIndex] ?? null;
 
         if (!is_null($cekUser)) {
-            $getUser = User::find($cekUser['id']);
+            $getUser = Fis8AnswerOption::find($cekUser['id']);
             $getUser->update([
                 'email' => $cekUser['email'],
                 'username' => $cekUser['username'],

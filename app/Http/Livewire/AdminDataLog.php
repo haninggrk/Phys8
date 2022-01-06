@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\User;
+use App\Models\Fis8Log;
 
 class AdminDataLog extends Component
 {
@@ -13,10 +13,10 @@ class AdminDataLog extends Component
 
     public function render()
     {
-        $this->AdminDataLog = User::with('student')->search(trim($this->search))->get()->toArray();
+        $this->AdminDataLog = Fis8Log::with('student')->search(trim($this->search))->get()->toArray();
 
         return view('livewire.admin-data-log', [
-            'AdminDataUser' => $this->AdminDataLog,
+            'AdminDataLog' => $this->AdminDataLog,
         ]);
     }
 }

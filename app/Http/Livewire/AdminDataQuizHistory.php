@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\User;
+use App\Models\Fis8QuizHistory;
 
 class AdminDataQuizHistory extends Component
 {
@@ -12,7 +12,7 @@ class AdminDataQuizHistory extends Component
 
     public function render()
     {
-        $this->AdminDataQuizHistory = User::with('student')->search(trim($this->search))->get()->toArray();
+        $this->AdminDataQuizHistory = Fis8QuizHistory::with('student')->search(trim($this->search))->get()->toArray();
 
         return view('livewire.admin-data-quiz-history', [
             'AdminDataQuizHistory' => $this->AdminDataQuizHistory,

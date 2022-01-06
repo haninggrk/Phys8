@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\User;
+use App\Models\Fis8Question;
 
 class AdminDataAnswersOptions extends Component
 {
@@ -13,7 +13,7 @@ class AdminDataAnswersOptions extends Component
 
     public function render()
     {
-        $this->AdminDataQuestion = User::with('level')->search(trim($this->search))->get()->toArray();
+        $this->AdminDataQuestion = Fis8Question::with('level')->search(trim($this->search))->get()->toArray();
 
         return view('livewire.admin-data-option-answers', [
             'AdminDataQuestion' => $this->AdminDataQuestion,
@@ -30,7 +30,7 @@ class AdminDataAnswersOptions extends Component
         $cekUser = $this->AdminDataQuestion[$AdminDataQuestionIndex] ?? null;
 
         if (!is_null($cekUser)) {
-            $getUser = User::find($cekUser['id']);
+            $getUser = Fis8Question::find($cekUser['id']);
             $getUser->update([
                 'email' => $cekUser['email'],
                 'username' => $cekUser['username'],

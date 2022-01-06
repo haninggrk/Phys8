@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\User;
+use App\Models\Fis8Category;
 
 class AdminDataCategories extends Component
 {
@@ -13,6 +13,7 @@ class AdminDataCategories extends Component
 
     public function render()
     {
+
 
         return view('livewire.admin-data-category', [
             'AdminDataCategory' => $this->AdminDataCategory,
@@ -29,7 +30,7 @@ class AdminDataCategories extends Component
         $cekUser = $this->AdminDataCategory[$AdminDataCategoryIndex] ?? null;
 
         if (!is_null($cekUser)) {
-            $getUser = User::find($cekUser['id']);
+            $getUser = Fis8Category::find($cekUser['id']);
             $getUser->update([
                 'email' => $cekUser['email'],
                 'username' => $cekUser['username'],
