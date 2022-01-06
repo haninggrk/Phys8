@@ -10,31 +10,31 @@
             </tr>
         </thead>
             <tbody>
-                @foreach($AdminDataCategory as $index => $product)
+                @foreach($AdminDataOptionAnswer as $index => $product)
                     <tr>
                         <td> {{$product['id']}}</td>
                         
                         <td class="text-center">
-                            @if($editAdminDataCategoryIndex !== $index)
-                                {{$product['name']}}
+                            @if($editAdminDataOptionAnswerIndex !== $index)
+                                {{$product['opinion_text']}}
                             @else
-                                <input type="text" wire:model.defer="AdminDataCategory.{{$index}}.email">
+                                <input type="text" wire:model.defer="AdminDataOptionAnswer.{{$index}}.email">
                             @endif
                         </td>
 
                         <td class="text-center">
-                            @if($editAdminDataCategoryIndex !== $index)
-                                {{$product['description']}}
+                            @if($editAdminDataOptionAnswerIndex !== $index)
+                                {{$product['is_image']}}
                             @else
-                                <input type="text" wire:model.defer="AdminDataCategory.{{$index}}.username">
+                                <input type="text" wire:model.defer="AdminDataOptionAnswer.{{$index}}.username">
                             @endif
                         </td>
 
                         <td class="text-center">
-                            @if($editAdminDataCategoryIndex !== $index)
-                                <button wire:click.prevent="editAdminDataCategory({{$index}})">Ubah</button>
+                            @if($editAdminDataOptionAnswerIndex !== $index)
+                                <button wire:click.prevent="editAdminDataOptionAnswer({{$index}})">Ubah</button>
                             @else
-                                <button wire:click.prevent="saveAdminDataCategory({{$index}})">Simpan</button>
+                                <button wire:click.prevent="saveAdminDataOptionAnswer({{$index}})">Simpan</button>
                             @endif
                         </td>
                     </tr>
