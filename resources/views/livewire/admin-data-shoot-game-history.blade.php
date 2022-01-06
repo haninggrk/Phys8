@@ -18,7 +18,7 @@
                             @if($editAdminDataShootGameHistoryIndex !== $index)
                                 {{$product['student']['id']}}
                             @else
-                                <input type="text" wire:model.defer="AdminDataShootGameHistory.{{$index}}.email">
+                                <input type="text" wire:model.defer="AdminDataShootGameHistory.{{$index}}.student.id">
                             @endif
                         </td>
 
@@ -26,7 +26,7 @@
                             @if($editAdminDataShootGameHistoryIndex !== $index)
                                 {{$product['score']}}
                             @else
-                                <input type="text" wire:model.defer="AdminDataShootGameHistory.{{$index}}.username">
+                                <input type="text" wire:model.defer="AdminDataShootGameHistory.{{$index}}.score">
                             @endif
                         </td>
 
@@ -34,7 +34,7 @@
                             @if($editAdminDataShootGameHistoryIndex !== $index)
                                 {{$product['money_reward']}}
                             @else
-                                <input type="text" wire:model.defer="AdminDataShootGameHistory.{{$index}}.email">
+                                <input type="text" wire:model.defer="AdminDataShootGameHistory.{{$index}}.money_reward">
                             @endif
                         </td>
                         

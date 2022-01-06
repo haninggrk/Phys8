@@ -18,7 +18,7 @@
                             @if($editAdminDataCategoryIndex !== $index)
                                 {{$product['name']}}
                             @else
-                                <input type="text" wire:model.defer="AdminDataCategory.{{$index}}.email">
+                                <input type="text" wire:model.defer="AdminDataCategory.{{$index}}.name">
                             @endif
                         </td>
 
@@ -26,7 +26,7 @@
                             @if($editAdminDataCategoryIndex !== $index)
                                 {{$product['description']}}
                             @else
-                                <input type="text" wire:model.defer="AdminDataCategory.{{$index}}.username">
+                                <input type="text" wire:model.defer="AdminDataCategory.{{$index}}.description">
                             @endif
                         </td>
 

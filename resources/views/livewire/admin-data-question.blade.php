@@ -20,7 +20,7 @@
                             @if($editAdminDataQuestionIndex !== $index)
                                 {{$product['level']['id']}}
                             @else
-                                <input type="text" wire:model.defer="AdminDataQuestion.{{$index}}.email">
+                                <input type="text" wire:model.defer="AdminDataQuestion.{{$index}}.level.id">
                             @endif
                         </td>
 
@@ -28,7 +28,7 @@
                             @if($editAdminDataQuestionIndex !== $index)
                                 {{$product['question_text']}}
                             @else
-                                <input type="text" wire:model.defer="AdminDataQuestion.{{$index}}.username">
+                                <input type="text" wire:model.defer="AdminDataQuestion.{{$index}}.question_text">
                             @endif
                         </td>
 
@@ -36,7 +36,7 @@
                             @if($editAdminDataQuestionIndex !== $index)
                                 {{$product['correct_answer_option']}}
                             @else
-                                <input type="text" wire:model.defer="AdminDataQuestion.{{$index}}.email">
+                                <input type="text" wire:model.defer="AdminDataQuestion.{{$index}}.correct_answer_option">
                             @endif
                         </td>
 
@@ -44,7 +44,7 @@
                             @if($editAdminDataQuestionIndex !== $index)
                                 {{$product['discussion']}}
                             @else
-                                <input type="text" wire:model.defer="AdminDataQuestion.{{$index}}.username">
+                                <input type="text" wire:model.defer="AdminDataQuestion.{{$index}}.discussion">
                             @endif
                         </td>
 

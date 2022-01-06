@@ -18,7 +18,7 @@
                             @if($editAdminDataOptionAnswerIndex !== $index)
                                 {{$product['opinion_text']}}
                             @else
-                                <input type="text" wire:model.defer="AdminDataOptionAnswer.{{$index}}.email">
+                                <input type="text" wire:model.defer="AdminDataOptionAnswer.{{$index}}.opinion_text">
                             @endif
                         </td>
 
@@ -26,7 +26,7 @@
                             @if($editAdminDataOptionAnswerIndex !== $index)
                                 {{$product['is_image']}}
                             @else
-                                <input type="text" wire:model.defer="AdminDataOptionAnswer.{{$index}}.username">
+                                <input type="text" wire:model.defer="AdminDataOptionAnswer.{{$index}}.is_image">
                             @endif
                         </td>
 
