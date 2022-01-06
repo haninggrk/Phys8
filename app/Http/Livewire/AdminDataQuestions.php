@@ -5,29 +5,29 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\User;
 
-class AdminDataLevel extends Component
+class AdminDataAnswersOptions extends Component
 {
-    public $editAdminDataLevelIndex = null;
-    public $AdminDataLevel;
+    public $editAdminDataQuestionIndex = null;
+    public $AdminDataQuestion;
     public $search;
 
     public function render()
     {
-        $this->AdminDataLevel = User::with('myUser')->search(trim($this->search))->get()->toArray();
+        $this->AdminDataQuestion = User::with('myUser')->search(trim($this->search))->get()->toArray();
 
-        return view('livewire.admin-data-level', [
-            'AdminDataLevel' => $this->AdminDataLevel,
+        return view('livewire.admin-data-option-answers', [
+            'AdminDataQuestion' => $this->AdminDataQuestion,
         ]);
     }
 
-    public function editAdminDataLevel($AdminDataLevelIndex)
+    public function editAdminDataQuestion($AdminDataQuestionIndex)
     {
-        $this->editAdminDataLevelIndex = $AdminDataLevelIndex;
+        $this->editAdminDataQuestionIndex = $AdminDataQuestionIndex;
     }
 
-    public function saveAdminDataLevel($AdminDataLevelIndex)
+    public function saveAdminDataQuestion($AdminDataQuestionIndex)
     {
-        $cekUser = $this->AdminDataLevel[$AdminDataLevelIndex] ?? null;
+        $cekUser = $this->AdminDataQuestion[$AdminDataQuestionIndex] ?? null;
 
         if (!is_null($cekUser)) {
             $getUser = User::find($cekUser['id']);
@@ -49,6 +49,6 @@ class AdminDataLevel extends Component
                 'photo' => $cekUser['my_user']['photo'],
             ]);
         }
-        $this->editAdminDataLevelIndex = null;
+        $this->editAdminDataQuestionIndex = null;
     }
 }

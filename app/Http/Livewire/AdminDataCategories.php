@@ -7,7 +7,7 @@ use App\Models\User;
 
 class AdminDataCategories extends Component
 {
-    public $editAdminDataLevekIndex = null;
+    public $editAdminDataCategoryIndex = null;
     public $AdminDataCategory;
     public $search;
 
