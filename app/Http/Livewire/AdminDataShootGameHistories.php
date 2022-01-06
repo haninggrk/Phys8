@@ -7,7 +7,7 @@ use App\Models\User;
 
 class AdminDataShootGameHistories extends Component
 {
- 
+    public $AdminDataShootGameHistory;
     public $search;
 
     public function render()
