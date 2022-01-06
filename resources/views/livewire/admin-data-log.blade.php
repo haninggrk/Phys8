@@ -18,51 +18,38 @@
                         <td> {{$product['id']}}</td>
                         
                         <td class="text-center">
-                            @if($editAdminDataLogIndex !== $index)
+                           
                                 {{$product['table_name']}}
-                            @else
-                                <input type="text" wire:model.defer="AdminDataLog.{{$index}}.table_name">
-                            @endif
                         </td>
 
                         <td class="text-center">
-                            @if($editAdminDataLogIndex !== $index)
+                           
                                 {{$product['student']['id']}}
-                            @else
-                                <input type="text" wire:model.defer="AdminDataLog.{{$index}}.student.id">
-                            @endif
+                           
                         </td>
 
                         <td class="text-center">
-                            @if($editAdminDataLogIndex !== $index)
+                           
                                 {{$product['Log_note']}}
-                            @else
-                                <input type="text" wire:model.defer="AdminDataLog.{{$index}}.Log_note">
-                            @endif
+                           
                         </td>
 
                         <td class="text-center">
-                            @if($editAdminDataLogIndex !== $index)
+                           
                                 {{$product['log_description']}}
-                            @else
-                                <input type="text" wire:model.defer="AdminDataLog.{{$index}}.log_description">
-                            @endif
+                            
                         </td>
 
                         <td class="text-center">
-                            @if($editAdminDataLogIndex !== $index)
+                           
                                 {{ $product['log_path'] }}
-                            @else
-                                <input type="text" wire:model.defer="AdminDataLog.{{$index}}.log_path">
-                            @endif
+                           
                         </td>
 
                         <td class="text-center">
-                            @if($editAdminDataLogIndex !== $index)
+                           
                                 {{$product['log_ip']}}
-                            @else
-                                <input type="text" wire:model.defer="AdminDataLog.{{$index}}.log_ip">
-                            @endif  
+                            
                         </td>
                     </tr>
                 @endforeach

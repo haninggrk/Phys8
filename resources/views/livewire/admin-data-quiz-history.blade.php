@@ -15,35 +15,27 @@
                         <td> {{$product['id']}}</td>
                         
                         <td class="text-center">
-                            @if($editAdminDataQuizHistoryIndex !== $index)
+                           
                                 {{$product['student']['id']}}
-                            @else
-                                <input type="text" wire:model.defer="AdminDataQuizHistory.{{$index}}.student.id">
-                            @endif
+                           
                         </td>
 
                         <td class="text-center">
-                            @if($editAdminDataQuizHistoryIndex !== $index)
+                           
                                 {{$product['score']}}
-                            @else
-                                <input type="text" wire:model.defer="AdminDataQuizHistory.{{$index}}.score">
-                            @endif
+                           
                         </td>
 
                         <td class="text-center">
-                            @if($editAdminDataQuizHistoryIndex !== $index)
+                            
                                 {{$product['money_reward']}}
-                            @else
-                                <input type="text" wire:model.defer="AdminDataQuizHistory.{{$index}}.money_reward">
-                            @endif
+                            
                         </td>
 
                         <td class="text-center">
-                            @if($editAdminDataQuizHistoryIndex !== $index)
+                           
                                 {{$product['sum_correct_answer']}}
-                            @else
-                                <input type="text" wire:model.defer="AdminDataQuizHistory.{{$index}}.sum_correct_answer">
-                            @endif
+                           
                         </td>
                         
                     </tr>

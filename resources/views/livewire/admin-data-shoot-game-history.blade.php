@@ -15,27 +15,21 @@
                         <td> {{$product['id']}}</td>
                         
                         <td class="text-center">
-                            @if($editAdminDataShootGameHistoryIndex !== $index)
+                           
                                 {{$product['student']['id']}}
-                            @else
-                                <input type="text" wire:model.defer="AdminDataShootGameHistory.{{$index}}.student.id">
-                            @endif
+                           
                         </td>
 
                         <td class="text-center">
-                            @if($editAdminDataShootGameHistoryIndex !== $index)
+                           
                                 {{$product['score']}}
-                            @else
-                                <input type="text" wire:model.defer="AdminDataShootGameHistory.{{$index}}.score">
-                            @endif
+                            
                         </td>
 
                         <td class="text-center">
-                            @if($editAdminDataShootGameHistoryIndex !== $index)
+                           
                                 {{$product['money_reward']}}
-                            @else
-                                <input type="text" wire:model.defer="AdminDataShootGameHistory.{{$index}}.money_reward">
-                            @endif
+                            
                         </td>
                         
                     </tr>

@@ -15,19 +15,15 @@
                         <td> {{$product['id']}}</td>
                         
                         <td class="text-center">
-                            @if($editAdminDataTicketTransactionIndex !== $index)
+                           
                                 {{$product['student']['id']}}
-                            @else
-                                <input type="text" wire:model.defer="AdminDataTicketTransaction.{{$index}}.student.id">
-                            @endif
+                           
                         </td>
 
                         <td class="text-center">
-                            @if($editAdminDataTicketTransactionIndex !== $index)
+                          
                                 {{$product['add_ticket']}}
-                            @else
-                                <input type="text" wire:model.defer="AdminDataTicketTransaction.{{$index}}.add_ticket">
-                            @endif
+                           
                         </td>
                     </tr>
                 @endforeach
