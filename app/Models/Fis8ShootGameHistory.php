@@ -13,10 +13,24 @@ class Fis8ShootGameHistory extends Model
         'id',
     ];
 
+    public function scopeSearch($query, $term)
+    {
+        $term = "%$term%";
+        $query->where(function ($query) use ($term) {
+            $query->where('id', 'like', $term)
+            ->orWhere('score', 'like', $term)
+            ->orWhere('money_reward', 'like', $term)
+            ->orWhereHas('myUser', function ($query) use ($term) {
+                $query->where('id', 'like', $term);
+            });
+        });
+    }
+
     public const UPDATED_AT = null;
 
     public function student()
     {
         return $this->belongsTo(User::class, 'student_id', 'id');
     }
+    
 }

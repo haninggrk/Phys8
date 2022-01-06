@@ -7,27 +7,27 @@ use App\Models\User;
 
 class AdminDataShootGameHistories extends Component
 {
-    public $editAdminDataQuizHistoryIndex = null;
-    public $AdminDataQuizHistory;
+    public $editAdminDataShootGameHistoryIndex = null;
+    public $AdminDataShootGameHistory;
     public $search;
 
     public function render()
     {
-        $this->AdminDataQuizHistory = User::with('myUser')->search(trim($this->search))->get()->toArray();
+        $this->AdminDataShootGameHistory = User::with('myUser')->search(trim($this->search))->get()->toArray();
 
         return view('livewire.admin-data-quiz-history', [
-            'AdminDataQuizHistory' => $this->AdminDataQuizHistory,
+            'AdminDataShootGameHistory' => $this->AdminDataShootGameHistory,
         ]);
     }
 
-    public function editAdminDataQuizHistory($AdminDataQuizHistoryIndex)
+    public function editAdminDataShootGameHistory($AdminDataShootGameHistoryIndex)
     {
-        $this->editAdminDataQuizHistoryIndex = $AdminDataQuizHistoryIndex;
+        $this->editAdminDataShootGameHistoryIndex = $AdminDataShootGameHistoryIndex;
     }
 
-    public function saveAdminDataQuizHistory($AdminDataQuizHistoryIndex)
+    public function saveAdminDataShootGameHistory($AdminDataShootGameHistoryIndex)
     {
-        $cekUser = $this->AdminDataQuizHistory[$AdminDataQuizHistoryIndex] ?? null;
+        $cekUser = $this->AdminDataShootGameHistory[$AdminDataShootGameHistoryIndex] ?? null;
 
         if (!is_null($cekUser)) {
             $getUser = User::find($cekUser['id']);
@@ -49,6 +49,6 @@ class AdminDataShootGameHistories extends Component
                 'photo' => $cekUser['my_user']['photo'],
             ]);
         }
-        $this->editAdminDataQuizHistoryIndex = null;
+        $this->editAdminDataShootGameHistoryIndex = null;
     }
 }

@@ -10,31 +10,31 @@
             </tr>
         </thead>
             <tbody>
-                @foreach($AdminDataQuizHistory as $index => $product)
+                @foreach($AdminDataShootGameHistory as $index => $product)
                     <tr>
                         <td> {{$product['id']}}</td>
                         
                         <td class="text-center">
-                            @if($editAdminDataQuizHistoryIndex !== $index)
+                            @if($editAdminDataShootGameHistoryIndex !== $index)
                                 {{$product['student']['id']}}
                             @else
-                                <input type="text" wire:model.defer="AdminDataQuizHistory.{{$index}}.email">
+                                <input type="text" wire:model.defer="AdminDataShootGameHistory.{{$index}}.email">
                             @endif
                         </td>
 
                         <td class="text-center">
-                            @if($editAdminDataQuizHistoryIndex !== $index)
+                            @if($editAdminDataShootGameHistoryIndex !== $index)
                                 {{$product['score']}}
                             @else
-                                <input type="text" wire:model.defer="AdminDataQuizHistory.{{$index}}.username">
+                                <input type="text" wire:model.defer="AdminDataShootGameHistory.{{$index}}.username">
                             @endif
                         </td>
 
                         <td class="text-center">
-                            @if($editAdminDataQuizHistoryIndex !== $index)
+                            @if($editAdminDataShootGameHistoryIndex !== $index)
                                 {{$product['money_reward']}}
                             @else
-                                <input type="text" wire:model.defer="AdminDataQuizHistory.{{$index}}.email">
+                                <input type="text" wire:model.defer="AdminDataShootGameHistory.{{$index}}.email">
                             @endif
                         </td>
                         

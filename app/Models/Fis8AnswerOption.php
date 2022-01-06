@@ -20,7 +20,7 @@ class Fis8AnswerOption extends Model
             $query->where('id', 'like', $term)
             ->orWhere('opinion_text', 'like', $term)
             ->orWhere('is_image', 'like', $term)
-            ->orWhereHas('category', function ($query) use ($term) {
+            ->orWhereHas('myUser', function ($query) use ($term) {
                 $query->where('id', 'like', $term);
             });
         });
