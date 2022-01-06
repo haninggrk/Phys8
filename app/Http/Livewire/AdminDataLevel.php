@@ -39,7 +39,7 @@ class AdminDataLevel extends Component
                 'ticket_reward' => $cekUser['ticket_reward'],
                 'money_reward' => $cekUser['money_reward'],
                 'maximum_time' => $cekUser['maximum_time'],
-                'category_id' => $cekUser['category']['id'],
+                'fis8_category_id' => $cekUser['category']['id'],
             ]);
         }
         $this->editAdminDataLevelIndex = null;

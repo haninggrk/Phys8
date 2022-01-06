@@ -35,7 +35,7 @@ class AdminDataAnswersOptions extends Component
                 'question_text' => $cekUser['question_text'],
                 'correct_answer_option' => $cekUser['correct_answer_option'],
                 'discussion' => $cekUser['discussion'],
-                'level_id' => $cekUser['level']['id'],
+                'fis8_level_id' => $cekUser['level']['id'],
             ]);
         }
         $this->editAdminDataQuestionIndex = null;
