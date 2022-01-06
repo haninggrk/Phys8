@@ -39,15 +39,6 @@ class AdminDataLevel extends Component
                 'city' => $cekUser['city'],
                 'birthyear' => $cekUser['birthyear'],
             ]);
-
-            $getUser->myUser()->update([
-                'is_active' => $cekUser['my_user']['is_active'],
-                'is_admin' => $cekUser['my_user']['is_admin'],
-                'ticket' => $cekUser['my_user']['ticket'],
-                'score' => $cekUser['my_user']['score'],
-                'money' => $cekUser['my_user']['money'],
-                'photo' => $cekUser['my_user']['photo'],
-            ]);
         }
         $this->editAdminDataLevelIndex = null;
     }

@@ -13,7 +13,7 @@ class AdminDataAnswersOptions extends Component
 
     public function render()
     {
-        $this->AdminDataQuestion = Fis8Question::with('level')->search(trim($this->search))->get()->toArray();
+        $this->AdminDataQuestion = Fis8AnswerOption::with('level')->search(trim($this->search))->get()->toArray();
 
         return view('livewire.admin-data-option-answers', [
             'AdminDataOptionAnswer' => $this->AdminDataOptionAnswer,
@@ -32,21 +32,8 @@ class AdminDataAnswersOptions extends Component
         if (!is_null($cekUser)) {
             $getUser = Fis8AnswerOption::find($cekUser['id']);
             $getUser->update([
-                'email' => $cekUser['email'],
-                'username' => $cekUser['username'],
-                'name' => $cekUser['name'],
-                'school' => $cekUser['school'],
-                'city' => $cekUser['city'],
-                'birthyear' => $cekUser['birthyear'],
-            ]);
-
-            $getUser->myUser()->update([
-                'is_active' => $cekUser['my_user']['is_active'],
-                'is_admin' => $cekUser['my_user']['is_admin'],
-                'ticket' => $cekUser['my_user']['ticket'],
-                'score' => $cekUser['my_user']['score'],
-                'money' => $cekUser['my_user']['money'],
-                'photo' => $cekUser['my_user']['photo'],
+                'opinion_text' => $cekUser['opinion_text'],
+                'is_image' => $cekUser['is_image'],
             ]);
         }
         $this->editAdminDataOptionAnswerIndex = null;
