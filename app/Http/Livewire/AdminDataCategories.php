@@ -13,7 +13,6 @@ class AdminDataCategories extends Component
 
     public function render()
     {
-        $this->AdminDataCategory = User::with('myUser')->search(trim($this->search))->get()->toArray();
 
         return view('livewire.admin-data-category', [
             'AdminDataCategory' => $this->AdminDataCategory,

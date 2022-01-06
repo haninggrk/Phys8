@@ -13,7 +13,7 @@ class AdminDataShootGameHistories extends Component
 
     public function render()
     {
-        $this->AdminDataShootGameHistory = User::with('myUser')->search(trim($this->search))->get()->toArray();
+        $this->AdminDataShootGameHistory = User::with('student')->search(trim($this->search))->get()->toArray();
 
         return view('livewire.admin-data-shoot-game-history', [
             'AdminDataShootGameHistory' => $this->AdminDataShootGameHistory,

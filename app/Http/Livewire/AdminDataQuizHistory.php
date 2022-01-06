@@ -13,7 +13,7 @@ class AdminDataQuizHistory extends Component
 
     public function render()
     {
-        $this->AdminDataQuizHistory = User::with('myUser')->search(trim($this->search))->get()->toArray();
+        $this->AdminDataQuizHistory = User::with('student')->search(trim($this->search))->get()->toArray();
 
         return view('livewire.admin-data-quiz-history', [
             'AdminDataQuizHistory' => $this->AdminDataQuizHistory,

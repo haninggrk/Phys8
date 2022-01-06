@@ -13,7 +13,7 @@ class AdminDataLog extends Component
 
     public function render()
     {
-        $this->AdminDataLog = User::with('myUser')->search(trim($this->search))->get()->toArray();
+        $this->AdminDataLog = User::with('student')->search(trim($this->search))->get()->toArray();
 
         return view('livewire.admin-data-log', [
             'AdminDataUser' => $this->AdminDataLog,

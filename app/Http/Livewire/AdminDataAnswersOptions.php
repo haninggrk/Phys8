@@ -13,7 +13,6 @@ class AdminDataAnswersOptions extends Component
 
     public function render()
     {
-        $this->AdminDataOptionAnswer = User::with('myUser')->search(trim($this->search))->get()->toArray();
 
         return view('livewire.admin-data-option-answers', [
             'AdminDataOptionAnswer' => $this->AdminDataOptionAnswer,

@@ -13,7 +13,7 @@ class AdminDataTicketTransaction extends Component
 
     public function render()
     {
-        $this->AdminDataTicketTransaction = User::with('myUser')->search(trim($this->search))->get()->toArray();
+        $this->AdminDataTicketTransaction = User::with('student')->search(trim($this->search))->get()->toArray();
 
         return view('livewire.admin-data-transction-ticket', [
             'AdminDataTicketTransaction' => $this->AdminDataTicketTransaction,

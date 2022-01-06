@@ -13,7 +13,7 @@ class AdminDataLevel extends Component
 
     public function render()
     {
-        $this->AdminDataLevel = User::with('myUser')->search(trim($this->search))->get()->toArray();
+        $this->AdminDataLevel = User::with('category')->search(trim($this->search))->get()->toArray();
 
         return view('livewire.admin-data-level', [
             'AdminDataLevel' => $this->AdminDataLevel,
