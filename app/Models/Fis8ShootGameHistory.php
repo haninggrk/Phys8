@@ -19,7 +19,10 @@ class Fis8ShootGameHistory extends Model
         $query->where(function ($query) use ($term) {
             $query->where('id', 'like', $term)
             ->orWhere('score', 'like', $term)
-            ->orWhere('money_reward', 'like', $term);
+            ->orWhere('money_reward', 'like', $term)
+            ->orWhereHas('student', function ($query) use ($term) {
+                $query->where('id', 'like', $term);
+            });
         });
     }
 
