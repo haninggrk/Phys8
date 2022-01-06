@@ -32,12 +32,10 @@ class AdminDataAnswersOptions extends Component
         if (!is_null($cekUser)) {
             $getUser = Fis8Question::find($cekUser['id']);
             $getUser->update([
-                'email' => $cekUser['email'],
-                'username' => $cekUser['username'],
-                'name' => $cekUser['name'],
-                'school' => $cekUser['school'],
-                'city' => $cekUser['city'],
-                'birthyear' => $cekUser['birthyear'],
+                'question_text' => $cekUser['question_text'],
+                'correct_answer_option' => $cekUser['correct_answer_option'],
+                'discussion' => $cekUser['discussion'],
+                'level_id' => $cekUser['level']['id'],
             ]);
         }
         $this->editAdminDataQuestionIndex = null;

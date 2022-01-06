@@ -32,12 +32,14 @@ class AdminDataLevel extends Component
         if (!is_null($cekUser)) {
             $getUser = Fis8Level::find($cekUser['id']);
             $getUser->update([
-                'email' => $cekUser['email'],
-                'username' => $cekUser['username'],
                 'name' => $cekUser['name'],
-                'school' => $cekUser['school'],
-                'city' => $cekUser['city'],
-                'birthyear' => $cekUser['birthyear'],
+                'thumbnail' => $cekUser['thumbnail'],
+                'description' => $cekUser['description'],
+                'score_reward' => $cekUser['score_reward'],
+                'ticket_reward' => $cekUser['ticket_reward'],
+                'money_reward' => $cekUser['money_reward'],
+                'maximum_time' => $cekUser['maximum_time'],
+                'category_id' => $cekUser['category']['id'],
             ]);
         }
         $this->editAdminDataLevelIndex = null;
