@@ -15,7 +15,7 @@ class AdminDataUser extends Component
     {
         $this->AdminDataLevel = User::with('myUser')->search(trim($this->search))->get()->toArray();
 
-        return view('livewire.admin-data-user', [
+        return view('livewire.admin-data-level', [
             'AdminDataLevel' => $this->AdminDataLevel,
         ]);
     }

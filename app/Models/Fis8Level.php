@@ -12,6 +12,24 @@ class Fis8Level extends Model
         'id',
     ];
 
+    public function scopeSearch($query, $term)
+    {
+        $term = "%$term%";
+        $query->where(function ($query) use ($term) {
+            $query->where('id', 'like', $term)
+            ->orWhere('name', 'like', $term)
+            ->orWhere('thumbnail', 'like', $term)
+            ->orWhere('description', 'like', $term)
+            ->orWhere('score_reward', 'like', $term)
+            ->orWhere('ticket_reward', 'like', $term)
+            ->orWhere('money_reward', 'like', $term)
+            ->orWhere('maximum_time', 'like', $term)
+            ->orWhereHas('myUser', function ($query) use ($term) {
+                $query->where('id', 'like', $term);
+            });
+        });
+    }
+
     public function category()
     {
         return $this->belongsTo(Fis8Category::class, 'fis8_category_id', 'id');

@@ -4,14 +4,14 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Email</th>
-                <th>Username</th>
-                <th>School</th>
-                <th>Real name</th>
-                <th>City</th>
-                <th>Birthyear</th>
-                <th>Email Verified when?</th>
-                <th>Login</th>
+                <th>Nama</th>
+                <th>Thumbnail</th>
+                <th>Description</th>
+                <th>Score reward</th>
+                <th>Ticket Reward</th>
+                <th>Money Reward</th>
+                <th>Category</th>
+                <th>Time Maximum</th>
                 <th class="text-center">Actions</th>
             </tr>
         </thead>
@@ -22,7 +22,7 @@
                         
                         <td class="text-center">
                             @if($editAdminDataLevelIndex !== $index)
-                                {{$product['email']}}
+                                {{$product['name']}}
                             @else
                                 <input type="text" wire:model.defer="AdminDataLevel.{{$index}}.email">
                             @endif
@@ -30,7 +30,7 @@
 
                         <td class="text-center">
                             @if($editAdminDataLevelIndex !== $index)
-                                {{$product['username']}}
+                                {{$product['thumbnail']}}
                             @else
                                 <input type="text" wire:model.defer="AdminDataLevel.{{$index}}.username">
                             @endif
@@ -38,7 +38,7 @@
 
                         <td class="text-center">
                             @if($editAdminDataLevelIndex !== $index)
-                                {{$product['school']}}
+                                {{$product['description']}}
                             @else
                                 <input type="text" wire:model.defer="AdminDataLevel.{{$index}}.school">
                             @endif
@@ -46,7 +46,7 @@
 
                         <td class="text-center">
                             @if($editAdminDataLevelIndex !== $index)
-                                {{$product['name']}}
+                                {{$product['score_reward']}}
                             @else
                                 <input type="text" wire:model.defer="AdminDataLevel.{{$index}}.name">
                             @endif
@@ -54,7 +54,7 @@
 
                         <td class="text-center">
                             @if($editAdminDataLevelIndex !== $index)
-                                {{ $product['city'] }}
+                                {{ $product['ticket_reward'] }}
                             @else
                                 <input type="text" wire:model.defer="AdminDataLevel.{{$index}}.city">
                             @endif
@@ -62,7 +62,7 @@
 
                         <td class="text-center">
                             @if($editAdminDataLevelIndex !== $index)
-                                {{$product['birthyear']}}
+                                {{$product['money_reward']}}
                             @else
                                 <input type="text" wire:model.defer="AdminDataLevel.{{$index}}.birthyear">
                             @endif  
@@ -70,7 +70,7 @@
 
                         <td class="text-center">
                             @if($editAdminDataLevelIndex !== $index)
-                                {{$product['my_user']['email_verified_at']}}
+                                {{$product['category']['id']}}
                             @else
                                 <input type="text" wire:model.defer="AdminDataLevel.{{$index}}.my_user.email_verified_at">
                             @endif
@@ -78,7 +78,7 @@
 
                         <td class="text-center">
                             @if($editAdminDataLevelIndex !== $index)
-                                {{$product['my_user']['is_login']}}
+                                {{$product['maximum_time']}}
                             @else
                                 <input type="text" wire:model.defer="AdminDataLevel.{{$index}}.my_user.is_login">
                             @endif
