@@ -20,7 +20,7 @@ class Fis8Category extends Model
             $query->where('id', 'like', $term)
             ->orWhere('name', 'like', $term)
             ->orWhere('description', 'like', $term)
-            ->orWhereHas('myUser', function ($query) use ($term) {
+            ->orWhereHas('category', function ($query) use ($term) {
                 $query->where('id', 'like', $term);
             });
         });

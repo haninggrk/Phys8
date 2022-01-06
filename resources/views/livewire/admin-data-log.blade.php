@@ -27,7 +27,7 @@
 
                         <td class="text-center">
                             @if($editAdminDataLogIndex !== $index)
-                                {{$product['Student']['id']}}
+                                {{$product['student']['id']}}
                             @else
                                 <input type="text" wire:model.defer="AdminDataLog.{{$index}}.username">
                             @endif

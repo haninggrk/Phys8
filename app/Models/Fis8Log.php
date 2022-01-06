@@ -23,7 +23,7 @@ class Fis8Log extends Model
             ->orWhere('log_description', 'like', $term)
             ->orWhere('log_path', 'like', $term)
             ->orWhere('log_ip', 'like', $term)
-            ->orWhereHas('myUser', function ($query) use ($term) {
+            ->orWhereHas('student', function ($query) use ($term) {
                 $query->where('id', 'like', $term);
             });
         });

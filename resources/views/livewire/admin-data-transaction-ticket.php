@@ -4,37 +4,37 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Nama</th>
-                <th>Deskripsi</th>
+                <th>Student Id</th>
+                <th>Added ticket</th>
                 <th class="text-center">Actions</th>
             </tr>
         </thead>
             <tbody>
-                @foreach($AdminDataCategory as $index => $product)
+                @foreach($AdminDataTicketTransaction as $index => $product)
                     <tr>
                         <td> {{$product['id']}}</td>
                         
                         <td class="text-center">
-                            @if($editAdminDataCategoryIndex !== $index)
-                                {{$product['name']}}
+                            @if($editAdminDataTicketTransactionIndex !== $index)
+                                {{$product['student']['id']}}
                             @else
-                                <input type="text" wire:model.defer="AdminDataCategory.{{$index}}.email">
+                                <input type="text" wire:model.defer="AdminDataTicketTransaction.{{$index}}.email">
                             @endif
                         </td>
 
                         <td class="text-center">
-                            @if($editAdminDataCategoryIndex !== $index)
-                                {{$product['description']}}
+                            @if($editAdminDataTicketTransactionIndex !== $index)
+                                {{$product['add_ticket']}}
                             @else
-                                <input type="text" wire:model.defer="AdminDataCategory.{{$index}}.username">
+                                <input type="text" wire:model.defer="AdminDataTicketTransaction.{{$index}}.username">
                             @endif
                         </td>
 
                         <td class="text-center">
-                            @if($editAdminDataCategoryIndex !== $index)
-                                <button wire:click.prevent="editAdminDataCategory({{$index}})">Ubah</button>
+                            @if($editAdminDataTicketTransactionIndex !== $index)
+                                <button wire:click.prevent="editAdminDataTicketTransaction({{$index}})">Ubah</button>
                             @else
-                                <button wire:click.prevent="saveAdminDataCategory({{$index}})">Simpan</button>
+                                <button wire:click.prevent="saveAdminDataTicketTransaction({{$index}})">Simpan</button>
                             @endif
                         </td>
                     </tr>
