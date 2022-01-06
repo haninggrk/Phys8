@@ -4,37 +4,55 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Opinion text</th>
-                <th>Image</th>
+                <th>Level</th>
+                <th>Question Text</th>
+                <th>Correct Answer</th>
+                <th>discussion</th>
                 <th class="text-center">Actions</th>
             </tr>
         </thead>
             <tbody>
-                @foreach($AdminDataOptionAnswer as $index => $product)
+                @foreach($AdminDataQuestion as $index => $product)
                     <tr>
                         <td> {{$product['id']}}</td>
                         
                         <td class="text-center">
-                            @if($editAdminDataOptionAnswerIndex !== $index)
-                                {{$product['opinion_text']}}
+                            @if($editAdminDataQuestionIndex !== $index)
+                                {{$product['level']['id']}}
                             @else
-                                <input type="text" wire:model.defer="AdminDataOptionAnswer.{{$index}}.email">
+                                <input type="text" wire:model.defer="AdminDataQuestion.{{$index}}.email">
                             @endif
                         </td>
 
                         <td class="text-center">
-                            @if($editAdminDataOptionAnswerIndex !== $index)
-                                {{$product['is_image']}}
+                            @if($editAdminDataQuestionIndex !== $index)
+                                {{$product['question_text']}}
                             @else
-                                <input type="text" wire:model.defer="AdminDataOptionAnswer.{{$index}}.username">
+                                <input type="text" wire:model.defer="AdminDataQuestion.{{$index}}.username">
                             @endif
                         </td>
 
                         <td class="text-center">
-                            @if($editAdminDataOptionAnswerIndex !== $index)
-                                <button wire:click.prevent="editAdminDataOptionAnswer({{$index}})">Ubah</button>
+                            @if($editAdminDataQuestionIndex !== $index)
+                                {{$product['correct_answer_option']}}
                             @else
-                                <button wire:click.prevent="saveAdminDataOptionAnswer({{$index}})">Simpan</button>
+                                <input type="text" wire:model.defer="AdminDataQuestion.{{$index}}.email">
+                            @endif
+                        </td>
+
+                        <td class="text-center">
+                            @if($editAdminDataQuestionIndex !== $index)
+                                {{$product['discussion']}}
+                            @else
+                                <input type="text" wire:model.defer="AdminDataQuestion.{{$index}}.username">
+                            @endif
+                        </td>
+
+                        <td class="text-center">
+                            @if($editAdminDataQuestionIndex !== $index)
+                                <button wire:click.prevent="editAdminDataQuestion({{$index}})">Ubah</button>
+                            @else
+                                <button wire:click.prevent="saveAdminDataQuestion({{$index}})">Simpan</button>
                             @endif
                         </td>
                     </tr>

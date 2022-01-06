@@ -7,7 +7,7 @@ use App\Models\User;
 
 class AdminDataAnswersOptions extends Component
 {
-    public $editAdminDataLevekIndex = null;
+    public $editAdminDataOptionAnswerIndex = null;
     public $AdminDataOptionAnswer;
     public $search;
 

@@ -12,6 +12,20 @@ class Fis8Question extends Model
         'id',
     ];
 
+    public function scopeSearch($query, $term)
+    {
+        $term = "%$term%";
+        $query->where(function ($query) use ($term) {
+            $query->where('id', 'like', $term)
+            ->orWhere('question_text', 'like', $term)
+            ->orWhere('correct_answer_option', 'like', $term)
+            ->orWhere('discussion', 'like', $term)
+            ->orWhereHas('level', function ($query) use ($term) {
+                $query->where('id', 'like', $term);
+            });
+        });
+    }
+
     public function level()
     {
         return $this->belongsTo(Fis8Level::class, 'fis8_level_id');
