@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\Fis8Level;
+use App\Models\Fis8UserAnswer;
 
 class AdminDataUserAnswer extends Component
 {
@@ -13,9 +13,9 @@ class AdminDataUserAnswer extends Component
 
     public function render()
     {
-        $this->AdminDataUserAnswer = Fis8Level::with('category')->search(trim($this->search))->get()->toArray();
+        $this->AdminDataUserAnswer = Fis8UserAnswer::with('category')->search(trim($this->search))->get()->toArray();
 
-        return view('livewire.admin-data-level', [
+        return view('livewire.admin-data-user-answer', [
             'AdminDataUserAnswer' => $this->AdminDataUserAnswer,
         ]);
     }
@@ -30,7 +30,7 @@ class AdminDataUserAnswer extends Component
         $cekUser = $this->AdminDataUserAnswer[$AdminDataUserAnswerIndex] ?? null;
 
         if (!is_null($cekUser)) {
-            $getUser = Fis8Level::find($cekUser['id']);
+            $getUser = Fis8UserAnswer::find($cekUser['id']);
             $getUser->update([
                 'name' => $cekUser['name'],
                 'thumbnail' => $cekUser['thumbnail'],
