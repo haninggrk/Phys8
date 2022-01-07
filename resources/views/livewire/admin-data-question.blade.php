@@ -33,11 +33,7 @@
                         </td>
 
                         <td class="text-center">
-                            @if($editAdminDataQuestionIndex !== $index)
                                 {{$product['correct_answer_option']}}
-                            @else
-                                <input type="text" wire:model.defer="AdminDataQuestion.{{$index}}.correct_answer_option">
-                            @endif
                         </td>
 
                         <td class="text-center">
