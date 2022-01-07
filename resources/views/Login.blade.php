@@ -22,7 +22,7 @@
           <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
           <label for="floatingPassword">Password</label>
         </div>
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Log in</button>
+        <button class="w-100 btn btn-lg btn-primary" href="/game" type="submit">Log in</button>
         <small class="d-block text-center mt-3">
           Have you registed yet?<a href="/register">Register Now!</a>
         </small>

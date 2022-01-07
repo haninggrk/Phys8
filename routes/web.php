@@ -22,7 +22,7 @@ use App\Http\Livewire\QuizGamePlay;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('Login');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
