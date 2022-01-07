@@ -41,8 +41,10 @@ Route::get('/level', [Fis8LevelController::class, 'index']);
 Route::resource('questions', Fis8QuestionController::class);
 Route::get('/question', [Fis8QuestionController::class, 'index']);
 
-Route::get('/login', [Fis8LoginController::class, 'index']);
-Route::get('/register', [Fis8RegisterController::class, 'index']);
+Route::get('/Login', [Fis8LoginController::class, 'index']);
+Route::post('/register', function () {
+    return view('register');
+});
 
 Route::get('/cobaadminuser', AdminDataUser::class);
 
