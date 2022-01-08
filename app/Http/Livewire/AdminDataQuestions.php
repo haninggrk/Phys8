@@ -33,7 +33,6 @@ class AdminDataAnswersOptions extends Component
             $getUser = Fis8Question::find($cekUser['id']);
             $getUser->update([
                 'question_text' => $cekUser['question_text'],
-                'correct_answer_option' => $cekUser['correct_answer_option'],
                 'discussion' => $cekUser['discussion'],
                 'fis8_level_id' => $cekUser['level']['id'],
             ]);

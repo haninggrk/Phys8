@@ -12,5 +12,19 @@ class Fis8UserAnswer extends Model
         'id',
     ];
 
+    public function scopeSearch($query, $term)
+    {
+        $term = "%$term%";
+        $query->where(function ($query) use ($term) {
+            $query->where('id', 'like', $term)
+            ->orWhere('question_text', 'like', $term)
+            ->orWhere('correct_answer_option', 'like', $term)
+            ->orWhere('discussion', 'like', $term)
+            ->orWhereHas('user', function ($query) use ($term) {
+                $query->where('id', 'like', $term);
+            });
+        });
+    }
+
     public const UPDATED_AT = null;
 }
