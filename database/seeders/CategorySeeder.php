@@ -32,7 +32,7 @@ class CategorySeeder extends Seeder
          Kamu juga bisa membeli tiket dengan dolar yang kamu miliki.
          
          Skor yang akan diambil untuk dibandingkan dalam peringkat ialah akumulasi dari skor tertinggi yang kamu dapatkan dalam setiap jenis permainan yang terdapat pada kategori Feazy. 
-            Tajamkanlah pemahaman kamu terhadap ilmu fisika dengan visualisasi yang terdapat pada setiap jenis permainan kategori Feazy. Selamat bermain!'
+         Tajamkanlah pemahaman kamu terhadap ilmu fisika dengan visualisasi yang terdapat pada setiap jenis permainan kategori Feazy. Selamat bermain!'
 ]);
     }
 }
