@@ -20,12 +20,12 @@ class CreateFis8LevelsTable extends Migration
             ->onUpdate('cascade');
 
             $table->string('name');
-            $table->text('thumbnail');
+            $table->text('thumbnail')->nullable();
             $table->text('description')->nullable();
             $table->integer('score_reward');
             $table->integer('ticket_reward');
             $table->integer('money_reward');
-            $table->integer('maximum_time');
+            $table->integer('maximum_time')->nullable();
 
             $table->timestamps();
         });

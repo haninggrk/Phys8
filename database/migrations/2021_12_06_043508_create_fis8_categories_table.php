@@ -16,7 +16,7 @@ class CreateFis8CategoriesTable extends Migration
         Schema::create('fis8_categories', function (Blueprint $table) {
             $table->id();
 
-            $table->string('name');
+            $table->string('name')->unique();
             $table->text('description')->nullable();
 
             $table->timestamps();

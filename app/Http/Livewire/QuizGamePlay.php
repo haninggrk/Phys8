@@ -6,13 +6,14 @@ use App\Models\Fis8Level;
 use Livewire\Component;
 use App\Models\Fis8Question;
 use App\Models\Fis8QuizHistory;
+use App\Models\Fis8ShootGameHistory;
 
 class QuizGamePlay extends Component
 {
     public $myQuestions;
     public $historyId = 24;
     public $levelId = 1;
-    public $keterangaCorrectAnswer;
+    public $keteranganCorrectAnswer;
     public $numberQuestions;
 
     public function render()
@@ -40,35 +41,40 @@ class QuizGamePlay extends Component
             ],
         ]);
 
-        $this->addReward( $this->checkUserAnswer());
+        $this->addReward($this->checkUserAnswer());
     }
 
-    private function checkUserAnswer( )
+    public function checkUserAnswer()
     {
         $objHistory = Fis8QuizHistory::find($this->historyId);
         $getQuestionobj = $objHistory->questions->where('id', $this->myQuestions->id)->first();
 
-        if($getQuestionobj == null || $getQuestionobj->pivot->user_answer == null){
-            $this->keterangaCorrectAnswer = '';
-        }else{
-            if ($getQuestionobj->correct_answer_option == $getQuestionobj->pivot->user_answer) {
-                $this->keterangaCorrectAnswer = 'Jawaban Benar! Dapat tambahan 50 skor.';
-               return true;
-            } else {
-                $this->keterangaCorrectAnswer = 'Jawaban Salah! Jawban yang benar: '.$getQuestionobj->correct_answer_option.'. Jawaban Kamu: '.$getQuestionobj->pivot->user_answer;
+        if ($getQuestionobj == null || $getQuestionobj->pivot->user_answer == null) {
+            $this->keteranganCorrectAnswer = '';
+
             return false;
+        } else {
+            if ($getQuestionobj->correct_answer_option == $getQuestionobj->pivot->user_answer) {
+                $this->keteranganCorrectAnswer = 'Jawaban Benar! Dapat tambahan 50 skor.';
+
+                return true;
+            } else {
+                $this->keteranganCorrectAnswer = 'Jawaban Salah! Jawban yang benar: '.$getQuestionobj->correct_answer_option.'. Jawaban Kamu: '.$getQuestionobj->pivot->user_answer;
+
+                return false;
             }
         }
     }
 
-    private function addReward($boolean)
+    public function addReward($boolean)
     {
         if ($boolean) {
             $objHistory = Fis8QuizHistory::find($this->historyId);
-            $objHistory->quiz_score += 50;
+            $objHistory->score += 50;
+            $objHistory->money_reward += 100;
 
             $objHistory->save();
-            $this->keterangaCorrectAnswer = 'Jawaban Benar! Dapat tambahan 50 skor.';
+            $this->keteranganCorrectAnswer = 'Jawaban Benar! Dapat tambahan 50 skor.';
         }
     }
 }

@@ -67,9 +67,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Fis8QuizHistory::class, 'student_id');
     }
-    public function shootHistories()
+
+    public function levels()
     {
-        return $this->hasMany(Fis8ShootGameHistory::class, 'student_id');
+        return $this->belongsToMany(Fis8Level::class, 'fis8_shoot_game_histories', 'student_id', 'fis8_level_id')
+        ->withPivot(['id', 'score', 'money_reward', 'ticket_reward', 'created_at']);
     }
 
     /**

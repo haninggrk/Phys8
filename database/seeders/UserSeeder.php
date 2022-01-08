@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 0; $i < 25; ++$i) {
+        for ($i = 0; $i < 100; ++$i) {
             $createUser = ModelsUser::factory()->create();
 
             $createUser->MyUser()->create();

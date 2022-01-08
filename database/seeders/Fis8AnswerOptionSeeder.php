@@ -14,6 +14,6 @@ class Fis8AnswerOptionSeeder extends Seeder
      */
     public function run()
     {
-        Fis8AnswerOption::factory(40)->create();
+      
     }
 }

@@ -15,6 +15,6 @@ class Fis8ShootHistorySeeder extends Seeder
      */
     public function run()
     {
-        Fis8ShootGameHistory::factory(10)->create();
+        Fis8ShootGameHistory::factory(100)->create();
     }
 }

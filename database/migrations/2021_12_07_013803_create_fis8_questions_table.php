@@ -21,7 +21,7 @@ class CreateFis8QuestionsTable extends Migration
 
             $table->text('question_text');
             $table->text('correct_answer_option');
-            $table->text('discussion');
+            $table->text('discussion')->nullable();
 
             $table->timestamps();
         });

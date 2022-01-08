@@ -18,8 +18,12 @@ class CreateFis8ShootGameHistoriesTable extends Migration
             $table->foreignId('student_id')->references('id')->on('students')
             ->onDelete('cascade')
             ->onUpdate('cascade');
+            $table->foreignId('fis8_level_id')->references('id')->on('fis8_levels')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
             $table->integer('score')->default(0);
             $table->integer('money_reward')->default(0);
+            $table->integer('ticket_reward')->default(0);
 
             $table->dateTime('created_at');
         });

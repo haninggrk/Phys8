@@ -14,6 +14,6 @@ class Fis8TicketTransactionSeeder extends Seeder
      */
     public function run()
     {
-        Fis8TicketTransaction::factory(20)->create();
+        Fis8TicketTransaction::factory(150)->create();
     }
 }

@@ -14,8 +14,6 @@ class Fis8AnswerOptionFactory extends Factory
     public function definition()
     {
         return [
-            'option_text' => "ini pilihan jawaban",
-            'is_image' => '0'
         ];
     }
 }

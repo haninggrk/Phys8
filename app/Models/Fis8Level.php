@@ -39,4 +39,10 @@ class Fis8Level extends Model
     {
         return $this->hasMany(Fis8Question::class, 'fis8_level_id');
     }
+
+    public function students()
+    {
+        return $this->belongsToMany(User::class, 'fis8_shoot_game_histories', 'fis8_level_id', 'student_id')
+        ->withPivot(['id', 'score', 'money_reward', 'ticket_reward', 'created_at']);
+    }
 }
