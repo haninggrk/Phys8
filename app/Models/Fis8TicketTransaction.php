@@ -24,7 +24,6 @@ class Fis8TicketTransaction extends Model
         });
     }
 
-
     public const UPDATED_AT = null;
 
     public function student()

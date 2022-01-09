@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Fis8QuizHistory extends Model
+class Fis8GamePlayHistory extends Model
 {
     use HasFactory;
 
@@ -36,7 +36,7 @@ class Fis8QuizHistory extends Model
 
     public function questions()
     {
-        return $this->belongsToMany(Fis8Question::class, 'fis8_user_answers', 'fis8_quiz_history_id', 'fis8_question_id')
+        return $this->belongsToMany(Fis8Question::class, 'fis8_user_answers', 'fis8_game_play_history_id', 'fis8_question_id')
         ->withPivot(['id', 'user_answer', 'created_at']);
     }
 }

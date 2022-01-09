@@ -2,11 +2,10 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Fis8GamePlayHistory;
 use App\Models\Fis8Level;
 use Livewire\Component;
 use App\Models\Fis8Question;
-use App\Models\Fis8QuizHistory;
-use App\Models\Fis8ShootGameHistory;
 
 class QuizGamePlay extends Component
 {
@@ -33,7 +32,7 @@ class QuizGamePlay extends Component
 
     public function saveUserAnswer($questionID, $userAnswerOption)
     {
-        $history = Fis8QuizHistory::find($this->historyId);
+        $history = Fis8GamePlayHistory::find($this->historyId);
 
         $history->questions()->attach([
             $questionID => [
@@ -46,7 +45,7 @@ class QuizGamePlay extends Component
 
     public function checkUserAnswer()
     {
-        $objHistory = Fis8QuizHistory::find($this->historyId);
+        $objHistory = Fis8GamePlayHistory::find($this->historyId);
         $getQuestionobj = $objHistory->questions->where('id', $this->myQuestions->id)->first();
 
         if ($getQuestionobj == null || $getQuestionobj->pivot->user_answer == null) {
@@ -69,7 +68,7 @@ class QuizGamePlay extends Component
     public function addReward($boolean)
     {
         if ($boolean) {
-            $objHistory = Fis8QuizHistory::find($this->historyId);
+            $objHistory = Fis8GamePlayHistory::find($this->historyId);
             $objHistory->score += 50;
             $objHistory->money_reward += 100;
 

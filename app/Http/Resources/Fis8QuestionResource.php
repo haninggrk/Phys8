@@ -22,7 +22,7 @@ class Fis8QuestionResource extends JsonResource
             'discussion' => $this->discussion,
             'level' => $this->level,
             'answer_option' => $this->answerOptions,
-            'quiz_histories' => $this->quizHistories,
+            'game_play_histories' => $this->gamePlayHistories,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
           ];

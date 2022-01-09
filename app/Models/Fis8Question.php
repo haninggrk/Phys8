@@ -37,9 +37,9 @@ class Fis8Question extends Model
         ->withPivot(['id', 'option', 'created_at', 'updated_at']);
     }
 
-    public function quizHistories()
+    public function gamePlayHistories()
     {
-        return $this->belongsToMany(Fis8QuizHistory::class, 'fis8_user_answers', 'fis8_question_id', 'fis8_quiz_history_id')
+        return $this->belongsToMany(Fis8GamePlayHistory::class, 'fis8_user_answers', 'fis8_question_id', 'fis8_game_play_history_id')
         ->withPivot(['id', 'user_answer', 'created_at']);
     }
 }

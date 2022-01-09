@@ -2,9 +2,8 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Fis8Level;
+use App\Models\Fis8GamePlayHistory;
 use App\Models\Fis8Question;
-use App\Models\Fis8QuizHistory;
 use Livewire\Component;
 
 class PembahasanUser extends Component
@@ -40,13 +39,13 @@ class PembahasanUser extends Component
 
     public function render()
     {
-        $this -> objHistory = Fis8QuizHistory::find($this->historyId);
+        $this -> objHistory = Fis8GamePlayHistory::find($this->historyId);
         $this->myQuestions = $this -> objHistory -> questions[0];
         $this -> getQuestionobj = $this -> objHistory->questions->where('id', $this->myQuestions->id)->first();
         $this->checkUserAnswer();
 
         return view('livewire.pembahasan-user', [
-            'DataQuestionFromhistoryId' => Fis8QuizHistory::find($this->historyId)->questions
+            'DataQuestionFromhistoryId' => Fis8GamePlayHistory::find($this->historyId)->questions
 
         ]);
 

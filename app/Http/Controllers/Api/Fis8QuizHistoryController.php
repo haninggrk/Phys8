@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Fis8QuizHistoryResource;
+use App\Models\Fis8GamePlayHistory;
 use App\Models\Fis8QuizHistory;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Http\Resources\Fis8GamePlayHistoryResource;
+use App\Models\Fis8Level;
 
 class Fis8QuizHistoryController extends Controller
 {
@@ -17,9 +20,9 @@ class Fis8QuizHistoryController extends Controller
      */
     public function index()
     {
-        $getHistory = Fis8QuizHistory::all();
+        $getHistory = Fis8GamePlayHistory::all();
 
-        return ['result' => Fis8QuizHistoryResource::collection($getHistory)];
+        return ['result' => Fis8GamePlayHistoryResource::collection($getHistory)];
     }
 
     /**
@@ -30,9 +33,13 @@ class Fis8QuizHistoryController extends Controller
     public function store(Request $request)
     {
         $getUser = User::find($request->student_id);
-        $createHistory = $getUser->quizHistories()->create();
+        $getLevel = Fis8Level::find($request->fis8_level_id);
 
-        return ['result' => Fis8QuizHistoryResource::collection(Fis8QuizHistory::where('id', $createHistory->id)->get())];
+        $createHistory =  $getUser->levels()->attach([
+            $getLevel->id
+        ]);
+
+        return ['result' => Fis8GamePlayHistoryResource::collection(Fis8GamePlayHistory::where('id', $createHistory->id)->get())];
     }
   
 
@@ -45,7 +52,7 @@ class Fis8QuizHistoryController extends Controller
      */
     public function show($id)
     {
-        return ['result' => Fis8QuizHistoryResource::collection(Fis8QuizHistory::where('id', $id)->get())];
+        return ['result' => Fis8GamePlayHistoryResource::collection(Fis8GamePlayHistory::where('id', $id)->get())];
     }
 
     /**

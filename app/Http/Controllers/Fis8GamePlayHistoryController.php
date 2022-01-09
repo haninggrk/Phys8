@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Fis8ShootGameHistory;
+use App\Models\Fis8GamePlayHistory;
 use Illuminate\Http\Request;
 
-class Fis8ShootGameHistoryController extends Controller
+class Fis8GamePlayHistoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class Fis8ShootGameHistoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Fis8ShootGameHistory  $fis8ShootGameHistory
+     * @param  \App\Models\Fis8GamePlayHistory  $fis8GamePlayHistory
      * @return \Illuminate\Http\Response
      */
-    public function show(Fis8ShootGameHistory $fis8ShootGameHistory)
+    public function show(Fis8GamePlayHistory $fis8GamePlayHistory)
     {
         //
     }
@@ -52,10 +52,10 @@ class Fis8ShootGameHistoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Fis8ShootGameHistory  $fis8ShootGameHistory
+     * @param  \App\Models\Fis8GamePlayHistory  $fis8GamePlayHistory
      * @return \Illuminate\Http\Response
      */
-    public function edit(Fis8ShootGameHistory $fis8ShootGameHistory)
+    public function edit(Fis8GamePlayHistory $fis8GamePlayHistory)
     {
         //
     }
@@ -64,10 +64,10 @@ class Fis8ShootGameHistoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Fis8ShootGameHistory  $fis8ShootGameHistory
+     * @param  \App\Models\Fis8GamePlayHistory  $fis8GamePlayHistory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Fis8ShootGameHistory $fis8ShootGameHistory)
+    public function update(Request $request, Fis8GamePlayHistory $fis8GamePlayHistory)
     {
         //
     }
@@ -75,10 +75,10 @@ class Fis8ShootGameHistoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Fis8ShootGameHistory  $fis8ShootGameHistory
+     * @param  \App\Models\Fis8GamePlayHistory  $fis8GamePlayHistory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Fis8ShootGameHistory $fis8ShootGameHistory)
+    public function destroy(Fis8GamePlayHistory $fis8GamePlayHistory)
     {
         //
     }

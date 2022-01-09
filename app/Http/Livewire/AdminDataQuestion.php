@@ -2,10 +2,10 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
 use App\Models\Fis8Question;
+use Livewire\Component;
 
-class AdminDataAnswersOptions extends Component
+class AdminDataQuestion extends Component
 {
     public $editAdminDataQuestionIndex = null;
     public $AdminDataQuestion;

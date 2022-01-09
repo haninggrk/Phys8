@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Fis8QuizHistory;
+use App\Models\Fis8GamePlayHistory;
 use Illuminate\Http\Request;
 
 class Fis8UserAnswerController extends Controller
@@ -24,7 +24,7 @@ class Fis8UserAnswerController extends Controller
      */
     public function store(Request $request)
     {
-        $history = Fis8QuizHistory::find($request->quiz_history_id);
+        $history = Fis8GamePlayHistory::find($request->quiz_history_id);
 
         $history->questions()->attach([
             $request->question_id => [

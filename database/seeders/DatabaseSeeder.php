@@ -14,15 +14,13 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            UserSeeder::class,
-            CategorySeeder::class,
+            Fis8CategorySeeder::class,
             Fis8LevelSeeder::class,
+            Fis8QuestionSeeder::class,
+            UserSeeder::class,
             Fis8LogSeeder::class,
             Fis8TicketTransactionSeeder::class,
-            Fis8AnswerOptionSeeder::class,
-            Fis8QuestionSeeder::class,
-            Fis8QuizHistorySeeder::class,
-            Fis8ShootHistorySeeder::class
+           // Fis8AnswerOptionSeeder::class,
         ]);
     }
 }
