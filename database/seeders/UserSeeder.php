@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 0; $i < 10; ++$i) {
+        for ($i = 0; $i < 50; ++$i) {
             $createUser = \App\Models\User::factory()->create();
 
             $createUser->MyUser()->create();
@@ -89,6 +89,19 @@ class UserSeeder extends Seeder
                            'ticket_reward' => $createHistory->ticket_reward+$getLevel->ticket_reward,
                            'sum_correct_answer' => $cek
                         ]);
+                        $cekLevel=0;
+                        foreach(Fis8GamePlayHistory::where('student_id', $getUser->id)->get() as $dataa){
+                            if($dataa->fis8_level_id == $createHistory->fis8_level_id){
+                                $cekLevel++;
+                            }
+                        }
+                        if($cekLevel==0){
+                            $getUser->myUser()->update([
+                                'score' => $getUser->myUser->score + $getLevel->score_reward,
+                                'money' => $getUser->myUser->money + $getLevel->money_reward,
+                                'ticket' =>  $getUser->myUser->ticket + $getLevel->ticket_reward,
+                            ]);
+                        }
                     }
                     $i++;
                 }     
@@ -98,6 +111,12 @@ class UserSeeder extends Seeder
                 'money_reward' => rand(0, 500),
                 'ticket_reward' => rand(0,2)
                  ]);
+
+                 $getUser->myUser()->update([
+                    'score' => $getUser->myUser->score + $createHistory->score,
+                    'money' => $getUser->myUser->money + $createHistory->money_reward,
+                    'ticket' =>  $getUser->myUser->ticket + $createHistory->ticket_reward,
+                ]);
             }
         }
     }

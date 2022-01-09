@@ -12,8 +12,8 @@
   <div class="col-lg-4">
     <main class="form-signin">
       <h1 class="h3 mb-3 fw-normal text-center">Please Log in</h1>
-      <form>
-    
+      <form action="{{route ('login_process')}}" method="POST">
+    @csrf
         <div class="form-floating">
           <input type="email" name="email" class="form-control"  placeholder="name@example.com">
           <label for="floatingInput">Email address</label>
@@ -22,12 +22,13 @@
           <input type="password" name="password" class="form-control"  placeholder="Password">
           <label for="floatingPassword">Password</label>
         </div>
-        <button class="w-100 btn btn-lg btn-primary" href="/game" type="submit">Log in</button>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Log in</button>
+        </form>
         <small class="d-block text-center mt-3">
           Have you registed yet?<a href="/register">Register Now!</a>
         </small>
         <p class="mt-5 mb-3 text-muted">&copy; 2021-2022 Phys8</p>
-      </form>
+ 
     </main>
     
   </div>

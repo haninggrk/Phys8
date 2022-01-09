@@ -1,15 +1,17 @@
 <?php
 
+use App\Http\Controllers\AccessController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Fis8CategoryController;
 use App\Http\Controllers\Fis8CodeController;
 use App\Http\Controllers\Fis8LevelController;
 use App\Http\Controllers\Fis8QuestionController;
-use App\Http\Controllers\Fis8LoginController;
 use App\Http\Livewire\AdminDataFeazyHistory;
 use App\Http\Livewire\AdminDataUser;
 use App\Http\Livewire\QuizGamePlay;
 use App\Http\Livewire\AdminDataGamePlayHistory;
+use App\Http\Livewire\FastTrackGame;
+use App\Http\Livewire\Home;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,7 +44,7 @@ Route::get('/level', [Fis8LevelController::class, 'index']);
 Route::resource('questions', Fis8QuestionController::class);
 Route::get('/question', [Fis8QuestionController::class, 'index']);
 
-Route::get('/Login', [Fis8LoginController::class, 'index']);
+
 Route::post('/register', function () {
     return view('register');
 });
@@ -54,3 +56,9 @@ Route::get('/game', function () {
 });
 Route::get('/quiz_game_play', QuizGamePlay::class);
 Route::get('/adminhistory', AdminDataGamePlayHistory::class);
+
+///////////start
+Route::post('/login_process', [AccessController::class, 'loginProcess'])->name('login_process');
+Route::get('/home', Home::class)->name('home');
+Route::get('/logout',  [AccessController::class, 'logout'])->name('logout');
+Route::get('/fast_track', FastTrackGame::class)->name('fast_track_game');
