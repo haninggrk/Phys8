@@ -3,9 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Fis8QuizHistoryResource;
 use App\Models\Fis8GamePlayHistory;
-use App\Models\Fis8QuizHistory;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Resources\Fis8GamePlayHistoryResource;
@@ -35,13 +33,11 @@ class Fis8QuizHistoryController extends Controller
         $getUser = User::find($request->student_id);
         $getLevel = Fis8Level::find($request->fis8_level_id);
 
-        $createHistory =  $getUser->levels()->attach([
-            $getLevel->id
-        ]);
+        $createHistory = $getUser->levels()->attach(
+            $getLevel->id);
 
-        return ['result' => Fis8GamePlayHistoryResource::collection(Fis8GamePlayHistory::where('id', $createHistory->id)->get())];
+        return ['result' => Fis8GamePlayHistoryResource::collection(Fis8GamePlayHistory::where('id', $getUser->levels->last()->pivot->id)->get())];
     }
-  
 
     /**
      * Display the specified resource.

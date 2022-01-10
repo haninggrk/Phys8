@@ -17,14 +17,15 @@ class Fis8LevelController extends Controller
      */
     public function index()
     {
-        $getLevel = Fis8Level::all();
+        $category = Fis8Category::where('name', 'Fast Track')->first();
+        $getLevel = $category->levels;
+
         return ['result' => Fis8LevelResource::collection($getLevel)];
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -34,7 +35,8 @@ class Fis8LevelController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -45,23 +47,22 @@ class Fis8LevelController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
     }
 }
