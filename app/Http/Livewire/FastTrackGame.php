@@ -85,14 +85,19 @@ class FastTrackGame extends Component
     public function addReward($boolean)
     {
         if ($boolean) {
-            $this->myHistory->score += $this->myLevel->score_reward;
-            $this->myHistory->money_reward += $this->myLevel->money_reward;
-            $this->myHistory->save();
+            Fis8GamePlayHistory::find($this->myHistory->id)->update([
+                    'score' => Fis8GamePlayHistory::find($this->myHistory->id)->score + $this->myLevel->score_reward,
+                    'money_reward' => Fis8GamePlayHistory::find($this->myHistory->id)->money_reward + $this->myLevel->money_reward,
+                    'ticket_reward' => Fis8GamePlayHistory::find($this->myHistory->id)->ticket_reward + $this->myLevel->ticket_reward,
+            ]);
+
             $this->currentuser = User::find(auth()->user()->id)->myUser;
             $this->currentuser->update([
                 'score' => $this->currentuser->score + $this->myLevel->score_reward,
                 'money' => $this->currentuser->money + $this->myLevel->money_reward,
+                'ticket' => $this->currentuser->ticket + $this->myLevel->ticket_reward,
             ]);
+
             $this->keteranganCorrectAnswer = 'Jawaban Benar! Dapat tambahan 50 skor.';
         }
     }
