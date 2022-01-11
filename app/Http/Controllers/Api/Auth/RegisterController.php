@@ -17,7 +17,7 @@ class RegisterController extends Controller
             ]);
         } else {
             if ($request->password == $request->password_confirmation) {
-                $user = $this->newUser($request->all());
+                $user = $this->newUser($request->all(), $request);
 
                 if (!empty($user)) {
                     return response([
@@ -36,14 +36,21 @@ class RegisterController extends Controller
         }
     }
 
-    private function newUser(array $data)
+    private function newUser(array $data,Request $request)
     {
         $CreateUser = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-
+      
+        $CreateUser->logs->create([
+            'table_name' => 'students',
+            'log_note' => 'Register',
+            'log_description' => 'Berhasil Register',
+            'log_path' =>  $request->path(),
+            'log_ip' => $request->ip()
+        ]);
         return $CreateUser->myUser()->create();
     }
 }

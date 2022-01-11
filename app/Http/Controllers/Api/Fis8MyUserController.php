@@ -3,13 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Fis8LevelResource;
-use App\Models\Fis8Category;
-use App\Models\Fis8Level;
+use App\Http\Resources\Fis8MyUserResource;
+use App\Models\Fis8MyUser;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class Fis8LevelController extends Controller
+class Fis8MyUserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,17 +17,17 @@ class Fis8LevelController extends Controller
      */
     public function index()
     {
-        $category = Fis8Category::where('name', 'Fast Track')->first();
-        $getLevel = $category->levels;
+    }
 
-     //   $getUser = User::find(auth()->user()->id);
-       // $getUser->logs->create([
-         //   'table_name' => 'fis8_levels',
-           // 'log_note' => 'Mengambil semua data level',
-            //'log_description' => 'Mengambil semua data level melalui table fis8_categories menggunakan relasi levels'
+    public function rank()
+    {
+      //  $getUser = User::find(auth()->user()->id);
+        //$getUser->logs->create([
+          //  'table_name' => 'fis8_myusers',
+            //'log_note' => 'Mengambil semua data peringkat',
+            //'log_description' => 'Mengambil semua data peringkat melalui table fis8_myusers menggunakan relasi student. Mengambil 10 data teratas yang mempunyai skor tertinggi'
         //]);
-
-        return ['result' => Fis8LevelResource::collection($getLevel)];
+        return ['result' => Fis8MyUserResource::collection(Fis8MyUser::orderBy('score', 'DESC')->with('student')->limit(10)->get())];
     }
 
     /**
@@ -49,7 +48,6 @@ class Fis8LevelController extends Controller
      */
     public function show($id)
     {
-        return ['result' => Fis8LevelResource::collection(Fis8Level::where('id', $id)->get())];
     }
 
     /**

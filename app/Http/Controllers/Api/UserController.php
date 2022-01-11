@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Fis8UserResource;
+use App\Models\Fis8Log;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -16,7 +17,15 @@ class UserController extends Controller
      */
     public function index()
     {
-       return ['result' => Fis8UserResource::collection(User::all())];
+        //if(auth()->user()){
+       
+        //   Fis8Log::create([
+          //  'student_id' => auth()->user()->id,
+            //    'table_name' => 'students',
+              //  'log_note' => 'Mengambil semua data user',
+            //]);
+      //  }
+        return ['result' => Fis8UserResource::collection(User::all())];
     }
 
     /**
@@ -38,6 +47,14 @@ class UserController extends Controller
     public function show($id)
     {
         if (count(User::where('id', $id)->get()) > 0) {
+
+           
+           // Fis8Log::create([
+             //   'student_id' => auth()->user()->id,
+               // 'table_name' => 'students',
+                //'log_note' => 'Mencari user id = '.$id,
+            //]);
+
             return [
                 'status' => 'resultOn',
                 'result' => Fis8UserResource::collection(User::where('id', $id)->get()),
@@ -59,29 +76,6 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::findOrFail($id);
-
-        $user->update([
-            'name' => $request->name,
-            'username' => $request->username,
-            'school' => $request->school,
-            'city' => $request->city,
-            'birthyear' => $request->birthyear,
-        ]);
-
-        $response = $user->myUser()->update([
-            'photo' => $request->photo,
-        ]);
-
-        if (!empty($response)) {
-            return response([
-                'status' => 'Akun berhasil diperbaharui',
-            ]);
-        } else {
-            return response([
-                'status' => 'Mohon maaf, sistem sedang erorr',
-            ]);
-        }
     }
 
     /**
@@ -93,17 +87,5 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
-        $response = $user->delete();
-
-        if (!empty($response)) {
-            return response([
-                'status' => 'Akun berhasil dihapus',
-            ]);
-        } else {
-            return response([
-                'status' => 'Mohon maaf, sistem sedang erorr',
-            ]);
-        }
     }
 }

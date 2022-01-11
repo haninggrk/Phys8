@@ -16,11 +16,12 @@ class Fis8GamePlayHistoryResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'fis8_level_id' => $this->fis8_level_id,
             'sum_correct_answer' => $this->sum_correct_answer,
             'score' => $this->score,
             'money_reward' => $this->money_reward,
             'ticket_reward' => $this->ticket_reward,
-            'student' => $this->student,
+           'student' => $this->student,
             'question' => $this->questions,
             'created_at' => $this->created_at,
           ];
