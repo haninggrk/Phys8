@@ -149,7 +149,7 @@
             <div class="py-4">
                 <div class="border-4 my-4 h-96 py-5 px-4 w-full overflow-hidden gradientcolor3 border-gray-200 rounded-3xl">
                     <h2 class="text-5xl mb-2 font-extrabold text-white">Kategori Fast Track</h2>
-                    <h2 class="text-3xl font-bold text-white">{{ $getCategory->description }}</h2>
+                    <h2 class="text-2xl font-bold text-white">{{ $getCategory->description }}</h2>
                     <div class="text-center mt-20">
                     <button x-on:click="open = ! open" class=" bg-blue-500 mt-20 w-full hover:bg-blue-600 text-white font-semibold py-3 mb-10 text-xl px-4 border border-white rounded shadow">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -265,13 +265,17 @@
           <div class="py-4">
             <div class="flex flex-wrap -mx-3 overflow-hidden">
 
-              <div class="my-3 px-3 w-2/8 px-8 border-2 py-5 rounded-xl bg-gray-900 h-64 overflow-hidden">
+              <div class="my-3 px-3 w-2/8  border-2 py-5 rounded-xl bg-gray-900 h-64 overflow-hidden">
                 <h2 class="text-2xl text-white font-semibold">Nomor</h2>
                 <span class="relative z-0 gap-6 shadow-sm rounded-md block">
                     @foreach($DataQuestionFromLevelId as $Data)
-                  <button wire:click ="getQuestionWithId({{$Data->id}}, {{$loop->iteration}})" type="button" class="relative inline-flex items-center px-4 py-2 rounded-md border border-transparent font-semibold bg-red-600 text-sm font-medium text-white hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500">
+                  <button wire:click ="getQuestionWithId({{$Data->id}}, {{$loop->iteration}})" type="button" class="relative inline-flex items-center px-4 py-2 rounded-md border border-transparent font-semibold bg-red-600 text-sm font-medium text-white hover:bg-gray-50 hover:text-black focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500">
                     {{ $loop->iteration }}
                   </button>
+                  @if($loop->iteration%3 == 0)
+                  </span>
+                  <span class="relative mt-3 z-0 gap-6 shadow-sm rounded-md block">
+                    @endif
                  @endforeach
                 </span>
                 <!--
@@ -296,12 +300,12 @@
               </div>
             @if( $myQuestions!=null)
               <div class="my-3 px-3 w-3/5 ml-5  overflow-hidden rounded-xl">
-                <div class="my-3 px-3 gradientcolor5 w-full  overflow-hidden rounded-full h-32 flex  ">
+                <div class="my-3 px-3 gradientcolor5 w-full  overflow-hidden rounded-full h-48 flex  ">
                 <h2 class="text-white  text-center m-auto text-3xl font-bold ">{{ $myQuestions->question_text }}</h2>
                 </div>
                 @foreach($myQuestions->answerOptions as $AnswerOptions)
-                <button wire:click="saveUserAnswer({{$AnswerOptions->pivot->fis8_question_id}}, '{{$AnswerOptions->pivot->option}}')" class="my-3 px-3  gradientcolor3 border-2 overflow-hidden rounded-xl h-16 flex  ">
-                  <p class="text-white text-center m-auto text-3xl font-bold ">{{ $AnswerOptions->option_text }}</h2>
+                <button wire:click="saveUserAnswer({{$AnswerOptions->pivot->fis8_question_id}}, '{{$AnswerOptions->pivot->option}}')" class="my-3 px-3  gradientcolor3 border-2 overflow-hidden rounded-xl h-32 flex  ">
+                  <p class="text-white text-center m-auto text-2xl font-bold ">{{ $AnswerOptions->option_text }}</h2>
                 </button>
                  @endforeach
               </div>
@@ -315,6 +319,16 @@
                 <button type="button" class=" w-full text-center items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                   Selesai
                 </button>
+                <h2 class="text-2xl text-white font-semibold mb-3 mt-3 text-center">Total Hadiah</h2>
+                <span class="mb-2 w-full text-center gradientcolor flex align-center justify-center items-center py-4 px-2 rounded-3xl text-sm font-medium bg-gray-100 text-white">
+                <img src="https://i.ibb.co/nBQy0Rv/image.png" class="h-6 w-6 mr-2"> <b>200</b>
+                </span>
+                <span class="mb-2 w-full text-center gradientcolor flex align-center justify-center items-center py-4 px-2 rounded-3xl text-sm font-medium bg-gray-100 text-white">
+                <img src="https://i.ibb.co/kHfCs1W/image.png" class="h-6 w-6 mr-2"> <b>200</b>
+                </span>
+                <span class=" w-full text-center gradientcolor flex align-center justify-center items-center py-4 px-2 rounded-3xl text-sm font-medium bg-gray-100 text-white">
+                <img src="https://i.ibb.co/HCYMkKW/image.png" class="h-6 w-6 mr-2"> <b>200</b>
+                </span>
               </div>
             </div> 
       </div>

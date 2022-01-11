@@ -7,6 +7,7 @@ use App\Models\Fis8GamePlayHistory;
 use App\Models\Fis8Level;
 use App\Models\Fis8Question;
 use App\Models\User;
+use App\Models\Fis8MyUser;
 use Livewire\Component;
 
 class FastTrackGame extends Component
@@ -18,6 +19,7 @@ class FastTrackGame extends Component
     public $keteranganCorrectAnswer;
     public $numberQuestions;
     public $DataQuestionFromLevelId;
+    public $currentuser;
 
     public function render()
     {
@@ -85,9 +87,10 @@ class FastTrackGame extends Component
             $this->myHistory->score += $this->myLevel->score_reward;
             $this->myHistory->money_reward += $this->myLevel->money_reward;
             $this->myHistory->save();
-            User::find(auth()->user()->id)->myuser->update([
-                'score' =>+ $this->myLevel->score_reward,
-                'money' =>+ $this->myLevel->money_reward,
+             $this->currentuser =  User::find(auth()->user()->id)->myUser;
+           $this->currentuser->update([
+                'score' => $this->currentuser->score + $this->myLevel->score_reward,
+                'money' => $this->currentuser->money +$this->myLevel->money_reward,
             ]);
             $this->keteranganCorrectAnswer = 'Jawaban Benar! Dapat tambahan 50 skor.';
         }

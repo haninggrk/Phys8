@@ -25,7 +25,7 @@
                     </x-jet-nav-link>
                     <x-jet-nav-link class="ring-0 border-0 " :active="request()->routeIs('dashboard')">
                     <span class="inline-flex hover:ring-0  focus:ring-0 active:ring-0 gradientcolor items-center py-2 px-2 rounded-3xl text-sm font-medium bg-gray-100 text-white">
-                    <img src="https://i.ibb.co/HCYMkKW/image.png" class="h-6 w-6 mr-2">  <b>{{ auth()->user()->myUser->money }}</b>
+                    <img src="https://i.ibb.co/HCYMkKW/image.png" class="h-6 w-6 mr-2">  <b>{{ auth()->user()->myUser->score }}</b>
 </span>
                     </x-jet-nav-link>
                 </div>
