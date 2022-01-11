@@ -141,7 +141,7 @@
         </div>
       </nav>
   
-  
+      @if($myHistoryFeazy=="")
       <main class="flex-1 mt-20 relative overflow-y-auto focus:outline-none">
         <div class="py-6">
           <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
@@ -259,9 +259,12 @@
             @endforeach
             <!-- More people... -->
           </ul>
-        </div>
+        </div> 
       </main>
-    </div>
+      @else
+///////////////////////////////
+      @endif
+    </div>    
   </div>
   
   
