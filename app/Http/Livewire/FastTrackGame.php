@@ -60,7 +60,7 @@ class FastTrackGame extends Component
                 'user_answer' => $userAnswerOption,
             ],
         ]);
-
+      
         $this->addReward($this->checkUserAnswer());
     }
 
@@ -75,7 +75,7 @@ class FastTrackGame extends Component
             if ($this->getQuestionobj->correct_answer_option == $this->getQuestionobj->pivot->user_answer) {
                 return true;
             } else {
-                $this->keteranganCorrectAnswer = 'Jawaban Salah! Jawban yang benar: '.$this->getQuestionobj->correct_answer_option.'. Jawaban Kamu: '.$getQuestionobj->pivot->user_answer;
+                $this->keteranganCorrectAnswer = 'Jawaban Salah! Jawban yang benar: '.$this->getQuestionobj->correct_answer_option.'. Jawaban Kamu: '.$this->getQuestionobj->pivot->user_answer;
 
                 return false;
             }
@@ -85,17 +85,20 @@ class FastTrackGame extends Component
     public function addReward($boolean)
     {
         if ($boolean) {
-            Fis8GamePlayHistory::find($this->myHistory->id)->update([
-                    'score' => Fis8GamePlayHistory::find($this->myHistory->id)->score + $this->myLevel->score_reward,
-                    'money_reward' => Fis8GamePlayHistory::find($this->myHistory->id)->money_reward + $this->myLevel->money_reward,
-                    'ticket_reward' => Fis8GamePlayHistory::find($this->myHistory->id)->ticket_reward + $this->myLevel->ticket_reward,
-            ]);
-
+           
+           
             $this->currentuser = User::find(auth()->user()->id)->myUser;
-            $this->currentuser->update([
+            
+          $this->currentuser->update([
                 'score' => $this->currentuser->score + $this->myLevel->score_reward,
                 'money' => $this->currentuser->money + $this->myLevel->money_reward,
                 'ticket' => $this->currentuser->ticket + $this->myLevel->ticket_reward,
+            ]);
+
+            Fis8GamePlayHistory::find($this->myHistory->id)->update([
+                'score' => Fis8GamePlayHistory::find($this->myHistory->id)->score + $this->myLevel->score_reward,
+                'money_reward' => Fis8GamePlayHistory::find($this->myHistory->id)->money_reward + $this->myLevel->money_reward,
+                'ticket_reward' => Fis8GamePlayHistory::find($this->myHistory->id)->ticket_reward + $this->myLevel->ticket_reward,
             ]);
 
             $this->keteranganCorrectAnswer = 'Jawaban Benar! Dapat tambahan 50 skor.';

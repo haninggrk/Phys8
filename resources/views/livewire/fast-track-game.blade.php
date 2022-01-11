@@ -272,6 +272,7 @@
                 
                 <span class="relative z-0 gap-6 shadow-sm rounded-md block">
                     @foreach($DataQuestionFromLevelId as $Data)
+                
                   <button wire:click ="getQuestionWithId({{$Data->id}}, {{$loop->iteration}})" type="button" class="  relative inline-flex items-center px-4 py-2 rounded-md border border-transparent font-semibold bg-red-600 text-sm font-medium text-white hover:bg-gray-50 hover:text-black focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500">
                     {{ $loop->iteration }}
                   </button>
