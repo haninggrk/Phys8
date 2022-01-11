@@ -1,22 +1,32 @@
 @auth
 
 
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<nav x-data="{ open: false }" class="bg-transparent absolute w-full">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-jet-application-mark class="block h-9 w-auto" />
-                    </a>
-                </div>
-
+                <!-- `Logo` -->
+             
+                
                 <!-- Navigation Links -->
+               
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                    <x-jet-nav-link class="hover:ring-0" href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    <span class=" gradientcolor inline-flex items-center py-2 px-2 rounded-3xl text-sm font-medium bg-gray-100 text-white">
+                <img src="https://i.ibb.co/nBQy0Rv/image.png" class="h-6 w-6 mr-2"> <b>{{ auth()->user()->myUser->money }}</b>
+</span>
+                    </x-jet-nav-link>
+                    <x-jet-nav-link class="ring-0 " href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    <span class="gradientcolor inline-flex items-center py-2 px-2 rounded-3xl text-sm font-medium bg-gray-100 text-white">
+                    <img src="https://i.ibb.co/kHfCs1W/image.png" class="h-6 w-6 mr-2">
+                    <b>{{ auth()->user()->myUser->ticket }}</b>
+</span>
+                    </x-jet-nav-link>
+                    <x-jet-nav-link class="ring-0 border-0 " href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    <span class="inline-flex hover:ring-0  focus:ring-0 active:ring-0 gradientcolor items-center py-2 px-2 rounded-3xl text-sm font-medium bg-gray-100 text-white">
+                    <img src="https://i.ibb.co/HCYMkKW/image.png" class="h-6 w-6 mr-2">  <b>{{ auth()->user()->myUser->money }}</b>
+</span>
                     </x-jet-nav-link>
                 </div>
             </div>
@@ -30,7 +40,7 @@
                                 <span class="inline-flex rounded-md">
                                     <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition">
                                         {{ Auth::user()->currentTeam->name }}
-
+                                        
                                         <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                                             <path fill-rule="evenodd" d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
                                         </svg>
