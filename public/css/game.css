@@ -23,3 +23,7 @@ body{
 .gradientcolor4{
     background: linear-gradient(121deg, rgba(255,107,0,1) 0%, rgba(255,196,0,1) 100%);
 }
+.gradientcolor5{
+    background: rgb(46,255,104);
+background: linear-gradient(168deg, rgba(46,255,104,1) 0%, rgba(255,182,0,1) 100%);
+}

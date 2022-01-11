@@ -11,6 +11,7 @@ use App\Http\Livewire\AdminDataUser;
 use App\Http\Livewire\QuizGamePlay;
 use App\Http\Livewire\AdminDataGamePlayHistory;
 use App\Http\Livewire\FastTrackGame;
+use App\Http\Livewire\gametemp;
 use App\Http\Livewire\Home;
 
 /*
@@ -26,6 +27,9 @@ use App\Http\Livewire\Home;
 
 Route::get('/', function () {
     return view('Login');
+});
+Route::get('/gametemp', function () {
+    return view('livewire.gametemp');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -60,5 +64,6 @@ Route::get('/adminhistory', AdminDataGamePlayHistory::class);
 ///////////start
 Route::post('/login_process', [AccessController::class, 'loginProcess'])->name('login_process');
 Route::get('/home', Home::class)->name('home');
+Route::get('/gametemp', gametemp::class)->name('home');
 Route::get('/logout',  [AccessController::class, 'logout'])->name('logout');
 Route::get('/fast_track', FastTrackGame::class)->name('fast_track_game');
