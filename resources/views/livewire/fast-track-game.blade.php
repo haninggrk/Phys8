@@ -248,9 +248,7 @@
               <div class="flex-1 flex flex-col p-8">
                 <img class="w-32 h-32 flex-shrink-0 mx-auto rounded-full" src="https://icon-library.com/images/penguin-icon/penguin-icon-18.jpg" alt="">
                 <h3 class="mt-6 text-gray-900 text-4xl font-bold">Level {{ $loop->iteration }}</h3>
-               
               </div>
-
             </li>       
             @endforeach   
             <!-- More people... -->

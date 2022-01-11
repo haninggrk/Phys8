@@ -13,8 +13,8 @@ class FastTrackGame extends Component
 {
     public Fis8Category $getCategory;
     public Fis8Level $myLevel;
-    public  $myQuestions;
-    public Fis8GamePlayHistory $myHistory;
+    public $myQuestions;
+    public $myHistory;
     public $keteranganCorrectAnswer;
     public $numberQuestions;
     public $DataQuestionFromLevelId;
@@ -23,7 +23,6 @@ class FastTrackGame extends Component
 
     public function render()
     {
-     
         $this->getCategory = Fis8Category::where('name', 'Fast Track')->first();
         if ($this->myQuestions != null) {
             $this->getQuestionobj = $this->myHistory->questions->where('id', $this->myQuestions->id)->first();
@@ -60,7 +59,7 @@ class FastTrackGame extends Component
                 'user_answer' => $userAnswerOption,
             ],
         ]);
-      
+
         $this->addReward($this->checkUserAnswer());
     }
 
@@ -85,11 +84,9 @@ class FastTrackGame extends Component
     public function addReward($boolean)
     {
         if ($boolean) {
-           
-           
             $this->currentuser = User::find(auth()->user()->id)->myUser;
-            
-          $this->currentuser->update([
+
+            $this->currentuser->update([
                 'score' => $this->currentuser->score + $this->myLevel->score_reward,
                 'money' => $this->currentuser->money + $this->myLevel->money_reward,
                 'ticket' => $this->currentuser->ticket + $this->myLevel->ticket_reward,

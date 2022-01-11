@@ -149,7 +149,7 @@
             <div class="py-4">
                 <div class="border-4 my-4 h-96 py-5 px-4 w-full overflow-hidden gradientcolor3 border-gray-200 rounded-3xl">
                     <h2 class="text-5xl mb-2 font-extrabold text-white">Kategori Feazy</h2>
-                    <h2 class="text-3xl font-bold text-white">Deskripsi Feazy</h2>
+                    <h2 class="text-3xl font-bold text-white">$getCategoryFeazy->description</h2>
                     <div class="text-center mt-20">
                     <button x-on:click="open = ! open" class=" bg-blue-500 mt-20 w-full hover:bg-blue-600 text-white font-semibold py-3 mb-10 text-xl px-4 border border-white rounded shadow">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -246,26 +246,17 @@
           </div>
           <h2 class="text-5xl mt-16 mb-16 font-extrabold text-white">Pilih Permainan</h2>
           <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            <li class="col-span-1 flex flex-col text-center bg-white rounded-xl shadow divide-y divide-gray-200">
+          @foreach($getCategoryFeazy->levels as $level)
+            <li wire:click="startGameFeazy({{$level->id}})" class="col-span-1 flex flex-col text-center bg-white rounded-xl shadow divide-y divide-gray-200">
               <div class="flex-1 flex flex-col p-8">
                 <img class="w-32 h-32 flex-shrink-0 mx-auto rounded-full" src="https://icon-library.com/images/penguin-icon/penguin-icon-18.jpg" alt="">
-                <h3 class="mt-6 text-gray-900 text-4xl font-bold">Game 1</h3>
+                <h3 class="mt-6 text-gray-900 text-4xl font-bold">$level->name</h3>
                
               </div>
               
              
             </li>
-            <li class="col-span-1 flex flex-col text-center bg-white rounded-xl shadow divide-y divide-gray-200">
-                <div class="flex-1 flex flex-col p-8">
-                  <img class="w-32 h-32 flex-shrink-0 mx-auto rounded-full" src="https://icon-library.com/images/penguin-icon/penguin-icon-18.jpg" alt="">
-                  <h3 class="mt-6 text-gray-900 text-4xl font-bold">Game 2</h3>
-                 
-                </div>
-                
-               
-              </li>
-            
-          
+            @endforeach
             <!-- More people... -->
           </ul>
         </div>
