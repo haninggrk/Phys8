@@ -13,6 +13,7 @@ use App\Http\Livewire\AdminDataGamePlayHistory;
 use App\Http\Livewire\FastTrackGame;
 use App\Http\Livewire\gametemp;
 use App\Http\Livewire\Home;
+use App\Http\Livewire\game;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,15 +56,14 @@ Route::post('/register', function () {
 
 Route::get('/cobaadminuser', AdminDataUser::class);
 
-Route::get('/game', function () {
-    return view('game');
-});
+
 Route::get('/quiz_game_play', QuizGamePlay::class);
 Route::get('/adminhistory', AdminDataGamePlayHistory::class);
 
 ///////////start
 Route::post('/login_process', [AccessController::class, 'loginProcess'])->name('login_process');
 Route::get('/home', Home::class)->name('home');
-Route::get('/gametemp', gametemp::class)->name('home');
+Route::get('/gametemp', gametemp::class)->name('gametemp');
+Route::get('/game', game::class)->name('game');
 Route::get('/logout',  [AccessController::class, 'logout'])->name('logout');
 Route::get('/fast_track', FastTrackGame::class)->name('fast_track_game');

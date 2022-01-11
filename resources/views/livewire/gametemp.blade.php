@@ -219,6 +219,18 @@
                 <button type="button" class=" w-full text-center items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                   Selesai
                 </button>
+                <h2 class="text-2xl text-white font-semibold mb-3 mt-3 text-center">Total Hadiah</h2>
+                <span class="mb-2 w-full text-center gradientcolor flex align-center justify-center items-center py-4 px-2 rounded-3xl text-sm font-medium bg-gray-100 text-white">
+                <img src="https://i.ibb.co/nBQy0Rv/image.png" class="h-6 w-6 mr-2"> <b>200</b>
+                </span>
+                <span class="mb-2 w-full text-center gradientcolor flex align-center justify-center items-center py-4 px-2 rounded-3xl text-sm font-medium bg-gray-100 text-white">
+                <img src="https://i.ibb.co/kHfCs1W/image.png" class="h-6 w-6 mr-2"> <b>200</b>
+                </span>
+                <span class=" w-full text-center gradientcolor flex align-center justify-center items-center py-4 px-2 rounded-3xl text-sm font-medium bg-gray-100 text-white">
+                <img src="https://i.ibb.co/HCYMkKW/image.png" class="h-6 w-6 mr-2"> <b>200</b>
+                </span>
+                
+               
               </div>
             
             </div>
