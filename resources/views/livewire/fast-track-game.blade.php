@@ -267,9 +267,12 @@
 
               <div class="my-3 px-3 w-2/8  border-2 py-5 rounded-xl bg-gray-900 h-64 overflow-hidden">
                 <h2 class="text-2xl text-white font-semibold">Nomor</h2>
+
+
+                
                 <span class="relative z-0 gap-6 shadow-sm rounded-md block">
                     @foreach($DataQuestionFromLevelId as $Data)
-                  <button wire:click ="getQuestionWithId({{$Data->id}}, {{$loop->iteration}})" type="button" class="relative inline-flex items-center px-4 py-2 rounded-md border border-transparent font-semibold bg-red-600 text-sm font-medium text-white hover:bg-gray-50 hover:text-black focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500">
+                  <button wire:click ="getQuestionWithId({{$Data->id}}, {{$loop->iteration}})" type="button" class="  relative inline-flex items-center px-4 py-2 rounded-md border border-transparent font-semibold bg-red-600 text-sm font-medium text-white hover:bg-gray-50 hover:text-black focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500">
                     {{ $loop->iteration }}
                   </button>
                   @if($loop->iteration%3 == 0)
@@ -304,12 +307,11 @@
                 <h2 class="text-white  text-center m-auto text-3xl font-bold ">{{ $myQuestions->question_text }}</h2>
                 </div>
                 @foreach($myQuestions->answerOptions as $AnswerOptions)
-                @if($getQuestionobj !=null && 
+                
                 <button wire:click="saveUserAnswer({{$AnswerOptions->pivot->fis8_question_id}}, '{{$AnswerOptions->pivot->option}}')" class="my-3 px-3  gradientcolor3 border-2 overflow-hidden rounded-xl h-32 flex  ">
                   <p class="text-white text-center m-auto text-2xl font-bold ">{{ $AnswerOptions->option_text }}</h2>
                 </button>
                  @endforeach
-<button @if($getQestionobj !=null) @ifoption skrg == corrcetanswer)hijau, @else if(opsi skrg==usranswer&&option skrg != corrcetanswer)merah  @endif
 
               </div>
               @endif

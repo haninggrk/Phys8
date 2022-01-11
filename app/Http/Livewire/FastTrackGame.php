@@ -13,7 +13,7 @@ class FastTrackGame extends Component
 {
     public Fis8Category $getCategory;
     public Fis8Level $myLevel;
-    public Fis8Question $myQuestions;
+    public  $myQuestions;
     public Fis8GamePlayHistory $myHistory;
     public $keteranganCorrectAnswer;
     public $numberQuestions;
@@ -23,6 +23,7 @@ class FastTrackGame extends Component
 
     public function render()
     {
+     
         $this->getCategory = Fis8Category::where('name', 'Fast Track')->first();
         if ($this->myQuestions != null) {
             $this->getQuestionobj = $this->myHistory->questions->where('id', $this->myQuestions->id)->first();
@@ -65,6 +66,7 @@ class FastTrackGame extends Component
 
     public function checkUserAnswer()
     {
+        $this->getQuestionobj = $this->myHistory->questions->where('id', $this->myQuestions->id)->first();
         if ($this->getQuestionobj == null || $this->getQuestionobj->pivot->user_answer == null) {
             $this->keteranganCorrectAnswer = '';
 
