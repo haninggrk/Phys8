@@ -253,8 +253,6 @@
                 <h3 class="mt-6 text-gray-900 text-4xl font-bold">$level->name</h3>
                
               </div>
-              
-             
             </li>
             @endforeach
             <!-- More people... -->
