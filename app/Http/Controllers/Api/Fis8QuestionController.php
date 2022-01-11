@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Fis8QuestionResource;
 use App\Models\Fis8Level;
 use App\Models\Fis8Question;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class Fis8QuestionController extends Controller
@@ -18,6 +19,14 @@ class Fis8QuestionController extends Controller
     public function index()
     {
         $getQuestion = Fis8Question::all();
+
+       // $getUser = User::find(auth()->user()->id);
+        //$getUser->logs->create([
+          //  'table_name' => 'fis8_questions',
+            //'log_note' => 'Mengambil semua data pertanyaan',
+            //'log_description' => 'Mengambil semua data pertanyaan melalui table fis8_questions dan menggunakan
+            // relasi level, answerOptions, dan gamePlayHistories'
+        //]);
 
         return ['result' => Fis8QuestionResource::collection($getQuestion)];
     }
@@ -40,6 +49,13 @@ class Fis8QuestionController extends Controller
      */
     public function show($id) //getquestionwithlevelid
     {
+       // $getUser = User::find(auth()->user()->id);
+        //$getUser->logs->create([
+          //  'table_name' => 'fis8_questions',
+            //'log_note' => 'Mengambil semua data pertanyaan',
+            //'log_description' => 'Mengambil semua data pertanyaan melalui table fis8_levels dan menggunakan
+             //relasi level, answerOptions, dan gamePlayHistories'
+        //]);
         return ['result' => Fis8QuestionResource::collection(Fis8Level::find($id)->questions)];
     }
 

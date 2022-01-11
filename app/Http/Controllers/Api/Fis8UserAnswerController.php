@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Fis8GamePlayHistory;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class Fis8UserAnswerController extends Controller
@@ -31,7 +32,14 @@ class Fis8UserAnswerController extends Controller
                 'user_answer' => $request->user_answer,
             ],
         ]);
-
+       // $getUser = User::find(auth()->user()->id);
+        //$getUser->logs->create([
+          //  'table_name' => 'fis8_user_answers',
+            //'log_note' => 'Memasukkan jawaban user id = '.$getUser->id,
+            //'log_description' => 'Memasukkan jawaban user id = '.$getUser->id.' dengan mencari histori user terlebih dahulu yang bersangkutan',
+            //'log_path' => $request->path(),
+            //'log_ip' => $request->ip()
+        //]);
         return response([
             'message' => 'true',
         ]);
