@@ -20,7 +20,7 @@ class CreateFis8QuestionsTable extends Migration
             ->onUpdate('cascade');
 
             $table->text('question_text');
-            $table->text('correct_answer_option');
+            $table->string('correct_answer_option');
             $table->text('discussion')->nullable();
 
             $table->timestamps();

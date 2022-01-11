@@ -33,9 +33,11 @@ class FastTrackGame extends Component
         $this->DataQuestionFromLevelId = Fis8Level::find($this->myLevel->id)->questions;
 
        
-        $this->myHistory = $getUser->levels()->attach([
+        $getUser->levels()->attach([
             $levelId
         ]);
+
+        $this->myHistory = Fis8GamePlayHistory::orderBy('id', 'DESC')->first();
      
     }
 
@@ -43,15 +45,12 @@ class FastTrackGame extends Component
     public function getQuestionWithId($id, $numberQuestion)
     {
         $this->myQuestions = Fis8Question::find($id);
-
         $this->checkUserAnswer();
         $this->numberQuestions = $numberQuestion;
     }
 
     public function saveUserAnswer($questionID, $userAnswerOption)
     {
-     
-
         $this->myHistory->questions()->attach([
             $questionID => [
                 'user_answer' => $userAnswerOption,
@@ -86,6 +85,10 @@ class FastTrackGame extends Component
             $this->myHistory->score += $this->myLevel->score_reward;
             $this->myHistory->money_reward += $this->myLevel->money_reward;
             $this->myHistory->save();
+            User::find(auth()->user()->id)->myuser->update([
+                'score' =>+ $this->myLevel->score_reward,
+                'money' =>+ $this->myLevel->money_reward,
+            ]);
             $this->keteranganCorrectAnswer = 'Jawaban Benar! Dapat tambahan 50 skor.';
         }
     }

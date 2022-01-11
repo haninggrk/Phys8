@@ -150,8 +150,8 @@
             <div class="flex flex-wrap gap-11 -mx-4 overflow-hidden">
   
             <div class="border-4 my-4 py-5 px-4 w-3/5 overflow-hidden gradientcolor3 border-gray-200 rounded-3xl">
-            <h2 class="text-5xl mb-2 font-extrabold text-white">Halo, nama</h2>
-            <h2 class="text-3xl font-bold text-white">Anda mulai bergabung sejak tanggal</h2>
+            <h2 class="text-5xl mb-2 font-extrabold text-white">Halo, {{ auth()->user()->username }}</h2>
+            <h2 class="text-3xl font-bold text-white">Anda mulai bergabung sejak {{ auth()->user()->created_at }}</h2>
             <div class="text-center">
             <button x-on:click="open = ! open" class="bg-blue-500 mt-20 w-full hover:bg-blue-600 text-white font-semibold py-3 mb-10 text-xl px-4 border border-white rounded shadow">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -170,11 +170,12 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
           </svg>
         </div>
-        <p class="ml-16 text-sm font-medium text-white truncate">Kamu telah mencapai level</p>
+
+        <p class="ml-16 text-sm font-medium text-white text-gray-500 truncate">Kamu bermain sebanyak</p>
       </dt>
       <dd class="ml-16 pb-6 flex items-baseline sm:pb-7">
         <p class="text-2xl font-semibold text-blue-200">
-          71,897
+        {{ $lastLevel }} Level
         </p>
      
         <div class="absolute bottom-0 inset-x-0 bg-gray-50 px-4 py-4 sm:px-6">
@@ -198,7 +199,11 @@
       </dt>
       <dd class="ml-16 pb-6 flex items-baseline sm:pb-7">
         <p class="text-2xl font-semibold text-blue-200">
-          1/50 Pengguna
+        @foreach($leaderBoard as $leaderBoardData)
+          @if($leaderBoardData->student->id == auth()->user()->id)
+            {{ $loop->iteration }}/{{ count($leaderBoard) }} pengguna
+          @endif
+        @endforeach
         </p>
      
         <div class="absolute bottom-0 inset-x-0 bg-gray-50 px-4 py-4 sm:px-6">
@@ -218,7 +223,8 @@
       <h3 class="mb-10">Peringkat</h3>
     </div>
     <ul role="list" class="relative z-0 rounded-3xl overflow-scroll  border-4 gradientcolor3 " style="max-height:400px">
-      <li class=" border-0">
+    @foreach($leaderBoard as $leaderBoardData)
+    <li class=" border-0">
         <div class="relative px-6 py-5 flex items-center space-x-3 gradientcolor4 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
         <div class="flex-shrink-0">
            <h1 class="text-4xl text-white"><img class="h-10 w-10" src="https://i.ibb.co/nBm9rmG/image.png"></h1>
@@ -231,7 +237,7 @@
               <!-- Extend touch target to entire panel -->
               <span class="absolute inset-0" aria-hidden="true"></span>
               <p class="text-lg font-semibold  text-white">
-                Leslie Abbott
+              {{ $leaderBoardData->student->username }}
               </p>
               
             </a>
@@ -240,40 +246,11 @@
             <img class="h-12 w-12 rounded-full" src="https://i.ibb.co/HCYMkKW/image.png" alt="">
           </div>
           <p class="text-lg font-semibold  text-white">
-               99999
+          {{ $leaderBoardData->score }}
               </p>
         </div>
       </li>
-      <li class=" border-0">
-        <div class="relative px-6 py-5 flex items-center space-x-3 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
-        <div class="flex-shrink-0">
-           <h1 class="text-4xl h-10 w-10 text-center text-white">2</h1>
-          </div>  
-        <div class="flex-shrink-0">
-            <img class="h-12 w-12 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-          </div>
-          <div class="flex-1 min-w-0">
-            <a href="#" class="focus:outline-none">
-              <!-- Extend touch target to entire panel -->
-              <span class="absolute inset-0" aria-hidden="true"></span>
-              <p class="text-lg font-semibold  text-white">
-                Leslie Abbott
-              </p>
-              
-            </a>
-          </div>
-          <div class="">
-            <img class="h-12 w-12 rounded-full" src="https://i.ibb.co/HCYMkKW/image.png" alt="">
-          </div>
-          <p class="text-lg font-semibold  text-white">
-               99999
-              </p>
-        </div>
-      </li>
-     
-      
-
-      
+      @endforeach 
     </ul>
   </div>
 
@@ -316,147 +293,31 @@
           </thead>
           
           <tbody class="gradientcolor3 divide-y divide-white">
-
+          @foreach($getHistoryUser as $history)
             <tr>
               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">
-                Jane Cooper
+              {{ $history->pivot->created_at }}
               </td>
               <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
-                Regional Paradigm Technician
+              {{ $history->category->name }}
               </td>
               <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
-                jane.cooper@example.com
+              {{ $history->name }}
               </td>
               <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
-                Admin
+              {{ $history->pivot->money_reward }}
               </td>
               <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
-                500
+              {{ $history->pivot->ticket_reward }}
               </td>
               <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
-                600
+              {{ $history->pivot->score }}
               </td>
               <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                 <a href="#" class="text-yellow-200 hover:text-indigo-900">Edit</a>
               </td>
             </tr>
-            <tr>
-              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">
-                Jane Cooper
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
-                Regional Paradigm Technician
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
-                jane.cooper@example.com
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
-                Admin
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
-                500
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
-                600
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                <a href="#" class="text-yellow-200 hover:text-indigo-900">Edit</a>
-              </td>
-            </tr>
-            <tr>
-              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">
-                Jane Cooper
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
-                Regional Paradigm Technician
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
-                jane.cooper@example.com
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
-                Admin
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
-                500
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
-                600
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                <a href="#" class="text-yellow-200 hover:text-indigo-900">Edit</a>
-              </td>
-            </tr>
-            <tr>
-              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">
-                Jane Cooper
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
-                Regional Paradigm Technician
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
-                jane.cooper@example.com
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
-                Admin
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
-                500
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
-                600
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                <a href="#" class="text-yellow-200 hover:text-indigo-900">Edit</a>
-              </td>
-            </tr>
-            <tr>
-              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">
-                Jane Cooper
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
-                Regional Paradigm Technician
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
-                jane.cooper@example.com
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
-                Admin
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
-                500
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
-                600
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                <a href="#" class="text-yellow-200 hover:text-indigo-900">Edit</a>
-              </td>
-            </tr>
-            <tr>
-              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">
-                Jane Cooper
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
-                Regional Paradigm Technician
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
-                jane.cooper@example.com
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
-                Admin
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
-                500
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
-                600
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                <a href="#" class="text-yellow-200 hover:text-indigo-900">Edit</a>
-              </td>
-            </tr>
-         
-            
+            @endforeach    
             <!-- More people... -->
           </tbody>
 </div>

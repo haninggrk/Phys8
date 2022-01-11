@@ -141,7 +141,7 @@
         </div>
       </nav>
   
-  
+      @if($myHistory=="")
       <main class="flex-1 mt-20 relative overflow-y-auto focus:outline-none">
         <div class="py-6">
           <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
@@ -149,7 +149,7 @@
             <div class="py-4">
                 <div class="border-4 my-4 h-96 py-5 px-4 w-full overflow-hidden gradientcolor3 border-gray-200 rounded-3xl">
                     <h2 class="text-5xl mb-2 font-extrabold text-white">Kategori Fast Track</h2>
-                    <h2 class="text-3xl font-bold text-white">Deskripsi Fast Track</h2>
+                    <h2 class="text-3xl font-bold text-white">{{ $getCategory->description }}</h2>
                     <div class="text-center mt-20">
                     <button x-on:click="open = ! open" class=" bg-blue-500 mt-20 w-full hover:bg-blue-600 text-white font-semibold py-3 mb-10 text-xl px-4 border border-white rounded shadow">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -243,30 +243,84 @@
           </div>
           <h2 class="text-5xl mt-16 mb-16 font-extrabold text-white">Pilih Level</h2>
           <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            <li class="col-span-1 flex flex-col text-center bg-white rounded-xl shadow divide-y divide-gray-200">
+              @foreach($getCategory->levels as $level)
+            <li wire:click="startQuiz({{$level->id}})" class="col-span-1 flex flex-col text-center bg-white rounded-xl shadow divide-y divide-gray-200">
               <div class="flex-1 flex flex-col p-8">
                 <img class="w-32 h-32 flex-shrink-0 mx-auto rounded-full" src="https://icon-library.com/images/penguin-icon/penguin-icon-18.jpg" alt="">
-                <h3 class="mt-6 text-gray-900 text-4xl font-bold">Level 1</h3>
+                <h3 class="mt-6 text-gray-900 text-4xl font-bold">Level {{ $loop->iteration }}</h3>
                
               </div>
-              
-             
-            </li>
-            <li class="col-span-1 flex flex-col text-center bg-white rounded-xl shadow divide-y divide-gray-200">
-                <div class="flex-1 flex flex-col p-8">
-                  <img class="w-32 h-32 flex-shrink-0 mx-auto rounded-full" src="https://icon-library.com/images/penguin-icon/penguin-icon-18.jpg" alt="">
-                  <h3 class="mt-6 text-gray-900 text-4xl font-bold">Level 2</h3>
-                 
-                </div>
-                
-               
-              </li>
-            
-          
+
+            </li>       
+            @endforeach   
             <!-- More people... -->
           </ul>
         </div>
       </main>
+      @else
+      <main class="flex-1 mt-20 relative overflow-y-auto focus:outline-none">
+      <div class="py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+          <!-- Replace with your content -->
+          <div class="py-4">
+            <div class="flex flex-wrap -mx-3 overflow-hidden">
+
+              <div class="my-3 px-3 w-2/8 px-8 border-2 py-5 rounded-xl bg-gray-900 h-64 overflow-hidden">
+                <h2 class="text-2xl text-white font-semibold">Nomor</h2>
+                <span class="relative z-0 gap-6 shadow-sm rounded-md block">
+                    @foreach($DataQuestionFromLevelId as $Data)
+                  <button wire:click ="getQuestionWithId({{$Data->id}}, {{$loop->iteration}})" type="button" class="relative inline-flex items-center px-4 py-2 rounded-md border border-transparent font-semibold bg-red-600 text-sm font-medium text-white hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500">
+                    {{ $loop->iteration }}
+                  </button>
+                 @endforeach
+                </span>
+                <!--
+                <span class="relative z-0 gap-3 shadow-sm rounded-md block mt-2">
+                  <button type="button" class="relative inline-flex items-center px-4 py-2 rounded-md border border-transparent font-semibold bg-red-600 text-sm font-medium text-white hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500">
+                    7
+                  </button>
+                  <button type="button" class="relative bg-green-500 inline-flex items-center px-4 py-2 rounded-md border border-transparent font-semibold text-sm text-white hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500">
+                    8
+                  </button>
+                  <button type="button" class="relative inline-flex items-center px-4 py-2 rounded-md border  border-transparent bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500">
+                    9
+                  </button>
+                </span>
+                <span class="relative z-0 gap-3 shadow-sm rounded-md block mt-2">
+                  <button type="button" class="relative inline-flex items-center px-4 py-2 rounded-md border border-transparent font-semibold bg-red-600 text-sm font-medium text-white hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500">
+                   10
+                  </button>
+                  
+                </span>-->
+                
+              </div>
+            @if( $myQuestions!=null)
+              <div class="my-3 px-3 w-3/5 ml-5  overflow-hidden rounded-xl">
+                <div class="my-3 px-3 gradientcolor5 w-full  overflow-hidden rounded-full h-32 flex  ">
+                <h2 class="text-white  text-center m-auto text-3xl font-bold ">{{ $myQuestions->question_text }}</h2>
+                </div>
+                @foreach($myQuestions->answerOptions as $AnswerOptions)
+                <button wire:click="saveUserAnswer({{$AnswerOptions->pivot->fis8_question_id}}, '{{$AnswerOptions->pivot->option}}')" class="my-3 px-3  gradientcolor3 border-2 overflow-hidden rounded-xl h-16 flex  ">
+                  <p class="text-white text-center m-auto text-3xl font-bold ">{{ $AnswerOptions->option_text }}</h2>
+                </button>
+                 @endforeach
+              </div>
+              @endif
+              
+              <div class="my-3 px-3 w-1/5 ml-5  overflow-hidden rounded-xl">
+                <h2 class="text-2xl text-white font-semibold mb-3 text-center">Waktu</h2>
+                <button id ="countdown" type="button" class="mb-4 w-full text-center items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-yellow-400 hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                  00:00
+                </button>
+                <button type="button" class=" w-full text-center items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                  Selesai
+                </button>
+              </div>
+            </div> 
+      </div>
+      <script src="{{asset('/js/timer.js')}}"></script>
+    </main>
+      @endif
     </div>
   </div>
   
