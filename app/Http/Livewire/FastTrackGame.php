@@ -7,7 +7,6 @@ use App\Models\Fis8GamePlayHistory;
 use App\Models\Fis8Level;
 use App\Models\Fis8Question;
 use App\Models\User;
-use App\Models\Fis8MyUser;
 use Livewire\Component;
 
 class FastTrackGame extends Component
@@ -20,27 +19,29 @@ class FastTrackGame extends Component
     public $numberQuestions;
     public $DataQuestionFromLevelId;
     public $currentuser;
+    public $getQuestionobj;
 
     public function render()
     {
-        $this -> getCategory = Fis8Category::where('name', "Fast Track")-> first();
+        $this->getCategory = Fis8Category::where('name', 'Fast Track')->first();
+        if ($this->myQuestions != null) {
+            $this->getQuestionobj = $this->myHistory->questions->where('id', $this->myQuestions->id)->first();
+        }
+
         return view('livewire.fast-track-game');
     }
-  
 
-    public function startQuiz($levelId){
-       
+    public function startQuiz($levelId)
+    {
         $getUser = User::find(auth()->user()->id);
         $this->myLevel = Fis8Level::find($levelId);
         $this->DataQuestionFromLevelId = Fis8Level::find($this->myLevel->id)->questions;
 
-       
         $getUser->levels()->attach([
-            $levelId
+            $levelId,
         ]);
 
         $this->myHistory = Fis8GamePlayHistory::orderBy('id', 'DESC')->first();
-     
     }
 
     ///////////////////QUIZ GAMEPLAY
@@ -64,17 +65,15 @@ class FastTrackGame extends Component
 
     public function checkUserAnswer()
     {
-
-        $getQuestionobj = $this->myHistory->questions->where('id', $this->myQuestions->id)->first();
-
-        if ($getQuestionobj == null || $getQuestionobj->pivot->user_answer == null) {
+        if ($this->getQuestionobj == null || $this->getQuestionobj->pivot->user_answer == null) {
             $this->keteranganCorrectAnswer = '';
+
             return false;
         } else {
-            if ($getQuestionobj->correct_answer_option == $getQuestionobj->pivot->user_answer) {
+            if ($this->getQuestionobj->correct_answer_option == $this->getQuestionobj->pivot->user_answer) {
                 return true;
             } else {
-                $this->keteranganCorrectAnswer = 'Jawaban Salah! Jawban yang benar: '.$getQuestionobj->correct_answer_option.'. Jawaban Kamu: '.$getQuestionobj->pivot->user_answer;
+                $this->keteranganCorrectAnswer = 'Jawaban Salah! Jawban yang benar: '.$this->getQuestionobj->correct_answer_option.'. Jawaban Kamu: '.$getQuestionobj->pivot->user_answer;
 
                 return false;
             }
@@ -87,10 +86,10 @@ class FastTrackGame extends Component
             $this->myHistory->score += $this->myLevel->score_reward;
             $this->myHistory->money_reward += $this->myLevel->money_reward;
             $this->myHistory->save();
-             $this->currentuser =  User::find(auth()->user()->id)->myUser;
-           $this->currentuser->update([
+            $this->currentuser = User::find(auth()->user()->id)->myUser;
+            $this->currentuser->update([
                 'score' => $this->currentuser->score + $this->myLevel->score_reward,
-                'money' => $this->currentuser->money +$this->myLevel->money_reward,
+                'money' => $this->currentuser->money + $this->myLevel->money_reward,
             ]);
             $this->keteranganCorrectAnswer = 'Jawaban Benar! Dapat tambahan 50 skor.';
         }

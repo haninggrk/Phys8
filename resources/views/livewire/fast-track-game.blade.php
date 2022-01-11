@@ -304,10 +304,13 @@
                 <h2 class="text-white  text-center m-auto text-3xl font-bold ">{{ $myQuestions->question_text }}</h2>
                 </div>
                 @foreach($myQuestions->answerOptions as $AnswerOptions)
+                @if($getQuestionobj !=null && 
                 <button wire:click="saveUserAnswer({{$AnswerOptions->pivot->fis8_question_id}}, '{{$AnswerOptions->pivot->option}}')" class="my-3 px-3  gradientcolor3 border-2 overflow-hidden rounded-xl h-32 flex  ">
                   <p class="text-white text-center m-auto text-2xl font-bold ">{{ $AnswerOptions->option_text }}</h2>
                 </button>
                  @endforeach
+<button @if($getQestionobj !=null) @ifoption skrg == corrcetanswer)hijau, @else if(opsi skrg==usranswer&&option skrg != corrcetanswer)merah  @endif
+
               </div>
               @endif
               
