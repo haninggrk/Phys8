@@ -12,18 +12,18 @@
                 <!-- Navigation Links -->
                
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link class="hover:ring-0" href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    <x-jet-nav-link class="hover:ring-0"  :active="request()->routeIs('dashboard')">
                     <span class=" gradientcolor inline-flex items-center py-2 px-2 rounded-3xl text-sm font-medium bg-gray-100 text-white">
                 <img src="https://i.ibb.co/nBQy0Rv/image.png" class="h-6 w-6 mr-2"> <b>{{ auth()->user()->myUser->money }}</b>
 </span>
                     </x-jet-nav-link>
-                    <x-jet-nav-link class="ring-0 " href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    <x-jet-nav-link class="ring-0 " :active="request()->routeIs('dashboard')">
                     <span class="gradientcolor inline-flex items-center py-2 px-2 rounded-3xl text-sm font-medium bg-gray-100 text-white">
                     <img src="https://i.ibb.co/kHfCs1W/image.png" class="h-6 w-6 mr-2">
                     <b>{{ auth()->user()->myUser->ticket }}</b>
 </span>
                     </x-jet-nav-link>
-                    <x-jet-nav-link class="ring-0 border-0 " href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    <x-jet-nav-link class="ring-0 border-0 " :active="request()->routeIs('dashboard')">
                     <span class="inline-flex hover:ring-0  focus:ring-0 active:ring-0 gradientcolor items-center py-2 px-2 rounded-3xl text-sm font-medium bg-gray-100 text-white">
                     <img src="https://i.ibb.co/HCYMkKW/image.png" class="h-6 w-6 mr-2">  <b>{{ auth()->user()->myUser->money }}</b>
 </span>
