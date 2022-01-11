@@ -224,6 +224,7 @@
     </div>
     <ul role="list" class="relative z-0 rounded-3xl overflow-scroll  border-4 gradientcolor3 " style="max-height:400px">
     @foreach($leaderBoard as $leaderBoardData)
+    @if($loop->iteration == 1)
     <li class=" border-0">
         <div class="relative px-6 py-5 flex items-center space-x-3 gradientcolor4 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
         <div class="flex-shrink-0">
@@ -250,6 +251,35 @@
               </p>
         </div>
       </li>
+      @endif
+      @if($loop->iteration > 1)
+      <li class=" border-0">
+        <div class="relative px-6 py-5 flex items-center space-x-3 gradientcolor4 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+        <div class="flex-shrink-0">
+           <h1 class="text-4xl h-12 w-12 text-center pl-0 text-white">{{ $loop->iteration }}</h1>
+          </div>  
+        <div class="flex-shrink-0">
+            <img class="h-12 w-12 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+          </div>
+          <div class="flex-1 min-w-0">
+            <a href="#" class="focus:outline-none">
+              <!-- Extend touch target to entire panel -->
+              <span class="absolute inset-0" aria-hidden="true"></span>
+              <p class="text-lg font-semibold  text-white">
+              {{ $leaderBoardData->student->username }}
+              </p>
+              
+            </a>
+          </div>
+          <div class="">
+            <img class="h-12 w-12 rounded-full" src="https://i.ibb.co/HCYMkKW/image.png" alt="">
+          </div>
+          <p class="text-lg font-semibold  text-white">
+          {{$leaderBoardData->score }}
+              </p>
+        </div>
+      </li>
+      @endif
       @endforeach 
     </ul>
   </div>
