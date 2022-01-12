@@ -129,7 +129,7 @@
             </svg>
           </a>
   
-          <a href="/gametemp" class="text-gray-400 hover:bg-gray-700 flex-shrink-0 inline-flex items-center justify-center h-14 w-14 rounded-lg">
+          <a href="/game" class="text-gray-400 hover:bg-gray-700 flex-shrink-0 inline-flex items-center justify-center h-14 w-14 rounded-lg">
             <span class="sr-only">Customers</span>
             <!-- Heroicon name: outline/user-circle -->
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -271,7 +271,14 @@
                 <span class="relative z-0 gap-6 shadow-sm rounded-md block">
                     @foreach($DataQuestionFromLevelId as $Data)
                 
-                  <button wire:click ="getQuestionWithId({{$Data->id}}, {{$loop->iteration}})" type="button" class="  relative inline-flex items-center px-4 py-2 rounded-md border border-transparent font-semibold bg-red-600 text-sm font-medium text-white hover:bg-gray-50 hover:text-black focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500">
+                  <button wire:click ="getQuestionWithId({{$Data->id}}, {{$loop->iteration}})" type="button" class="
+                  @if($getHistoryUser !=null)
+                  @foreach($getHistoryUser as $question)
+                  @if($question!=null)@if($question->id==$Data->id) @if($question->correct_answer_option == $question->pivot->user_answer) bg-green-600 @else bg-red-500 @endif  @endif  @endif
+                  @endforeach
+                  @endif
+                  
+                  relative inline-flex items-center px-4 py-2 rounded-md border border-transparent font-semibold  text-sm font-medium text-white hover:bg-gray-50 hover:text-black focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500">
                     {{ $loop->iteration }}
                   </button>
                   @if($loop->iteration%3 == 0)
@@ -307,7 +314,37 @@
                 </div>
                 @foreach($myQuestions->answerOptions as $AnswerOptions)
                 
-                <button wire:click="saveUserAnswer({{$AnswerOptions->pivot->fis8_question_id}}, '{{$AnswerOptions->pivot->option}}')" class="my-3 px-3  gradientcolor3 border-2 overflow-hidden rounded-xl h-32 flex  ">
+                <button 
+                
+                @if($getQuestionobj == null) 
+                wire:click="saveUserAnswer({{$AnswerOptions->pivot->fis8_question_id}}, '{{$AnswerOptions->pivot->option}}')"
+                @endif
+                class="my-3
+                
+                @if($getHistoryUser !=null)
+                @foreach($getHistoryUser as $question)
+                  @if($question!=null)
+                    @if($question->id==$AnswerOptions->pivot->fis8_question_id)
+                      @if($question->correct_answer_option == $question->pivot->user_answer)
+                         @if($AnswerOptions->pivot->option == $question->correct_answer_option)  
+                          bg-green-600 
+                          
+                         @endif 
+                         @else 
+                         @if($AnswerOptions->pivot->option == $question->pivot->user_answer)  
+                         bg-red-500
+                         
+                         @elseif($AnswerOptions->pivot->option == $question->correct_answer_option)
+                         bg-green-600
+                         @endif
+                         
+                      @endif  
+                    @endif  
+                  @endif
+                @endforeach
+                  @endif
+                
+                px-3   border-2 overflow-hidden rounded-xl h-32 flex  ">
                   <p class="text-white text-center m-auto text-2xl font-bold ">{{ $AnswerOptions->option_text }}</h2>
                 </button>
                  @endforeach
@@ -318,21 +355,12 @@
               <div class="my-3 px-3 w-1/5 ml-5  overflow-hidden rounded-xl">
                 <h2 class="text-2xl text-white font-semibold mb-3 text-center">Waktu</h2>
                 <button id ="countdown" type="button" class="mb-4 w-full text-center items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-yellow-400 hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                  00:00
+                  <span id=test>600</span>
                 </button>
-                <button type="button" class=" w-full text-center items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <a href="/home"><button type="button" class=" w-full text-center items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                   Selesai
-                </button>
-                <h2 class="text-2xl text-white font-semibold mb-3 mt-3 text-center">Total Hadiah</h2>
-                <span class="mb-2 w-full text-center gradientcolor flex align-center justify-center items-center py-4 px-2 rounded-3xl text-sm font-medium bg-gray-100 text-white">
-                <img src="https://i.ibb.co/nBQy0Rv/image.png" class="h-6 w-6 mr-2"> <b>200</b>
-                </span>
-                <span class="mb-2 w-full text-center gradientcolor flex align-center justify-center items-center py-4 px-2 rounded-3xl text-sm font-medium bg-gray-100 text-white">
-                <img src="https://i.ibb.co/kHfCs1W/image.png" class="h-6 w-6 mr-2"> <b>200</b>
-                </span>
-                <span class=" w-full text-center gradientcolor flex align-center justify-center items-center py-4 px-2 rounded-3xl text-sm font-medium bg-gray-100 text-white">
-                <img src="https://i.ibb.co/HCYMkKW/image.png" class="h-6 w-6 mr-2"> <b>200</b>
-                </span>
+                </button></a>
+                
               </div>
             </div> 
       </div>
@@ -342,5 +370,16 @@
     </div>
   </div>
   
+  <script>
+setInterval(function () {
+    var d = new Date(); //get current time
+    var seconds = d.getMinutes() * 60 + d.getSeconds(); //convet current mm:ss to seconds for easier caculation, we don't care hours.
+    var fiveMin = 60 * 6; //five minutes is 300 seconds!
+    var timeleft = fiveMin - seconds % fiveMin; // let's say now is 01:30, then current seconds is 60+30 = 90. And 90%300 = 90, finally 300-90 = 210. That's the time left!
+    var result = parseInt(timeleft / 60) + ':' + timeleft % 60; //formart seconds back into mm:ss 
+    document.getElementById('test').innerHTML = result;
+
+}, 500) //calling it every 0.5 second to do a count down
+</script>
   
  

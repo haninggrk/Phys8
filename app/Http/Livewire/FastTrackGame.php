@@ -20,14 +20,17 @@ class FastTrackGame extends Component
     public $DataQuestionFromLevelId;
     public $currentuser;
     public $getQuestionobj;
+    public $getHistoryUser;
 
     public function render()
     {
         $this->getCategory = Fis8Category::where('name', 'Fast Track')->first();
         if ($this->myQuestions != null) {
             $this->getQuestionobj = $this->myHistory->questions->where('id', $this->myQuestions->id)->first();
+            $this->getHistoryUser =  $this->myHistory->questions;
         }
-
+        
+       
         return view('livewire.fast-track-game');
     }
 
@@ -54,12 +57,16 @@ class FastTrackGame extends Component
 
     public function saveUserAnswer($questionID, $userAnswerOption)
     {
+      
         $this->myHistory->questions()->attach([
             $questionID => [
                 'user_answer' => $userAnswerOption,
             ],
         ]);
-
+        $this->keteranganCorrectAnswer = 'sudah';
+        //$this->getQuestionobj = $this->myHistory->questions->where('id', $this->myQuestions->id)->first();
+        // if($this->getQuestionobj->pivot->user_answer!=null){}
+      
         $this->addReward($this->checkUserAnswer());
     }
 
@@ -67,14 +74,14 @@ class FastTrackGame extends Component
     {
         $this->getQuestionobj = $this->myHistory->questions->where('id', $this->myQuestions->id)->first();
         if ($this->getQuestionobj == null || $this->getQuestionobj->pivot->user_answer == null) {
-            $this->keteranganCorrectAnswer = '';
+            // $this->keteranganCorrectAnswer = '';
 
             return false;
         } else {
             if ($this->getQuestionobj->correct_answer_option == $this->getQuestionobj->pivot->user_answer) {
                 return true;
             } else {
-                $this->keteranganCorrectAnswer = 'Jawaban Salah! Jawban yang benar: '.$this->getQuestionobj->correct_answer_option.'. Jawaban Kamu: '.$this->getQuestionobj->pivot->user_answer;
+                // $this->keteranganCorrectAnswer = 'Jawaban Salah! Jawban yang benar: '.$this->getQuestionobj->correct_answer_option.'. Jawaban Kamu: '.$this->getQuestionobj->pivot->user_answer;
 
                 return false;
             }

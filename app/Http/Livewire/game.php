@@ -20,11 +20,7 @@ class game extends Component
     public $leaderBoard;
     public $array;
     public $rankUser;
-
-    public function render()
-    {
-        return view('livewire.game');
-    }
+    public $myhistory;
 
     public function mount()
     {
@@ -41,5 +37,17 @@ class game extends Component
         ]);
 
         $this->myHistoryFeazy = Fis8GamePlayHistory::orderBy('id', 'DESC')->first();
+    }
+    public function startGame($levelId)
+    {
+        $getUser = User::find(auth()->user()->id);
+        $this->myLevel = Fis8Level::find($levelId);
+        
+
+        $getUser->levels()->attach([
+            $levelId,
+        ]);
+
+        $this->myHistory = Fis8GamePlayHistory::orderBy('id', 'DESC')->first();
     }
 }
