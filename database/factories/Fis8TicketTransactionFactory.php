@@ -14,10 +14,17 @@ class Fis8TicketTransactionFactory extends Factory
      */
     public function definition()
     {
+        $array = [];
         $getStudent = User::all();
+        foreach ($getStudent as $data) {
+            if ($data->myUser->is_admin == '0') {
+                array_push($array, $data->id);
+            }
+        }
+
         return [
-            'student_id' => rand(1, count($getStudent)),
-            'add_ticket' => rand(1,50),
+            'student_id' => $array[rand(0, count($array) - 1)],
+            'add_ticket' => rand(1, 50),
             'created_at' => now(),
         ];
     }

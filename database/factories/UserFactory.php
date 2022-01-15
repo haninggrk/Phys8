@@ -25,15 +25,11 @@ class UserFactory extends Factory
     // for student
     public function definition()
     {
-        $school = array(
-            "SMA NEGERI 1 TARAKAN", "SMA NEGERI 2 TARAKAN", "SMA NEGERI 3 TARAKAN", "SMPIT ULUL ALBAB"
-        );
         return [
             'email' => $this->faker->unique()->safeEmail(),
             'password' => Hash::make('password'),
             'username' => $this->faker->name(),
             'name' => $this->faker->name(),
-            'school' => $school[rand(0, count($school)-1)],
             'city' => $this->faker->city(),
             'birthyear' => $this->faker->year(now()),
         ];
