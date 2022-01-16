@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Fis8Code;
 use App\Models\Fis8GamePlayHistory;
 use App\Models\Fis8Level;
+use App\Models\Fis8MyUser;
 use App\Models\Fis8Question;
 use Illuminate\Database\Seeder;
 
@@ -25,7 +26,8 @@ class UserSeeder extends Seeder
         for ($i = 0; $i < 50; ++$i) {
             $createUser = \App\Models\User::factory()->create();
 
-            $createUser->MyUser()->create([
+            Fis8MyUser::create([
+                'student_id' => $createUser->id,
                 'is_active' => $num[rand(0, 1)],
                 'is_login' => $num[rand(0, 1)],
                 'is_admin' => $num[rand(0, 1)],
@@ -36,7 +38,7 @@ class UserSeeder extends Seeder
                     'school' => $school[rand(0, count($school) - 1)],
                 ]);
             } else {
-                $createUser->MyUser()->update([
+                Fis8MyUser::where('student_id', $createUser->id)->first()->update([
                     'money' => 0,
                     'ticket' => 0,
                 ]);
@@ -110,11 +112,11 @@ class UserSeeder extends Seeder
                             $cekLevel = 0;
                             foreach (Fis8GamePlayHistory::where('student_id', $getUser->id)->get() as $dataa) {
                                 if ($dataa->fis8_level_id == $createHistory->fis8_level_id) {
-                                    ++$cekLevel;
+                                    $cekLevel = $cekLevel + 1;
                                 }
                             }
                             if ($cekLevel == 0) {
-                                $getUser->MyUser()->update([
+                                Fis8MyUser::where('student_id', $getUser->id)->first()->update([
                         'score' => $getUser->myUser->score + $getLevel->score_reward,
                         'money' => $getUser->myUser->money + $getLevel->money_reward,
                         'ticket' => $getUser->myUser->ticket + $getLevel->ticket_reward,
@@ -130,7 +132,7 @@ class UserSeeder extends Seeder
                     'ticket_reward' => rand(0, 2),
                      ]);
 
-                    $getUser->MyUser()->update([
+                    Fis8MyUser::where('student_id', $getUser->id)->first()->update([
                         'score' => $getUser->myUser->score + $createHistory->score,
                         'money' => $getUser->myUser->money + $createHistory->money_reward,
                         'ticket' => $getUser->myUser->ticket + $createHistory->ticket_reward,
