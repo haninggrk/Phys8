@@ -20,7 +20,7 @@ class game extends Component
     public $leaderBoard;
     public $array;
     public $rankUser;
-    public $myhistory;
+    public $currentuser;
 
     public function mount()
     {
@@ -35,6 +35,7 @@ class game extends Component
         $getUser->levels()->attach([
             $levelId,
         ]);
+        
 
         $this->myHistoryFeazy = Fis8GamePlayHistory::orderBy('id', 'DESC')->first();
     }
@@ -42,12 +43,17 @@ class game extends Component
     {
         $getUser = User::find(auth()->user()->id);
         $this->myLevel = Fis8Level::find($levelId);
+        $this->currentuser = User::find(auth()->user()->id)->myUser;
+       
+        $this->currentuser->update([
+            'ticket' => $this->currentuser->ticket - 10
+            
+        ]);
         
-
         $getUser->levels()->attach([
             $levelId,
         ]);
 
-        $this->myHistory = Fis8GamePlayHistory::orderBy('id', 'DESC')->first();
+        $this->myHistoryFeazy = Fis8GamePlayHistory::orderBy('id', 'DESC')->first();
     }
 }

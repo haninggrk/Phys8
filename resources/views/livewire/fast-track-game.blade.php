@@ -248,7 +248,9 @@
               <div class="flex-1 flex flex-col p-8">
                 <img class="w-32 h-32 flex-shrink-0 mx-auto rounded-full" src="https://icon-library.com/images/penguin-icon/penguin-icon-18.jpg" alt="">
                 <h3 class="mt-6 text-gray-900 text-4xl font-bold">Level {{ $loop->iteration }}</h3>
+               
               </div>
+
             </li>       
             @endforeach   
             <!-- More people... -->
@@ -355,7 +357,7 @@
               <div class="my-3 px-3 w-1/5 ml-5  overflow-hidden rounded-xl">
                 <h2 class="text-2xl text-white font-semibold mb-3 text-center">Waktu</h2>
                 <button id ="countdown" type="button" class="mb-4 w-full text-center items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-yellow-400 hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                  <span id=test>600</span>
+                  <span id=timer>05:00</span>
                 </button>
                 <a href="/home"><button type="button" class=" w-full text-center items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                   Selesai
@@ -364,22 +366,30 @@
               </div>
             </div> 
       </div>
-      <script src="{{asset('/js/timer.js')}}"></script>
+    
     </main>
       @endif
     </div>
   </div>
   
   <script>
-setInterval(function () {
-    var d = new Date(); //get current time
-    var seconds = d.getMinutes() * 60 + d.getSeconds(); //convet current mm:ss to seconds for easier caculation, we don't care hours.
-    var fiveMin = 60 * 6; //five minutes is 300 seconds!
-    var timeleft = fiveMin - seconds % fiveMin; // let's say now is 01:30, then current seconds is 60+30 = 90. And 90%300 = 90, finally 300-90 = 210. That's the time left!
-    var result = parseInt(timeleft / 60) + ':' + timeleft % 60; //formart seconds back into mm:ss 
-    document.getElementById('test').innerHTML = result;
-
-}, 500) //calling it every 0.5 second to do a count down
+window.onload = function() {
+  var minute = 5;
+  var sec = 60;
+  setInterval(function() {
+    document.getElementById("timer").innerHTML = minute + " : " + sec;
+    sec--;
+    if (sec == 00) {
+      minute --;
+      sec = 60;
+      if (minute == 0) {
+        minute = 5;
+      }
+    }
+  }, 1000);
+}
 </script>
-  
+<audio autoplay="autoplay">
+    <source src="121.mp3" /> 
+</audio>
  

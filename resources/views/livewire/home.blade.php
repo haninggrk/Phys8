@@ -129,7 +129,7 @@
           </svg>
         </a>
 
-        <a href="/gametemp" class="text-gray-400 hover:bg-gray-700 flex-shrink-0 inline-flex items-center justify-center h-14 w-14 rounded-lg">
+        <a href="/game" class="text-gray-400 hover:bg-gray-700 flex-shrink-0 inline-flex items-center justify-center h-14 w-14 rounded-lg">
           <span class="sr-only">Customers</span>
           <!-- Heroicon name: outline/user-circle -->
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -404,7 +404,8 @@
               Penukaran Tiket
             </h3>
             <div class="mt-2">
-              <form class="p-0 m-0">
+              <form class="p-0 m-0" method="post" action="{{route('tukartiket')}}">
+                @csrf
                 <div>
                   <label for="price" class="block text-sm font-medium text-gray-700">Price</label>
                   <div class="mt-1 relative rounded-md shadow-sm">
@@ -413,15 +414,15 @@
                         $
                       </span>
                     </div>
-                    <input type="text" name="price" id="price" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md" placeholder="0.00" aria-describedby="price-currency">
+                    <input type="text" name="money" id="price" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md" placeholder="0.00" aria-describedby="price-currency">
                     <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                       <span class="text-gray-500 sm:text-sm" id="price-currency">
-                        USD
+                        Money
                       </span>
                     </div>
                   </div>
                 </div>
-              </form>
+              
             </div>
           </div>
         </div>
@@ -430,9 +431,11 @@
         <button x-on:click="open = ! open" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
           Batalkan
         </button>
-        <button type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+        
+        <button type="submit" name="submit" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
           Tukarkan Ticket
         </button>
+        </form>
       </div>
     </div>
   </div>

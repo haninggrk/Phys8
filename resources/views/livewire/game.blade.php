@@ -1,3 +1,4 @@
+
 <div x-data="{ open: false }" class="h-screen flex overflow-hidden bg-transparent">
     <!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
     <div class="fixed inset-0 flex z-40 md:hidden" role="dialog" aria-modal="true">
@@ -129,7 +130,7 @@
             </svg>
           </a>
   
-          <a href="/gametemp" class="text-gray-400 hover:bg-gray-700 flex-shrink-0 inline-flex items-center justify-center h-14 w-14 rounded-lg">
+          <a href="/game" class="text-gray-400 hover:bg-gray-700 flex-shrink-0 inline-flex items-center justify-center h-14 w-14 rounded-lg">
             <span class="sr-only">Customers</span>
             <!-- Heroicon name: outline/user-circle -->
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -241,13 +242,15 @@
         </div>
       </div>
     </div>
+    
   </div>
   
           </div>
           <h2 class="text-5xl mt-16 mb-16 font-extrabold text-white">Pilih Permainan</h2>
           <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           @foreach($getCategoryFeazy->levels as $level)
-            <li wire:click="startGameFeazy({{$level->id}})" class="col-span-1 flex flex-col text-center bg-white rounded-xl shadow divide-y divide-gray-200">
+      
+            <li  id="startGameButton" class="col-span-1 flex flex-col text-center bg-white rounded-xl shadow divide-y divide-gray-200">
               <div class="flex-1 flex flex-col p-8">
                 <img class="w-32 h-32 flex-shrink-0 mx-auto rounded-full" src="https://icon-library.com/images/penguin-icon/penguin-icon-18.jpg" alt="">
                 <h3 class="mt-6 text-gray-900 text-4xl font-bold">{{$level->name}}</h3>
@@ -258,18 +261,21 @@
             <!-- More people... -->
           </ul>
         </div> 
+        <div class="fixed"><span id="playerScore">Skor: </span></div>
+     
       </main>
-      @else
-         
-      <div class="fixed"><span id="playerScore">Skor: </span></div>
-      <div id="modalGame">
-          <div>
-          <p>Kamu mendapatkan</p>
+    
+      </div>
+      </div>
+@endif
+<div class="w-full" id="modalGame">
+          <div class="text-center">
+          <p >Kamu mendapatkan</p>
               <h1 id="modalplayerScore">0</h1>
               <p>Skor</p>
               <p>Skor tertinggi kamu: 0000</p>
               <div>
-                  <button id="startGameButton">Mulai Bermain</button>
+                  
               </div>
           </div>
       </div>
@@ -281,9 +287,8 @@
       <script src="{{asset('/js/game.js')}}"></script>
       
 
-      @endif
-    </div>    
-  </div>
-  
-  
- 
+</div>
+     
+     
+</div>
+</div>
