@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
             Fis8LevelSeeder::class,
             Fis8QuestionSeeder::class,
             UserSeeder::class,
-            Fis8LogSeeder::class,
+            //Fis8LogSeeder::class,
             Fis8TicketTransactionSeeder::class,
            // Fis8AnswerOptionSeeder::class,
         ]);

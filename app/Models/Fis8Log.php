@@ -12,6 +12,8 @@ class Fis8Log extends Model
         'id',
     ];
 
+    public const UPDATED_AT = null;
+
     public function scopeSearch($query, $term)
     {
         $term = "%$term%";

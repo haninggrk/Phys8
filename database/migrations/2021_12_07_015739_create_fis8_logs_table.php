@@ -25,7 +25,7 @@ class CreateFis8LogsTable extends Migration
             $table->text('log_path');
             $table->text('log_ip');
 
-            $table->timestamps();
+            $table->dateTime('created_at');
         });
     }
 

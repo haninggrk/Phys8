@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Fis8Log;
+use App\Models\Fis8MyUser;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -36,7 +37,7 @@ class LoginController extends Controller
                    'student_id' => auth()->user()->id,
                     'table_name' => 'students',
                     'log_note' => 'Proses Login',
-                    'log_description' => 'Mencari email student yang sesuai dengan'.$request->email,
+                    'log_description' => 'Id Pemain ='.auth()->user()->id,
                     'log_path' => $request->path(),
                     'log_ip' => $request->ip(),
                 ]);
@@ -44,14 +45,6 @@ class LoginController extends Controller
                 $check = $GetUser->myUser;
 
                 //  $getUser = User::find(auth()->user()->id);
-                Fis8Log::create([
-                    'student_id' => auth()->user()->id,
-                    'table_name' => 'fis8_myusers',
-                    'log_note' => 'Proses Login',
-                    'log_description' => 'Mengakses data student_id = '.auth()->user()->id.' yang ada di table fis8_myusers',
-                    'log_path' => $request->path(),
-                    'log_ip' => $request->ip(),
-                ]);
 
                 if ('1' == $check->is_active) {
                     if ('0' == $check->is_login) {
@@ -141,35 +134,35 @@ class LoginController extends Controller
         return $response->json();
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
         /** @var \App\Models\User $user */
-        $user = Auth::user();
+       // $user = $request->user();
 
-        $accessToken = $user->token();
+//        $accessToken = $user->token();
 
-        DB::table('oauth_refresh_tokens')->where('access_token_id', $accessToken->id)
-        ->update([
-            'revoked' => true,
-        ]);
+  //      DB::table('oauth_refresh_tokens')->where('access_token_id', $accessToken->id)
+    //    ->update([
+      //      'revoked' => true,
+       // ]);
 
-        $user->myUser->update([
+        //$accessToken->revoke();
+
+        Fis8MyUser::where('student_id', $request->student_id)->first()->update([
             'is_login' => '0',
         ]);
 
-        $accessToken->revoke();
-
         Fis8Log::create([
-            'student_id' => auth()->user()->id,
+            'student_id' => $request->student_id,
             'table_name' => 'students',
             'log_note' => 'Logout',
-            'log_description' => 'student_id = '.auth()->user()->id.' logout',
+            'log_description' => 'Id Pemain = '.$request->student_id.' logout',
+            'log_path' => $request->path(),
+            'log_ip' => $request->ip(),
         ]);
 
-        Auth::logout();
-
         return response([
-            'message' => 'Logged out',
+            'message' => 'Berhasil keluar. Sampai jumpa lagi!',
         ]);
     }
 }
