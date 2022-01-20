@@ -1428,7 +1428,7 @@ content-center grid lg:grid-cols-1 grid-cols-2 gap-4 sm:grid-cols-2">
 
       </div>
       <div class="modal-footer">
-      <button wire:click.prevent="addAdminData()">Tambahkan</button>
+      <button wire:click.prevent="addAdminData">Tambahkan</button>
         </div>
     </div>
   </div>
