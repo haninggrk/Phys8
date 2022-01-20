@@ -105,8 +105,10 @@ class Admin extends Component
     public function setPage($page)
     {
         $this->editAdminDataIndex = null;
+        $this->search=null;
         $pageLower = strtolower($page);
         $this->page = $pageLower;
+
     }
 
     public function deleteAdminData($index)
