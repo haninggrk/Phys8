@@ -148,11 +148,11 @@
           <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
             <!-- Replace with your content -->
             <div class="py-4">
-                <div style="height:760px" class="border-4 my-4  py-5 px-4 w-full overflow-hidden gradientcolor3 border-gray-200 rounded-3xl">
+                <div style="height:420px" class="border-4 my-4  py-5 px-4 w-full overflow-hidden gradientcolor3 border-gray-200 rounded-3xl">
                     <h2 class="text-5xl mb-2 font-extrabold text-white">Kategori Feazy</h2>
-                    <h2 class="text-3xl font-bold text-white">{{$getCategoryFeazy->description}}</h2>
-                    <div class="text-center mt-20">
-                    <button x-on:click="open = ! open" class=" bg-blue-500 mt-20 w-full hover:bg-blue-600 text-white font-semibold py-3 mb-10 text-xl px-4 border border-white rounded shadow">
+                    <h2 class="text-1xl mt-10 text-white">{{$getCategoryFeazy->description}}</h2>
+                    <div class="text-center mt-15">
+                    <button x-on:click="open = ! open" class=" bg-blue-500 mt-20 w-full hover:bg-blue-600 text-white font-semibold py-3 text-xl px-4 border border-white rounded shadow">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
         </svg>Beli Tiket
@@ -246,7 +246,7 @@
   </div>
   
           </div>
-          <h2 class="text-5xl mt-16 mb-16 font-extrabold text-white">Pilih Permainan</h2>
+          <h2 class="text-5xl mt-20 mb-5 font-extrabold text-white">Pilih Permainan</h2>
           <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           @foreach($getCategoryFeazy->levels as $level)
       

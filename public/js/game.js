@@ -76,9 +76,9 @@ class Enemy {
 
     updateVelocity(speed){
         this.draw()
-        this.velocity.x *= this.speed + speed
-        this.velocity.y *= this.speed + speed
-        this.speed += speed
+        this.velocity.x *= this.speed
+        this.velocity.y *= this.speed
+
     }
 }
 

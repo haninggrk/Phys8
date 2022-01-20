@@ -151,7 +151,7 @@
   
             <div class="border-4 my-4 py-5 px-4 w-3/5 overflow-hidden gradientcolor3 border-gray-200 rounded-3xl">
             <h2 class="text-5xl mb-2 font-extrabold text-white">Halo, {{ auth()->user()->username }}</h2>
-            <h2 class="text-3xl font-bold text-white">Anda mulai bergabung sejak {{ auth()->user()->created_at }}</h2>
+            <h2 class="text-1xl ml-5 text-white">Anda mulai bergabung sejak {{date('d M Y',strtotime(auth()->user()->created_at))}}</h2>
             <div class="text-center">
             <button x-on:click="open = ! open" class="bg-blue-500 mt-20 w-full hover:bg-blue-600 text-white font-semibold py-3 mb-10 text-xl px-4 border border-white rounded shadow">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -171,16 +171,16 @@
           </svg>
         </div>
 
-        <p class="ml-16 text-sm font-medium text-white text-gray-500 truncate">Kamu bermain sebanyak</p>
+        <p class="ml-16 text-sm font-medium text-white text-gray-500 truncate">Kamu bermain permainan sebanyak</p>
       </dt>
       <dd class="ml-16 pb-6 flex items-baseline sm:pb-7">
         <p class="text-2xl font-semibold text-blue-200">
-        {{ $lastLevel }} Level
+        {{ $lastLevel }} Jenis
         </p>
      
         <div class="absolute bottom-0 inset-x-0 bg-gray-50 px-4 py-4 sm:px-6">
           <div class="text-sm">
-            <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">Kategori Permainan Fast Track<span class="sr-only"> Total Subscribers stats</span></a>
+            <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500 font-bold">Kategori Permainan Fast Track<span class="sr-only"> Total Subscribers stats</span></a>
           </div>
         </div>
       </dd>
@@ -208,7 +208,7 @@
      
         <div class="absolute bottom-0 inset-x-0 bg-gray-50 px-4 py-4 sm:px-6">
           <div class="text-sm">
-            <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">Informasi<span class="sr-only"> Total Subscribers stats</span></a>
+            <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500 font-bold">Informasi Pengguna<span class="sr-only"> Total Subscribers stats</span></a>
           </div>
         </div>
       </dd>
@@ -220,7 +220,7 @@
             <nav class="h-full overflow-y-auto" aria-label="Directory">
   <div class="relative">
     <div class="z-10 sticky top-0 text-center text-4xl text-white  bg-transparent px-6 py-1 font-medium ">
-      <h3 class="mb-10">Peringkat</h3>
+      <h3 class="mb-5 font-bold">Peringkat</h3>
     </div>
     <ul role="list" class="relative z-0 rounded-3xl overflow-scroll  border-4 gradientcolor3 " style="max-height:400px">
     @foreach($leaderBoard as $leaderBoardData)
@@ -297,27 +297,27 @@
         <table class="min-w-full divide-y divide-gray-200 rounded-md border-5  h-20e">
           <thead class="bg-gray-50">
             <tr class="rounded-t-xl">
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider font-bold">
                 Tanggal
               </th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider font-bold">
                 Kategori Permainan
               </th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider font-bold">
                 Permainan
               </th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider font-bold">
                 Perolehan Dolar
               </th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider font-bold">
                 Perolehan Tiket
               </th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider font-bold">
                 Perolehan Skor
               </th>
             
               <th scope="col" class="relative px-6 py-3">
-                <span class="sr-only">Edit</span>
+                <span class="sr-only"></span>
               </th>
             </tr>
           </thead>
@@ -326,7 +326,7 @@
           @foreach($getHistoryUser as $history)
             <tr>
               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">
-              {{ $history->pivot->created_at }}
+              {{ $history->pivot->created_at->format('m/d/y') }}
               </td>
               <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
               {{ $history->category->name }}
@@ -344,7 +344,7 @@
               {{ $history->pivot->score }}
               </td>
               <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                <a href="#" class="text-yellow-200 hover:text-indigo-900">Edit</a>
+                <a href="#" class="text-yellow-200 hover:text-indigo-900"></a>
               </td>
             </tr>
             @endforeach    
