@@ -354,6 +354,7 @@ content-center grid lg:grid-cols-1 grid-cols-2 gap-4 sm:grid-cols-2">
             </div>
             @if($page == 'students')
             <input type="text" placeholder="Search..." wire:model.debounce.1ms="search">
+            <button type="button" class="btn btn-danger d-block mx-auto mt-5" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Data</button>
 
 <table class="min-w-full divide-y divide-gray-200">
     <thead class="bg-gray-50">
@@ -1270,4 +1271,167 @@ content-center grid lg:grid-cols-1 grid-cols-2 gap-4 sm:grid-cols-2">
         @endif
     </div>
     </div>
+
+    <!--MODAL ALL -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+         
+        <h5 class="modal-title">
+        @if($page=="students")    
+        Add Student @endif</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+      @if($page=="students")
+                    <div class="form-group">
+                        <label>Email : </label>
+                        <input type="email" class="form-control" wire:model="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Password :</label>
+                        <input type="password" class="form-control" wire:model="password" required>
+                    </div>
+
+                    <div class="form-group">
+                    <label>Konfirmasi Password :</label>
+                        <input type="password" class="form-control" wire:model="password_confirmation" required>
+                    </div>
+
+                    <div class="form-group">
+                    <label>Username :</label>
+                        <input type="text" class="form-control" wire:model="username" required>
+                    </div>
+
+                    <div class="form-group">
+                    <label>Name :</label>
+                        <input type="text" class="form-control" wire:model="name" required>
+                    </div>
+
+                    <div class="form-group">
+                    <label>School :</label>
+                        <input type="text" class="form-control" wire:model="school" required>
+                    </div>
+
+                    <div class="form-group">
+                    <label>City :</label>
+                        <input type="text" class="form-control" wire:model="city" required>
+                    </div>
+
+                    <div class="form-group">
+                    <label>Birthyear :</label>
+                        <input type="text" class="form-control" wire:model="birthyear" required>
+                    </div>
+
+                    <div class="form-group">
+                    <label>Photo :</label>
+                        <input type="text" class="form-control" wire:model="photo">
+                    </div>
+
+                    <div class="form-group">
+                    <label>Is Admin :</label>
+                        <input type="text" class="form-control" wire:model="is_admin" required>
+                    </div>
+        @elseif($page=="fis8_categories")
+        <div class="form-group">
+                        <label>Name : </label>
+                        <input type="text" class="form-control" wire:model="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Description :</label>
+                        <input type="text" class="form-control" wire:model="description" required>
+                    </div>
+
+        @elseif($page=="fis8_levels")
+        <div class="form-group">
+                        <label>Category : </label>
+                        <input type="text" class="form-control" wire:model="fis8_category_id" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Name :</label>
+                        <input type="text" class="form-control" wire:model="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Thumbnail :</label>
+                        <input type="text" class="form-control" wire:model="thumbnail" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Description :</label>
+                        <input type="text" class="form-control" wire:model="description" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Score Reward :</label>
+                        <input type="text" class="form-control" wire:model="score_reward" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Ticket Reward :</label>
+                        <input type="text" class="form-control" wire:model="ticket_reward" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Money Reward :</label>
+                        <input type="text" class="form-control" wire:model="money_reward" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Maximum Time :</label>
+                        <input type="text" class="form-control" wire:model="maximum_time" required>
+                    </div>
+                    @elseif($page=="fis8_questions")
+        <div class="form-group">
+                        <label>Level : </label>
+                        <input type="text" class="form-control" wire:model="fis8_level_id" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Question Text :</label>
+                        <input type="text" class="form-control" wire:model="question_text" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Correct Answer Option :</label>
+                        <input type="text" class="form-control" wire:model="correct_answer_option" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Discussion :</label>
+                        <input type="text" class="form-control" wire:model="discussion" required>
+                    </div>
+                    @elseif($page=="fis8_answer_options")
+        <div class="form-group">
+                        <label>Option Text : </label>
+                        <input type="text" class="form-control" wire:model="option_text" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Is Image :</label>
+                        <input type="text" class="form-control" wire:model="is_image" required>
+                    </div>
+                    @elseif($page=="fis8_question_answers")
+        <div class="form-group">
+                        <label>Question : </label>
+                        <input type="text" class="form-control" wire:model="fis8_question_id" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Answer Option :</label>
+                        <input type="text" class="form-control" wire:model="fis8_answer_option_id" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Option :</label>
+                        <input type="text" class="form-control" wire:model="option" required>
+                    </div>
+         @endif
+
+      </div>
+      <div class="modal-footer">
+      <button wire:click.prevent="addAdminData()">Tambahkan</button>
+        </div>
+    </div>
+  </div>
+</div>
+
 </div>

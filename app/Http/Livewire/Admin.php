@@ -34,6 +34,10 @@ class Admin extends Component
     
     public $AdminDataAnswerOptions;
     public $search;
+
+    public $email, $password, $password_confirmation, $username, $name, $school, $city, $birthyear, $photo, $is_admin, $description,
+    $fis8_category_id, $thumbnail, $score_reward, $ticket_reward, $money_reward, $maximum_time, $fis8_level_id, $question_text, $correct_answer_option,
+    $discussion, $option_text, $is_image, $fis8_question_id, $fis8_answer_option_id, $option; 
     protected $queryString = ['page'];
 
     public function render()
@@ -176,6 +180,66 @@ class Admin extends Component
                 Fis8UserAnswer::destroy($cek['id']);
             }
         }
+    }
+
+    public function addAdminData()
+    {
+        if ($this->page == 'students') {
+            if($this->password == $this->password_confirmation){
+               $CreateUSer = User::create([
+                    'email' => $this->email,
+                    'password' => $this->password,
+                    'username' => $this->username,
+                    'name' => $this->name,
+                    'school' => $this->school,
+                    'city' => $this->city,
+                    'birthyear' => $this->birthyear,
+                ]);
+    
+                    $CreateUSer->myUser()->create([
+                    'is_admin' => $this->is_admin,
+                    'photo' => $this->photo,
+                ]);
+            }
+        } elseif ($this->page == 'fis8_categories') {
+            Fis8Category::create([
+                'name' => $this->name,
+                'description' => $this->description,
+            ]);
+           
+        } elseif ($this->page == 'fis8_levels') {
+            Fis8Level::create([
+                'fis8_category_id' => $this->fis8_category_id,
+            'name' => $this->name,
+            'thumbnail' => $this->thumbnail,
+            'description' => $this->description,
+            'score_reward' => $this->score_reward,
+            'ticket_reward' => $this->ticket_reward,
+            'money_reward' => $this->money_reward,
+            'maximum_time' => $this->maximum_time,
+        ]);
+        }
+        elseif ($this->page == 'fis8_questions') {
+            Fis8Question::create([
+                'fis8_level_id' => $this->fis8_level_id,
+            'question_text' => $this->question_text,
+            'correct_answer_option' => $this->correct_answer_option,
+            'discussion' => $this->discussion,
+        ]);
+        }
+        elseif ($this->page == 'fis8_answer_options') {
+            Fis8AnswerOption::create([
+                'option_text' => $this->option_text,
+            'is_image' => $this->is_image,
+        ]);
+          
+        }  elseif ($this->page == 'fis8_question_answers') {
+            Fis8QuestionAnswer::create([
+                'fis8_question_id' => $this->fis8_question_id,
+                'fis8_answer_option_id' => $this->fis8_answer_option_id,
+            'option' => $this->option,
+        ]);
+    }
     }
 
     public function editAdminData($AdminDataIndex)
