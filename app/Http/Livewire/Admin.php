@@ -197,7 +197,7 @@ class Admin extends Component
                 ]);
     
                     $CreateUSer->myUser()->create([
-                    'is_admin' => `$this->is_admin`,
+                    'is_admin' => $this->is_admin,
                     'photo' => $this->photo,
                 ]);
             }
