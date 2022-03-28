@@ -17,12 +17,9 @@ class Fis8UserAnswer extends Model
         $term = "%$term%";
         $query->where(function ($query) use ($term) {
             $query->where('id', 'like', $term)
-            ->orWhere('question_text', 'like', $term)
-            ->orWhere('correct_answer_option', 'like', $term)
-            ->orWhere('discussion', 'like', $term)
-            ->orWhereHas('user', function ($query) use ($term) {
-                $query->where('id', 'like', $term);
-            });
+            ->orWhere('fis8_question_id', 'like', $term)
+            ->orWhere('fis8_game_play_history_id', 'like', $term)
+            ->orWhere('user_answer', 'like', $term);
         });
     }
 

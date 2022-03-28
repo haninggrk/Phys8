@@ -42,7 +42,7 @@ class User extends Authenticatable
                 ->orWhere('is_active', 'like', $term)
                 ->orWhere('is_admin', 'like', $term)
                 ->orWhere('ticket', 'like', $term)
-                ->orWhere('quiz_score', 'like', $term)
+                ->orWhere('score', 'like', $term)
                 ->orWhere('money', 'like', $term);
             });
         });

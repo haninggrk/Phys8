@@ -264,8 +264,8 @@ class Fis8QuestionSeeder extends Seeder
 
         ///////////////
 
-       //ganti
-       $createQuestion = $level->questions()->create([
+        //ganti
+        $createQuestion = $level->questions()->create([
         'question_text' => 'Jika terdapat dua buah gaya masing-masing besarnya 150N dan 80N. Kedua gaya tersebut bekerja pada sebuah benda. Maka besar resultan dari kedua gaya tersebut adalah...',
         'correct_answer_option' => 'b',
         'discussion' => 'd',
@@ -306,37 +306,36 @@ class Fis8QuestionSeeder extends Seeder
     ],
       ]);
 
-
-       $createQuestion = $level->questions()->create([
+        $createQuestion = $level->questions()->create([
         'question_text' => 'Alat yang digunakan untuk mengukur gaya adalah...',
         'correct_answer_option' => 'a',
         'discussion' => 'd',
       ]);
 
-  $createAnswerOption1 = Fis8AnswerOption::create([
+        $createAnswerOption1 = Fis8AnswerOption::create([
         'option_text' => 'Dinamometer',
         'is_image' => '0',
       ]);
 
-  $createAnswerOption2 = Fis8AnswerOption::create([
+        $createAnswerOption2 = Fis8AnswerOption::create([
         'option_text' => 'Barometer',
         'is_image' => '0',
       ]);
 
-  $createQuestion->answerOptions()->attach([
+        $createQuestion->answerOptions()->attach([
           $createAnswerOption1->id => [
               'option' => 'a',
           ],
           $createAnswerOption2->id => [
             'option' => 'b',
-          ]
+          ],
       ]);
 
-            /////////level2////
+        /////////level2////
 
-            $level = Fis8Level::find(2);
+        $level = Fis8Level::find(2);
 
-            $createQuestion = $level->questions()->create([
+        $createQuestion = $level->questions()->create([
               'question_text' => 'Contoh gaya gesek yang menguntungkan adalah...',
               'correct_answer_option' => 'd',
               'discussion' => 'd',
@@ -376,34 +375,34 @@ class Fis8QuestionSeeder extends Seeder
                 'option' => 'd',
               ],
             ]);
-    
-            $createQuestion = $level->questions()->create([
+
+        $createQuestion = $level->questions()->create([
               'question_text' => 'Setelah Budi menimbang badan di atas timbangan, ia mengatakan berat badannya 50 kg. Manakah pernyataan di bawah ini yang benar?',
               'correct_answer_option' => 'd',
               'discussion' => 'd',
             ]);
-      
-              $createAnswerOption1 = Fis8AnswerOption::create([
+
+        $createAnswerOption1 = Fis8AnswerOption::create([
               'option_text' => 'Budi mengatakan perkataan yang salah. Karena satuan berat ialah Newton, bukan kg. Sebenarnya Budi sedang menimbang massa dari tubuhnya',
               'is_image' => '0',
             ]);
-      
-              $createAnswerOption2 = Fis8AnswerOption::create([
+
+        $createAnswerOption2 = Fis8AnswerOption::create([
               'option_text' => 'Budi mengatakan perkataan yang benar. Karena kg merupakan satuan berat dan berat benda sama dengan massa benda',
               'is_image' => '0',
             ]);
-      
-              $createAnswerOption3 = Fis8AnswerOption::create([
+
+        $createAnswerOption3 = Fis8AnswerOption::create([
               'option_text' => 'Budi mengatakan perkataan yang salah. Karena kg merupakan satuan berat dan berat tidak selalu sama dengan massa',
               'is_image' => '0',
             ]);
-      
-              $createAnswerOption4 = Fis8AnswerOption::create([
+
+        $createAnswerOption4 = Fis8AnswerOption::create([
               'option_text' => 'Budi mengatakan perkataan yang salah. Karena satuan berat ialah Newton, bukan kg. Sebenarnya Budi sedang menimbang massa dari tubuhnya',
               'is_image' => '0',
             ]);
-      
-              $createQuestion->answerOptions()->attach([
+
+        $createQuestion->answerOptions()->attach([
                 $createAnswerOption1->id => [
                     'option' => 'a',
                 ],
@@ -418,7 +417,7 @@ class Fis8QuestionSeeder extends Seeder
           ],
             ]);
 
-            $createQuestion = $level->questions()->create([
+        $createQuestion = $level->questions()->create([
               'question_text' => 'Sebuah mobil dengan massa 3 ton dalam keadaan diam, kemudian melaju selama 30 detik dengan kecepatan 18 km/jam. Berapakah gaya yang dikerjakan oleh mobil tersebut?',
               'correct_answer_option' => 'd',
               'discussion' => 'Diketahui:
@@ -440,28 +439,28 @@ class Fis8QuestionSeeder extends Seeder
               Jadi, gaya yang harus dikerjakan oleh obil tersebut adalah 500 N
               ',
             ]);
-      
-              $createAnswerOption1 = Fis8AnswerOption::create([
+
+        $createAnswerOption1 = Fis8AnswerOption::create([
               'option_text' => '480 N',
               'is_image' => '0',
             ]);
-      
-              $createAnswerOption2 = Fis8AnswerOption::create([
+
+        $createAnswerOption2 = Fis8AnswerOption::create([
               'option_text' => '485 N',
               'is_image' => '0',
             ]);
-      
-              $createAnswerOption3 = Fis8AnswerOption::create([
+
+        $createAnswerOption3 = Fis8AnswerOption::create([
               'option_text' => '495 N',
               'is_image' => '0',
             ]);
-      
-              $createAnswerOption4 = Fis8AnswerOption::create([
+
+        $createAnswerOption500 = Fis8AnswerOption::create([
               'option_text' => '500 N',
               'is_image' => '0',
             ]);
-      
-              $createQuestion->answerOptions()->attach([
+
+        $createQuestion->answerOptions()->attach([
                 $createAnswerOption1->id => [
                     'option' => 'a',
                 ],
@@ -471,12 +470,12 @@ class Fis8QuestionSeeder extends Seeder
               $createAnswerOption3->id => [
                 'option' => 'c',
             ],
-            $createAnswerOption4->id => [
+            $createAnswerOption500->id => [
               'option' => 'd',
           ],
             ]);
 
-            $createQuestion = $level->questions()->create([
+        $createQuestion = $level->questions()->create([
               'question_text' => 'Berat suatu benda 34,3 N. Jika percepatan gravitasi 9.8 N/kg, maka berapakah massa benda tersebut?',
               'correct_answer_option' => 'b',
               'discussion' => 'Diketahui:
@@ -489,28 +488,28 @@ class Fis8QuestionSeeder extends Seeder
               
               Jadi massa benda adalah 3.5 kg',
             ]);
-      
-              $createAnswerOption1 = Fis8AnswerOption::create([
+
+        $createAnswerOption1 = Fis8AnswerOption::create([
               'option_text' => '3.5 g',
               'is_image' => '0',
             ]);
-      
-              $createAnswerOption2 = Fis8AnswerOption::create([
+
+        $createAnswerOption2 = Fis8AnswerOption::create([
               'option_text' => '3.5 kg',
               'is_image' => '0',
             ]);
-      
-              $createAnswerOption3 = Fis8AnswerOption::create([
+
+        $createAnswerOption3 = Fis8AnswerOption::create([
               'option_text' => '4.5 g',
               'is_image' => '0',
             ]);
-      
-              $createAnswerOption4 = Fis8AnswerOption::create([
+
+        $createAnswerOption4 = Fis8AnswerOption::create([
               'option_text' => '4.5 kg',
               'is_image' => '0',
             ]);
-      
-              $createQuestion->answerOptions()->attach([
+
+        $createQuestion->answerOptions()->attach([
                 $createAnswerOption1->id => [
                     'option' => 'a',
                 ],
@@ -525,7 +524,7 @@ class Fis8QuestionSeeder extends Seeder
           ],
             ]);
 
-            $createQuestion = $level->questions()->create([
+        $createQuestion = $level->questions()->create([
               'question_text' => 'Massa Eli di bumi 60 kg. Jika percepatan gravitasi bumi 10 N/kg dan percepatan gravitasi bulan 1/6 percepatan gravitasi bumi, berapakah berat Eli di bumi?',
               'correct_answer_option' => 'a',
               'discussion' => 'Diketahui:
@@ -538,43 +537,38 @@ class Fis8QuestionSeeder extends Seeder
               
               Jadi berat Eli di bumi ialah 600 N',
             ]);
-      
-              $createAnswerOption1 = Fis8AnswerOption::create([
+
+        $createAnswerOption600 = Fis8AnswerOption::create([
               'option_text' => '600 N',
               'is_image' => '0',
-            ]);
-      
-              $createAnswerOption2 = Fis8AnswerOption::create([
-              'option_text' => '500 N',
-              'is_image' => '0',
-            ]);
-      
-              $createAnswerOption3 = Fis8AnswerOption::create([
+        ]);
+
+        $createAnswerOption3 = Fis8AnswerOption::create([
               'option_text' => '100 N',
               'is_image' => '0',
             ]);
-      
-              $createAnswerOption4 = Fis8AnswerOption::create([
+
+        $createAnswerOptionn = Fis8AnswerOption::create([
               'option_text' => '150 N',
               'is_image' => '0',
             ]);
-      
-              $createQuestion->answerOptions()->attach([
-                $createAnswerOption1->id => [
+
+        $createQuestion->answerOptions()->attach([
+                $createAnswerOption600->id => [
                     'option' => 'a',
                 ],
-                $createAnswerOption2->id => [
+                $createAnswerOption500->id => [
                   'option' => 'b',
               ],
               $createAnswerOption3->id => [
                 'option' => 'c',
             ],
-            $createAnswerOption4->id => [
+            $createAnswerOptionn->id => [
               'option' => 'd',
           ],
             ]);
 
-                $createQuestion = $level->questions()->create([
+        $createQuestion = $level->questions()->create([
                   'question_text' => 'Massa Eli di bumi 60 kg. Jika percepatan gravitasi bumi 10 N/kg dan percepatan gravitasi bulan 1/6 percepatan gravitasi bumi, berapakah berat Eli di bulan?',
                   'correct_answer_option' => 'c',
                   'discussion' => 'Diketahui:
@@ -589,23 +583,23 @@ class Fis8QuestionSeeder extends Seeder
                   
                   Jadi berat Eli di bulan ialah 100 N',
                 ]);
-          
-                  $createQuestion->answerOptions()->attach([
-                    $createAnswerOption1->id => [
+
+        $createQuestion->answerOptions()->attach([
+                    $createAnswerOption600->id => [
                         'option' => 'a',
                     ],
-                    $createAnswerOption2->id => [
+                    $createAnswerOption500->id => [
                       'option' => 'b',
                   ],
                   $createAnswerOption3->id => [
                     'option' => 'c',
                 ],
-                $createAnswerOption4->id => [
+                $createAnswerOptionn->id => [
                   'option' => 'd',
               ],
                 ]);
-                
-            $createQuestion = $level->questions()->create([
+
+        $createQuestion = $level->questions()->create([
               'question_text' => 'Pak Wahyu mendorong gerobak yang memiliki massa 40 kg dengan gaya sebesar 100 N, kemudian pak wahyu membeli 2 karung beras yang massanya 30 kg tiap karungnya. Berapakah gaya yang harus dikeluarkan oleh pak wahyu agar gerobak tersebut bergerak dengan percepatan yang sama?',
               'correct_answer_option' => 'd',
               'discussion' => 'Diketahui:
@@ -632,114 +626,94 @@ class Fis8QuestionSeeder extends Seeder
               Jadi gaya yang harus dikeluarkan oleh pak Wahyu agar gerobak tersebut bergerak dengan percepatan yang sama adalah 250 N
               ',
             ]);
-      
-              $createAnswerOption1 = Fis8AnswerOption::create([
-              'option_text' => '150 N',
-              'is_image' => '0',
-            ]);
-      
-              $createAnswerOption2 = Fis8AnswerOption::create([
-              'option_text' => '600 N',
-              'is_image' => '0',
-            ]);
-      
-              $createAnswerOption3 = Fis8AnswerOption::create([
+
+        $createAnswerOption400 = Fis8AnswerOption::create([
               'option_text' => '400 N',
               'is_image' => '0',
             ]);
-      
-              $createAnswerOption4 = Fis8AnswerOption::create([
+
+        $createAnswerOption4 = Fis8AnswerOption::create([
               'option_text' => '250 N',
               'is_image' => '0',
             ]);
-      
-              $createQuestion->answerOptions()->attach([
-                $createAnswerOption1->id => [
+
+        $createQuestion->answerOptions()->attach([
+                $createAnswerOptionn->id => [
                     'option' => 'a',
                 ],
-                $createAnswerOption2->id => [
+                $createAnswerOption600->id => [
                   'option' => 'b',
               ],
-              $createAnswerOption3->id => [
+              $createAnswerOption400->id => [
                 'option' => 'c',
             ],
             $createAnswerOption4->id => [
               'option' => 'd',
           ],
             ]);
-                
-                   $createQuestion = $level->questions()->create([
+
+        $createQuestion = $level->questions()->create([
                     'question_text' => 'Sebuah mobil bermassa 1500 kg bergerak dengan laju 72 km/jam. Ketika mobil mulai direm untuk mendapatkan perlambatan konstan, mobil berhenti dalam selang waktu 1.25 menit. Berapakah besar gaya pengereman yang bekerja pada mobil tersebut?',
                     'correct_answer_option' => 'b',
                     'discussion' => 'd',
                   ]);
-            
-                    $createAnswerOption1 = Fis8AnswerOption::create([
-                    'option_text' => '400 N',
-                    'is_image' => '0',
-                  ]);
-            
-                    $createAnswerOption2 = Fis8AnswerOption::create([
+
+        $createAnswerOption2 = Fis8AnswerOption::create([
                     'option_text' => '-400 N',
                     'is_image' => '0',
                   ]);
-            
-                    $createAnswerOption3 = Fis8AnswerOption::create([
-                    'option_text' => '600 N',
-                    'is_image' => '0',
-                  ]);
-            
-                    $createAnswerOption4 = Fis8AnswerOption::create([
+
+        $createAnswerOption4 = Fis8AnswerOption::create([
                     'option_text' => '-600 N',
                     'is_image' => '0',
                   ]);
-            
-                    $createQuestion->answerOptions()->attach([
-                      $createAnswerOption1->id => [
+
+        $createQuestion->answerOptions()->attach([
+                      $createAnswerOption400->id => [
                           'option' => 'a',
                       ],
                       $createAnswerOption2->id => [
                         'option' => 'b',
                     ],
-                    $createAnswerOption3->id => [
+                    $createAnswerOption600->id => [
                       'option' => 'c',
                   ],
                   $createAnswerOption4->id => [
                     'option' => 'd',
                 ],
                   ]);
-                
-                  $createQuestion = $level->questions()->create([
+
+        $createQuestion = $level->questions()->create([
                     'question_text' => 'Kotak 10 kg mula-mula diam pada bidang miring dengan kemiringan 30 derajat terhadap arah horizontal. Kotak bergerak meluncur pada bidang miring tersebut sejauh 10 m. Jika bidang miring tersebut licin, berapakah laju akhir dari kotak tersebut?',
                     'correct_answer_option' => 'a',
                     'discussion' => 'd',
                   ]);
-            
-                    $createAnswerOption1 = Fis8AnswerOption::create([
+
+        $createAnswerOption1 = Fis8AnswerOption::create([
                     'option_text' => '10 m/s',
                     'is_image' => '0',
                   ]);
-            
-                    $createAnswerOption2 = Fis8AnswerOption::create([
+
+        $createAnswerOptionmss = Fis8AnswerOption::create([
                     'option_text' => '10 m/s/s',
                     'is_image' => '0',
                   ]);
-            
-                    $createAnswerOption3 = Fis8AnswerOption::create([
+
+        $createAnswerOption3 = Fis8AnswerOption::create([
                     'option_text' => '100 m/s',
                     'is_image' => '0',
                   ]);
-            
-                    $createAnswerOption4 = Fis8AnswerOption::create([
+
+        $createAnswerOption4 = Fis8AnswerOption::create([
                     'option_text' => '100 m/s/s',
                     'is_image' => '0',
                   ]);
-            
-                    $createQuestion->answerOptions()->attach([
+
+        $createQuestion->answerOptions()->attach([
                       $createAnswerOption1->id => [
                           'option' => 'a',
                       ],
-                      $createAnswerOption2->id => [
+                      $createAnswerOptionmss->id => [
                         'option' => 'b',
                     ],
                     $createAnswerOption3->id => [
@@ -749,34 +723,34 @@ class Fis8QuestionSeeder extends Seeder
                     'option' => 'd',
                 ],
                   ]);
-                
-                  $createQuestion = $level->questions()->create([
+
+        $createQuestion = $level->questions()->create([
                     'question_text' => 'Benda 1 kg mula-mula diletakkan di tanah, kemudian diberi gaya 14 N vertikal ke atas selama 5 detik. Berapakah tinggi maksimum yang dicapai oleh benda tersebut?',
                     'correct_answer_option' => 'a',
                     'discussion' => 'd',
                   ]);
-            
-                    $createAnswerOption1 = Fis8AnswerOption::create([
+
+        $createAnswerOption1 = Fis8AnswerOption::create([
                     'option_text' => '70 m',
                     'is_image' => '0',
                   ]);
-            
-                    $createAnswerOption2 = Fis8AnswerOption::create([
+
+        $createAnswerOption2 = Fis8AnswerOption::create([
                     'option_text' => '80 m',
                     'is_image' => '0',
                   ]);
-            
-                    $createAnswerOption3 = Fis8AnswerOption::create([
+
+        $createAnswerOption3 = Fis8AnswerOption::create([
                     'option_text' => '90 m',
                     'is_image' => '0',
                   ]);
-            
-                    $createAnswerOption4 = Fis8AnswerOption::create([
+
+        $createAnswerOption4 = Fis8AnswerOption::create([
                     'option_text' => '100 m',
                     'is_image' => '0',
                   ]);
-            
-                    $createQuestion->answerOptions()->attach([
+
+        $createQuestion->answerOptions()->attach([
                       $createAnswerOption1->id => [
                           'option' => 'a',
                       ],
@@ -791,35 +765,35 @@ class Fis8QuestionSeeder extends Seeder
                 ],
                   ]);
 
-                   $level = Fis8Level::find(3);
-                
-                   $createQuestion = $level->questions()->create([
+        $level = Fis8Level::find(3);
+
+        $createQuestion = $level->questions()->create([
                     'question_text' => 'Seorang anak bermassa 60 kg menaiki lift di sebuah gedung mall dan percepatan gravitasi bumi sebesar 10 m/s/s. Berapakah gaya desak kaki anak tersebut pada lantai lift ketika lift bergerak dengan percepatan 1.5 m/s/s ke atas?',
                     'correct_answer_option' => 'd',
                     'discussion' => 'd',
                   ]);
-            
-                    $createAnswerOption1 = Fis8AnswerOption::create([
+
+        $createAnswerOption1 = Fis8AnswerOption::create([
                     'option_text' => '490 N',
                     'is_image' => '0',
                   ]);
-            
-                    $createAnswerOption2 = Fis8AnswerOption::create([
+
+        $createAnswerOption2 = Fis8AnswerOption::create([
                     'option_text' => '590 N',
                     'is_image' => '0',
                   ]);
-            
-                    $createAnswerOption3 = Fis8AnswerOption::create([
+
+        $createAnswerOption3 = Fis8AnswerOption::create([
                     'option_text' => '690 N',
                     'is_image' => '0',
                   ]);
-            
-                    $createAnswerOption4 = Fis8AnswerOption::create([
+
+        $createAnswerOption4 = Fis8AnswerOption::create([
                     'option_text' => '790 N',
                     'is_image' => '0',
                   ]);
-            
-                    $createQuestion->answerOptions()->attach([
+
+        $createQuestion->answerOptions()->attach([
                       $createAnswerOption1->id => [
                           'option' => 'a',
                       ],
@@ -833,34 +807,34 @@ class Fis8QuestionSeeder extends Seeder
                     'option' => 'd',
                 ],
                   ]);
-                
-                   $createQuestion = $level->questions()->create([
+
+        $createQuestion = $level->questions()->create([
                     'question_text' => 'Seorang anak bermassa 60 kg menaiki lift di sebuah gedung mall dan percepatan gravitasi bumi sebesar 10 m/s/s. Berapakah gaya desak kaki anak tersebut pada lantai lift ketika lift bergerak dengan percepatan 1.5 m/s/s ke bawah?',
                     'correct_answer_option' => 'b',
                     'discussion' => 'd',
                   ]);
-            
-                    $createAnswerOption1 = Fis8AnswerOption::create([
+
+        $createAnswerOption1 = Fis8AnswerOption::create([
                     'option_text' => '410 N',
                     'is_image' => '0',
                   ]);
-            
-                    $createAnswerOption2 = Fis8AnswerOption::create([
+
+        $createAnswerOption2 = Fis8AnswerOption::create([
                     'option_text' => '510 N',
                     'is_image' => '0',
                   ]);
-            
-                    $createAnswerOption3 = Fis8AnswerOption::create([
+
+        $createAnswerOption3 = Fis8AnswerOption::create([
                     'option_text' => '610 N',
                     'is_image' => '0',
                   ]);
-            
-                    $createAnswerOption4 = Fis8AnswerOption::create([
+
+        $createAnswerOption4 = Fis8AnswerOption::create([
                     'option_text' => '710 N',
                     'is_image' => '0',
                   ]);
-            
-                    $createQuestion->answerOptions()->attach([
+
+        $createQuestion->answerOptions()->attach([
                       $createAnswerOption1->id => [
                           'option' => 'a',
                       ],
@@ -874,147 +848,92 @@ class Fis8QuestionSeeder extends Seeder
                     'option' => 'd',
                 ],
                   ]);
-                
-               $createQuestion = $level->questions()->create([
+
+        $createQuestion = $level->questions()->create([
                 'question_text' => 'Seorang anak bermassa 60 kg menaiki lift di sebuah gedung mall dan percepatan gravitasi bumi sebesar 10 m/s/s. Berapakah gaya desak kaki anak tersebut pada lantai lift ketika lift bergerak dengan kecepatan tetap 1 m/s ke atas?',
                 'correct_answer_option' => 'a',
                 'discussion' => 'd',
               ]);
-        
-                $createAnswerOption1 = Fis8AnswerOption::create([
-                'option_text' => '600 N',
-                'is_image' => '0',
-              ]);
-        
-                $createAnswerOption2 = Fis8AnswerOption::create([
-                'option_text' => '500 N',
-                'is_image' => '0',
-              ]);
-        
-                $createAnswerOption3 = Fis8AnswerOption::create([
-                'option_text' => '400 N',
-                'is_image' => '0',
-              ]);
-        
-                $createAnswerOption4 = Fis8AnswerOption::create([
+
+        $createAnswerOption300 = Fis8AnswerOption::create([
                 'option_text' => '300 N',
                 'is_image' => '0',
               ]);
-        
-                $createQuestion->answerOptions()->attach([
-                  $createAnswerOption1->id => [
+
+        $createQuestion->answerOptions()->attach([
+                  $createAnswerOption600->id => [
                       'option' => 'a',
                   ],
-                  $createAnswerOption2->id => [
+                  $createAnswerOption500->id => [
                     'option' => 'b',
                 ],
-                $createAnswerOption3->id => [
+                $createAnswerOption400->id => [
                   'option' => 'c',
               ],
-              $createAnswerOption4->id => [
+              $createAnswerOption300->id => [
                 'option' => 'd',
             ],
               ]);
 
-              $createQuestion = $level->questions()->create([
+        $createQuestion = $level->questions()->create([
                 'question_text' => 'Seorang anak bermassa 60 kg menaiki lift di sebuah gedung mall dan percepatan gravitasi bumi sebesar 10 m/s/s. Berapakah gaya desak kaki anak tersebut pada lantai lift ketika lift bergerak dengan kecepatan tetap 1 m/s ke bawah?',
                 'correct_answer_option' => 'b',
                 'discussion' => 'd',
               ]);
-        
-                $createAnswerOption1 = Fis8AnswerOption::create([
-                'option_text' => '400 N',
-                'is_image' => '0',
-              ]);
-        
-                $createAnswerOption2 = Fis8AnswerOption::create([
-                'option_text' => '600 N',
-                'is_image' => '0',
-              ]);
-        
-                $createAnswerOption3 = Fis8AnswerOption::create([
-                'option_text' => '500 N',
-                'is_image' => '0',
-              ]);
-        
-                $createAnswerOption4 = Fis8AnswerOption::create([
-                'option_text' => '300 N',
-                'is_image' => '0',
-              ]);
-        
-                $createQuestion->answerOptions()->attach([
-                  $createAnswerOption1->id => [
+
+        $createQuestion->answerOptions()->attach([
+                  $createAnswerOption400->id => [
                       'option' => 'a',
                   ],
-                  $createAnswerOption2->id => [
+                  $createAnswerOption600->id => [
                     'option' => 'b',
                 ],
-                $createAnswerOption3->id => [
+                $createAnswerOption500->id => [
                   'option' => 'c',
               ],
-              $createAnswerOption4->id => [
+              $createAnswerOption300->id => [
                 'option' => 'd',
             ],
               ]);
 
-              $createQuestion = $level->questions()->create([
+        $createQuestion = $level->questions()->create([
                 'question_text' => 'Seorang anak bermassa 60 kg menaiki lift di sebuah gedung mall dan percepatan gravitasi bumi sebesar 10 m/s/s. Berapakah gaya desak kaki anak tersebut pada lantai lift ketika lift telah berhenti kembali?',
                 'correct_answer_option' => 'a',
                 'discussion' => 'd',
-              ]);
-        
-                $createAnswerOption1 = Fis8AnswerOption::create([
-                'option_text' => '600 N',
-                'is_image' => '0',
-              ]);
-        
-                $createAnswerOption2 = Fis8AnswerOption::create([
-                'option_text' => '500 N',
-                'is_image' => '0',
-              ]);
-        
-                $createAnswerOption3 = Fis8AnswerOption::create([
-                'option_text' => '400 N',
-                'is_image' => '0',
-              ]);
-        
-                $createAnswerOption4 = Fis8AnswerOption::create([
-                'option_text' => '300 N',
-                'is_image' => '0',
-              ]);
-        
-                $createQuestion->answerOptions()->attach([
-                  $createAnswerOption1->id => [
+        ]);
+
+        $createQuestion->answerOptions()->attach([
+                  $createAnswerOption600->id => [
                       'option' => 'a',
                   ],
-                  $createAnswerOption2->id => [
+                  $createAnswerOption500->id => [
                     'option' => 'b',
                 ],
-                $createAnswerOption3->id => [
+                $createAnswerOption400->id => [
                   'option' => 'c',
               ],
-              $createAnswerOption4->id => [
+              $createAnswerOption300->id => [
                 'option' => 'd',
             ],
               ]);
 
-              $createQuestion = $level->questions()->create([
+        $createQuestion = $level->questions()->create([
                 'question_text' => 'Pada saat bermain kelereng, kelereng yang kecil saat dimainkan akan lebih cepat menggelinding, sedangkan kelereng yang lebih besar relatif lebih lama. Hal tersebut dikarenakan percepatan berbanding terblik dengan massanya. Apakah pernyataan tersebut benar?',
                 'correct_answer_option' => 'a',
                 'discussion' => 'd',
               ]);
-        
-                $createAnswerOption1 = Fis8AnswerOption::create([
+
+        $createAnswerOption1 = Fis8AnswerOption::create([
                 'option_text' => 'Ya',
                 'is_image' => '0',
               ]);
-        
-                $createAnswerOption2 = Fis8AnswerOption::create([
+
+        $createAnswerOption2 = Fis8AnswerOption::create([
                 'option_text' => 'Tidak',
                 'is_image' => '0',
               ]);
-        
-                $createQuestion->answerOptions()->attach([
+
+        $createQuestion->answerOptions()->attach([
                   $createAnswerOption1->id => [
                       'option' => 'a',
                   ],
@@ -1023,33 +942,33 @@ class Fis8QuestionSeeder extends Seeder
                 ],
               ]);
 
-              $createQuestion = $level->questions()->create([
+        $createQuestion = $level->questions()->create([
                 'question_text' => 'Sebuah truk dapat menghasilkan gaya sebesar 7000 N. Jika truk tersebut dapat bergerak dengan percepatan 3.5 m/s/s, berapakah massa truk tersebut?',
                 'correct_answer_option' => 'd',
                 'discussion' => 'd',
               ]);
-        
-              $createAnswerOption1 = Fis8AnswerOption::create([
+
+        $createAnswerOption1 = Fis8AnswerOption::create([
                 'option_text' => '7 ton',
                 'is_image' => '0',
               ]);
-        
-                $createAnswerOption2 = Fis8AnswerOption::create([
+
+        $createAnswerOption2 = Fis8AnswerOption::create([
                 'option_text' => '8 ton',
                 'is_image' => '0',
               ]);
-        
-                $createAnswerOption3 = Fis8AnswerOption::create([
+
+        $createAnswerOption3 = Fis8AnswerOption::create([
                 'option_text' => '1 ton',
                 'is_image' => '0',
               ]);
-        
-                $createAnswerOption4 = Fis8AnswerOption::create([
+
+        $createAnswerOption4 = Fis8AnswerOption::create([
                 'option_text' => '2 ton',
                 'is_image' => '0',
               ]);
-        
-                $createQuestion->answerOptions()->attach([
+
+        $createQuestion->answerOptions()->attach([
                   $createAnswerOption1->id => [
                       'option' => 'a',
                   ],
@@ -1064,37 +983,32 @@ class Fis8QuestionSeeder extends Seeder
             ],
               ]);
 
-                $createQuestion = $level->questions()->create([
+        $createQuestion = $level->questions()->create([
                   'question_text' => 'Jika suatu benda diberi gaya 20 N, benda tersebut memiliki percepatan 4 m/s/s. Berapakah percepatan yang dialami benda tersebut jika diberi gaya 25 N?',
                   'correct_answer_option' => 'b',
                   'discussion' => 'd',
-                ]);
-          
-                $createAnswerOption1 = Fis8AnswerOption::create([
-                  'option_text' => '10 m/s/s',
-                  'is_image' => '0',
-                ]);
-          
-                  $createAnswerOption2 = Fis8AnswerOption::create([
+        ]);
+
+        $createAnswerOption5mss = Fis8AnswerOption::create([
                   'option_text' => '5 m/s/s',
                   'is_image' => '0',
                 ]);
-          
-                  $createAnswerOption3 = Fis8AnswerOption::create([
+
+        $createAnswerOption3 = Fis8AnswerOption::create([
                   'option_text' => '15 m/s/s',
                   'is_image' => '0',
                 ]);
-          
-                  $createAnswerOption4 = Fis8AnswerOption::create([
+
+        $createAnswerOption4 = Fis8AnswerOption::create([
                   'option_text' => '20 m/s/s',
                   'is_image' => '0',
                 ]);
-          
-                  $createQuestion->answerOptions()->attach([
-                    $createAnswerOption1->id => [
+
+        $createQuestion->answerOptions()->attach([
+                    $createAnswerOptionmss->id => [
                         'option' => 'a',
                     ],
-                    $createAnswerOption2->id => [
+                    $createAnswerOption5mss->id => [
                       'option' => 'b',
                   ],
                   $createAnswerOption3->id => [
@@ -1105,33 +1019,33 @@ class Fis8QuestionSeeder extends Seeder
               ],
                 ]);
 
-                 $createQuestion = $level->questions()->create([
+        $createQuestion = $level->questions()->create([
                   'question_text' => 'Sebuah gaya F dikerjakan pada sebuah benda bermassa m, menghasilkan percepatan 10 m/s/s. Jika gaya tersebut dikerjakan pada benda kedua dengan massa m2, percepatan yang dihasilkan adalah 15 m/s/s. Berapakah perbandingan m1 dan m2?',
                   'correct_answer_option' => 'c',
                   'discussion' => 'd',
                 ]);
-          
-                $createAnswerOption1 = Fis8AnswerOption::create([
+
+        $createAnswerOption1 = Fis8AnswerOption::create([
                   'option_text' => '3:4',
                   'is_image' => '0',
                 ]);
-          
-                  $createAnswerOption2 = Fis8AnswerOption::create([
+
+        $createAnswerOption2 = Fis8AnswerOption::create([
                   'option_text' => '4:3',
                   'is_image' => '0',
                 ]);
-          
-                  $createAnswerOption3 = Fis8AnswerOption::create([
+
+        $createAnswerOption3 = Fis8AnswerOption::create([
                   'option_text' => '3:2',
                   'is_image' => '0',
                 ]);
-          
-                  $createAnswerOption4 = Fis8AnswerOption::create([
+
+        $createAnswerOption4 = Fis8AnswerOption::create([
                   'option_text' => '2:3',
                   'is_image' => '0',
                 ]);
-          
-                  $createQuestion->answerOptions()->attach([
+
+        $createQuestion->answerOptions()->attach([
                     $createAnswerOption1->id => [
                         'option' => 'a',
                     ],
@@ -1146,36 +1060,31 @@ class Fis8QuestionSeeder extends Seeder
               ],
                 ]);
 
-                  //baru
+        //baru
 
-                  $createQuestion = $level->questions()->create([
+        $createQuestion = $level->questions()->create([
                     'question_text' => 'Sebuah gaya F dikerjakan pada sebuah benda bermassa m, menghasilkan percepatan 10 m/s/s. Jika gaya tersebut dikerjakan pada benda kedua dengan massa m2, percepatan yang dihasilkan adalah 15 m/s/s. Berapakah percepatan yang dihasilkan gaya F1, apabila m1 dan m2 digabung?',
                     'correct_answer_option' => 'b',
                     'discussion' => 'd',
                   ]);
-            
-                  $createAnswerOption1 = Fis8AnswerOption::create([
-                    'option_text' => '5 m/s/s',
-                    'is_image' => '0',
-                  ]);
-            
-                    $createAnswerOption2 = Fis8AnswerOption::create([
+
+        $createAnswerOption2 = Fis8AnswerOption::create([
                     'option_text' => '6 m/s/s',
                     'is_image' => '0',
                   ]);
-            
-                    $createAnswerOption3 = Fis8AnswerOption::create([
+
+        $createAnswerOption3 = Fis8AnswerOption::create([
                     'option_text' => '7 m/s/s',
                     'is_image' => '0',
                   ]);
-            
-                    $createAnswerOption4 = Fis8AnswerOption::create([
+
+        $createAnswerOption4 = Fis8AnswerOption::create([
                     'option_text' => '8 m/s/s',
                     'is_image' => '0',
                   ]);
-            
-                    $createQuestion->answerOptions()->attach([
-                      $createAnswerOption1->id => [
+
+        $createQuestion->answerOptions()->attach([
+                      $createAnswerOption5mss->id => [
                           'option' => 'a',
                       ],
                       $createAnswerOption2->id => [
@@ -1188,7 +1097,6 @@ class Fis8QuestionSeeder extends Seeder
                     'option' => 'd',
                 ],
                   ]);
-
     }
     ///for ($i = 0; $i < 15; ++$i) {
          //   $createQuestion = Fis8Question::factory(30)->create();

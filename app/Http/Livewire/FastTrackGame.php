@@ -13,67 +13,75 @@ class FastTrackGame extends Component
 {
     public Fis8Category $getCategory;
     public Fis8Level $myLevel;
-    public Fis8Question $myQuestions;
-    public Fis8GamePlayHistory $myHistory;
+    public $myQuestions;
+    public $myHistory;
     public $keteranganCorrectAnswer;
     public $numberQuestions;
     public $DataQuestionFromLevelId;
+    public $currentuser;
+    public $getQuestionobj;
+    public $getHistoryUser;
 
     public function render()
     {
-        $this -> getCategory = Fis8Category::where('name', "Fast Track")-> first();
+        $this->getCategory = Fis8Category::where('name', 'Fast Track')->first();
+        if ($this->myQuestions != null) {
+            $this->getQuestionobj = $this->myHistory->questions->where('id', $this->myQuestions->id)->first();
+            $this->getHistoryUser =  $this->myHistory->questions;
+        }
+        
+       
         return view('livewire.fast-track-game');
     }
-  
 
-    public function startQuiz($levelId){
-       
+    public function startQuiz($levelId)
+    {
         $getUser = User::find(auth()->user()->id);
         $this->myLevel = Fis8Level::find($levelId);
         $this->DataQuestionFromLevelId = Fis8Level::find($this->myLevel->id)->questions;
 
-       
-        $this->myHistory = $getUser->levels()->attach([
-            $levelId
+        $getUser->levels()->attach([
+            $levelId,
         ]);
-     
+
+        $this->myHistory = Fis8GamePlayHistory::orderBy('id', 'DESC')->first();
     }
 
     ///////////////////QUIZ GAMEPLAY
     public function getQuestionWithId($id, $numberQuestion)
     {
         $this->myQuestions = Fis8Question::find($id);
-
         $this->checkUserAnswer();
         $this->numberQuestions = $numberQuestion;
     }
 
     public function saveUserAnswer($questionID, $userAnswerOption)
     {
-     
-
+      
         $this->myHistory->questions()->attach([
             $questionID => [
                 'user_answer' => $userAnswerOption,
             ],
         ]);
-
+        $this->keteranganCorrectAnswer = 'sudah';
+        //$this->getQuestionobj = $this->myHistory->questions->where('id', $this->myQuestions->id)->first();
+        // if($this->getQuestionobj->pivot->user_answer!=null){}
+      
         $this->addReward($this->checkUserAnswer());
     }
 
     public function checkUserAnswer()
     {
+        $this->getQuestionobj = $this->myHistory->questions->where('id', $this->myQuestions->id)->first();
+        if ($this->getQuestionobj == null || $this->getQuestionobj->pivot->user_answer == null) {
+            // $this->keteranganCorrectAnswer = '';
 
-        $getQuestionobj = $this->myHistory->questions->where('id', $this->myQuestions->id)->first();
-
-        if ($getQuestionobj == null || $getQuestionobj->pivot->user_answer == null) {
-            $this->keteranganCorrectAnswer = '';
             return false;
         } else {
-            if ($getQuestionobj->correct_answer_option == $getQuestionobj->pivot->user_answer) {
+            if ($this->getQuestionobj->correct_answer_option == $this->getQuestionobj->pivot->user_answer) {
                 return true;
             } else {
-                $this->keteranganCorrectAnswer = 'Jawaban Salah! Jawban yang benar: '.$getQuestionobj->correct_answer_option.'. Jawaban Kamu: '.$getQuestionobj->pivot->user_answer;
+                // $this->keteranganCorrectAnswer = 'Jawaban Salah! Jawban yang benar: '.$this->getQuestionobj->correct_answer_option.'. Jawaban Kamu: '.$this->getQuestionobj->pivot->user_answer;
 
                 return false;
             }
@@ -83,10 +91,23 @@ class FastTrackGame extends Component
     public function addReward($boolean)
     {
         if ($boolean) {
-            $this->myHistory->score += $this->myLevel->score_reward;
-            $this->myHistory->money_reward += $this->myLevel->money_reward;
-            $this->myHistory->save();
+            $this->currentuser = User::find(auth()->user()->id)->myUser;
+       
+            $this->currentuser->update([
+                'score' => $this->currentuser->score + $this->myLevel->score_reward,
+                'money' => $this->currentuser->money + $this->myLevel->money_reward,
+                'ticket' => $this->currentuser->ticket + $this->myLevel->ticket_reward,
+                
+            ]);
+            Fis8GamePlayHistory::find($this->myHistory->id)->update([
+                'score' => Fis8GamePlayHistory::find($this->myHistory->id)->score + $this->myLevel->score_reward,
+                'money_reward' => Fis8GamePlayHistory::find($this->myHistory->id)->money_reward + $this->myLevel->money_reward,
+                'ticket_reward' => Fis8GamePlayHistory::find($this->myHistory->id)->ticket_reward + $this->myLevel->ticket_reward,
+            ]);
+            
+
             $this->keteranganCorrectAnswer = 'Jawaban Benar! Dapat tambahan 50 skor.';
         }
+       
     }
 }

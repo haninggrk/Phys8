@@ -18,7 +18,7 @@ class Fis8AnswerOption extends Model
         $term = "%$term%";
         $query->where(function ($query) use ($term) {
             $query->where('id', 'like', $term)
-            ->orWhere('opinion_text', 'like', $term)
+            ->orWhere('option_text', 'like', $term)
             ->orWhere('is_image', 'like', $term);
             });
 

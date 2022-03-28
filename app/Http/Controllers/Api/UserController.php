@@ -8,6 +8,7 @@ use App\Models\Fis8Log;
 use Illuminate\Http\Request;
 use App\Models\User;
 
+
 class UserController extends Controller
 {
     /**

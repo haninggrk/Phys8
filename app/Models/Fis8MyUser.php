@@ -10,7 +10,7 @@ class Fis8MyUser extends Model
     use HasFactory;
 
     protected $table = 'fis8_myusers';
-
+    protected $primaryKey = 'student_id';
     protected $hidden = [
         'student_id', 'created_at', 'updated_at',
     ];

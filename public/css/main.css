@@ -1,0 +1,14 @@
+
+html{
+    background-image: linear-gradient(to bottom, #a60046, #b5056e, #b7289d, #a649cf, #766aff);
+    height: 100%;
+
+}
+body{
+    background-image: linear-gradient(to bottom, #a60046, #b5056e, #b7289d, #a649cf, #766aff);
+    height: 100%;
+}
+
+.gradientcolor{
+    background-image: linear-gradient(to top, #a60046, #b5056e, #b7289d, #a649cf, #766aff);
+}
