@@ -55,7 +55,7 @@ class LoginController extends Controller
 
                 if ('1' == $check->is_active) {
                     if ('0' == $check->is_login) {
-                        $response = Http::asForm()->post('http://localhost:8012/semester3/Phys8/public/oauth/token', [
+                        $response = Http::asForm()->post('http://localhost/semester3/Phys8/public/oauth/token', [
                         'grant_type' => 'password',
                         'client_id' => $this->client->id,
                         'client_secret' => $this->client->secret,
